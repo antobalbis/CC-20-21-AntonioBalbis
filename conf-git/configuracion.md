@@ -13,3 +13,5 @@ Ahora continuamos creando un par de claves pública/privada para poder acceder a
 ![imagen 2](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/conf-git/imagenes/Captura%20de%20pantalla%20de%202020-10-18%2019-58-41.png)
 
 Ahora configuramos git en la máquina local para que siempre que se haga un pull se haga --rebase. Esto lo hacemos con el comando *git config --global pull.rebase true*.
+
+Pur último añadimos la autentificación en dos pasos, para ello en el perfil de github entramos en *security account* y activamos la autenticación en dos pasos, que nos preguntará si queremos que sea mediante aplicación o sms, en este caso se ha seleccionado sms.
