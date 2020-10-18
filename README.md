@@ -2,8 +2,7 @@
 
 ## Descripción
 
-My Sweet City Consiste en una aplicación para informar sobre distintos aspectos del estado de una ciudad, como pueden ser el tráfico, el tiempo, la humedad o las carreteras cortadas.
+En este proyecto va a consistir en el desarrollo de una plataforma que informe en tiempo real sobre las condiciones meteorológicas en la isla de Gran Canaria. Para ello podemos acceder a los datos a través de la web del gobierno [datos.gob.es](https://datos.gob.es/catalogo/l03380010-datos2), esta web nos ofrece los datos en diferentes formatos. Ofrecer esta información ayuda a, por ejemplo, planificar un fin de semana o cambiar la planificación de un viaje a otro día en el que haga mejor tiempo.
 
-Para la realización de este proyecto se va a crear una ciudad ficticia virtual con una serie de calles y condiciones cambiantes en estas. Esta ciudad va a estar formada por una serie de agentes que ofrecerán información. 
+La funcionalidad básica sería la de, a partir de la búsqueda de una zona de la isla de Gran Canaria ofrecer la información meteorológica de dicha zona en el momento de la búsqueda.
 
-La idea es que exitan servicios que informen de la información recogida por los agentes y que existan servicios que, en base a esta información, realicen informes.
