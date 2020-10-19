@@ -6,11 +6,15 @@ git config --global user.email = "antoniobalh@gmail.com"
 
 Luego vamos al perfil de github en la web para cambiar la imagen por defecto por una fotografía.
 
-![imagen 1](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/conf-git/imagenes/Captura%20de%20pantalla%20de%202020-10-18%2019-44-05.png)
+![imagen 1](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/docs/imagenes/Captura%20de%20pantalla%20de%202020-10-18%2019-44-05.png)
+
+Luego añadismo la universidad y la localidad.
+
+![imagen 4](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/docs/imagenes/Captura%20de%20pantalla%20de%202020-10-19%2018-34-13.png)
 
 Ahora continuamos creando un par de claves pública/privada para poder acceder a github sin necesidad de introducir la contraseña. Las claves se generan en el equipo local con el comando *ssh-keygen*, luego añadimos la clave pública *.pub* a github.
 
-![imagen 2](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/conf-git/imagenes/Captura%20de%20pantalla%20de%202020-10-18%2019-58-41.png)
+![imagen 3](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/docs/imagenes/Captura%20de%20pantalla%20de%202020-10-18%2019-58-41.png)
 
 Ahora configuramos git en la máquina local para que siempre que se haga un pull se haga --rebase. Esto lo hacemos con el comando *git config --global pull.rebase true*.
 
