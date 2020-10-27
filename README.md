@@ -8,7 +8,11 @@ La funcionalidad básica sería la de, a partir de la búsqueda de una zona de l
 
 ## Descripción de la arquitectura
 
-Para este proyecto vamos a usar una arquitectura en capas, en la cuál la capa de vista corresponderá con el módulo del cliente que se usará para acceder a los datos meteorológicos, el controlador que será un proceso automatizado de acceso y actualización de los datos del servidor, por último tenemos la capa de acceso a datos
+Para este proyecto vamos a usar una arquitectura en capas, esta arquitectura es una arquitectura cliente-servidor en la que las capas cliente, la capa controlador y la capa de acceso a datos están separadas. Esta arquitectura nos proporciona un software flexible en la que en caso de ser necesario una modificación en alguna de las capas esta solo afecta a la capa en cuestión.
+
+Para nuestro proyecto tendremos 3 capas, la capa de presentación con la interfaz de usuario, en la capa de aplicación tendremos las peticiones de datos del cliente y las peticiones de datos y de actualización de datos del administrador y por último la capa de acceso a datos que se encargará de recibir las peticiones de cliente y administrador y tanto de acceder como de actualizar los datos.
+
+
 
 ## Enlaces
 
