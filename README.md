@@ -12,7 +12,13 @@ Para este proyecto vamos a usar una arquitectura en capas, esta arquitectura es 
 
 Para nuestro proyecto tendremos 3 capas, la capa de presentación con la interfaz de usuario, en la capa de aplicación tendremos las peticiones de datos del cliente y las peticiones de datos y de actualización de datos del administrador y por último la capa de acceso a datos que se encargará de recibir las peticiones de cliente y administrador y tanto de acceder como de actualizar los datos.
 
+## Historias de usuario
 
+<user-stories> [HU1] Como cliente quiero poder buscar la información meteorológica a partir del nombre del lugar.
+<user-stories> [HU2] Como administrador quiero poder acceder a la información del sitio a partir del nombre del lugar.
+<user-stories> [HU3] Como adminsitrador quiero poder enviar los datos meteorológicos manualmente.
+<user-stories> [HU4] Como cliente quiero que la información esté actualizada.
+<user-stories> [HU5] Como cliente quiero obtener las zonas que se encuentran en riesgo por viento, tormenta o temperatura.
 
 ## Enlaces
 
