@@ -15,9 +15,13 @@ Para nuestro proyecto tendremos 3 capas, la capa de presentación con la interfa
 ## Historias de usuario
 
 [HU1] Como cliente quiero poder buscar la información meteorológica a partir del nombre del lugar.
+
 [HU2] Como administrador quiero poder acceder a la información del sitio a partir del nombre del lugar.
+
 [HU3] Como adminsitrador quiero poder enviar los datos meteorológicos manualmente.
+
 [HU4] Como cliente quiero que la información esté actualizada.
+
 [HU5] Como cliente quiero obtener las zonas que se encuentran en riesgo por viento, tormenta o temperatura.
 
 ## Enlaces
