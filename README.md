@@ -16,7 +16,7 @@ Para nuestro proyecto tendremos 3 capas, la capa de presentación con la interfa
 
 [[HU1](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/6)] Como cliente quiero poder buscar la información meteorológica a partir del nombre del lugar.
 
-[[HU2]((https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/7)] Como administrador quiero poder acceder a la información del sitio a partir del nombre del lugar.
+[[HU2](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/7)] Como administrador quiero poder acceder a la información del sitio a partir del nombre del lugar.
 
 [[HU3](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/8)] Como adminsitrador quiero poder enviar los datos meteorológicos manualmente.
 
