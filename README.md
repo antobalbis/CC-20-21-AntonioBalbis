@@ -29,32 +29,7 @@ Para nuestro proyecto tendremos 3 capas, la capa de presentación con la interfa
 [[HU7](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/12)] Como cliente quiero poder realizar la consulta a través de un mapa interactivo.
 
 ## Planificación del proyecto
-
-Este proyecto se va a desarrollar a lo largo de distintos hitos, los hitos en los que se va a dividir el proyecto son los siguientes.
-
-#### Hito 1: Consulta de datos.
-En este primer hito se desarrollará la funcionalidad asociada a la consulta de datos meteorológicos, este va a consistir en la funcionalidad más básica del proyecto que se está desarrollando que consiste en enviar y consultar los datos meteorológicos por parte de un administrador y la consulta de los datos por parte del cliente.
-
-Historias de usuario: HU1, HU2 y HU3.
-Tiempo planificado: 1 semana.
-
-#### Hito 2: Automatización del proceso
-En este segundo hito se va a disponer de un proceso de obtención y actualización de los datos automatizado. Por tanto ahora se actualizarán los datos de forma automática sin necesidad de intervención del administrador.
-
-Historias de usuario: HU4.
-Tiempo planificado: 1 semana.
-
-#### hito 3: Sistema de advertencia y recomendación
-En este hito se va a implementar una funcionalidad que permita al cliente obtener que lugares van a tener un tiempo cuyos parámetros se salgan de lo normal y puedan estar en alerta por viento, lluvia, nieve o temperatura.
-
-Historias de usuario: HU5 y HU6.
-Tiempo planificado: 1 semana.
-
-#### hito 4: Implementación de la interfaz de usuario
-En este hito se va a implementar la interfaz de usuario en el lado del cliente que va a incluir un mapa interactivo para la consulta de los datos meteorológicos.
-
-Historias de usuario: HU7.
-Tiempo planificado: 2 semanas.
+La planificación del proyecto se encuentra en este [enlace](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/docs/planificacion.md)
 
 ## Clases creadas
 Se han creado las clases [Cliente](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/src/Cliente.scala), [Automatizador](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/src/Actualizador.scala), [Controlador](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/src/Controlador.scala) y [Localidad](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/src/Localidad.scala) y se han implementado los setters y getters de Localidad y se ha comprobado que compila.
