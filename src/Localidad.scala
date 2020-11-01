@@ -5,8 +5,7 @@ class Localidad (name : String, id : Int){
   var precipitaciones: Double = 0
   var humedad: Double = 0
 
-  def getNombre(): String = nombre
-  def getID(): Int = id
-
+  def getNombre(ID: Int): String = nombre
+  def getID(nombre: String): Int = id
 }
 
