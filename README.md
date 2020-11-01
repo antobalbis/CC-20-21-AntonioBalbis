@@ -24,9 +24,9 @@ Para nuestro proyecto tendremos 3 capas, la capa de presentación con la interfa
 
 [[HU5](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/10)] Como cliente quiero obtener las zonas que se encuentran en riesgo por viento, tormenta o temperatura.
 
-[[HU6]()] Como cliente quiero poder consultar los lugares que cumplan con una serie de condiciones climáticas.
+[[HU6](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/11)] Como cliente quiero poder consultar los lugares que cumplan con una serie de condiciones climáticas.
 
-[[HU7]()] Como cliente quiero poder realizar la consulta a través de un mapa interactivo.
+[[HU7](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/12)] Como cliente quiero poder realizar la consulta a través de un mapa interactivo.
 
 ## Planificación del proyecto
 
