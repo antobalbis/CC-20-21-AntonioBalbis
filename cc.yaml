@@ -1,0 +1,4 @@
+entidad: src/Localidad.scala
+entidad: src/Controlador.scala
+entidad: src/Actualizador.scala
+entidad: src/Cliente.scala
