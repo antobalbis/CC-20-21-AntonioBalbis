@@ -1,16 +1,14 @@
-# Quick Weather Gran Canaria
+# Easy Office
 
 ## Descripción
 
-En este proyecto va a consistir en el desarrollo de una plataforma que informe en tiempo real sobre las condiciones meteorológicas en la isla de Gran Canaria, por tanto, el problema a resolver consiste en acceder en tiempo real a la información meteorológica de la isla de Gran Canaria. Para ello, en la web del gobierno [datos.gob.es](https://datos.gob.es/catalogo/l03380010-datos2) se publican los datos recogidos en distintos formatos. Ofrecer esta información ayuda a, por ejemplo, planificar un fin de semana o cambiar la planificación de un viaje a otro día en el que haga mejor tiempo.
+Este proyecto consiste en el desarrollo de un sistema de ayuda en la gestión de una oficina de trabajo.
 
-La funcionalidad básica sería la de, a partir de la búsqueda de una zona de la isla de Gran Canaria ofrecer la información meteorológica de dicha zona en el momento de la búsqueda.
+En una oficina se necesitan máquinas que pueden estropearse, materiales que en pueden escasear y otra serie de problemas y nos podemos encontrar con intermediaciones que alargan y entorpecen el proceso de informar. El sistema planteado consiste en ofrecer una herramienta para poder crear tickets que informen de alguno de estos problemas de forma que puedan ser consultados por los responsables de estos asuntos.
 
 ## Descripción de la arquitectura
 
-Para este proyecto vamos a usar una arquitectura en capas, esta arquitectura es una arquitectura cliente-servidor en la que las capas cliente, la capa controlador y la capa de acceso a datos están separadas. Esta arquitectura nos proporciona un software flexible en la que en caso de ser necesario una modificación en alguna de las capas esta solo afecta a la capa en cuestión.
 
-Para nuestro proyecto tendremos 3 capas, la capa de presentación con la interfaz de usuario, en la capa de aplicación tendremos las peticiones de datos del cliente y las peticiones de datos y de actualización de datos del administrador y por último la capa de acceso a datos que se encargará de recibir las peticiones de cliente y administrador y tanto de acceder como de actualizar los datos.
 
 ## Historias de usuario
 
