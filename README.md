@@ -8,7 +8,7 @@ En un almacen tenemos varias personas trabajando, cada una de estas personas tie
 
 Se propone el desarrollo de un sistema para la gestión de estos aspectos que permita a los trabajadores del almacen solventar estos asuntos con mayor facilidad.
 
-En principio vamos a tener los departamentos de logística, mantenimiento y envíos.
+En principio vamos a tener los departamentos de logística, mantenimiento y dirección.
 
 ## Descripción de la arquitectura
 
@@ -18,19 +18,25 @@ Se ha decidido el uso de esta arquitectura ya que no todos los departamentos van
 
 ## Historias de usuario
 
-[[HU1](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/6)] Como cliente quiero poder buscar la información meteorológica a partir del nombre del lugar.
+[[HU1](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/6)] Como trabajador del almacen quiero conocer si hay una máquina disponible.
 
-[[HU2](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/7)] Como administrador quiero poder acceder a la información del sitio a partir del nombre del lugar.
+[[HU2](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/7)] Como trabajador del almacen quiero informar del uso de una máquina.
 
-[[HU3](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/8)] Como adminsitrador quiero poder enviar los datos meteorológicos manualmente.
+[[HU3](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/8)] Como trabajador del almacen quiero conocer las máquinas averiadas.
 
-[[HU4](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/9)] Como cliente quiero que la información esté actualizada.
+[[HU4](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/9)] Como trabajador de mantenimiento quiero informar del estado de la reparación de una máquina.
 
-[[HU5](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/10)] Como cliente quiero obtener las zonas que se encuentran en riesgo por viento, tormenta o temperatura.
+[[HU5](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/10)] Como trabajador de mantenimiento quiero informar de la reparación de una máquina.
 
-[[HU6](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/11)] Como cliente quiero poder consultar los lugares que cumplan con una serie de condiciones climáticas.
+[[HU6](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/11)] Como trabajador de logística quiero conocer el inventario disponible.
 
-[[HU7](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/12)] Como cliente quiero poder realizar la consulta a través de un mapa interactivo.
+[[HU7](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/12)] Como trabajador de logística quiero informar del envío de productos.
+
+[[HU8](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/19)] Como trabajador del almacen quiero informar de una avería.
+
+[[HU9](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/20)] Como trabajador de dirección quiero poder asignar o eliminar tareas a los departamentos.
+
+[[HU10](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/21)] Como trabajador quiero conocer las tareas asignadas a mi departamento.
 
 ## Planificación del proyecto
 La planificación del proyecto se encuentra en este [enlace](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/docs/planificacion.md)
