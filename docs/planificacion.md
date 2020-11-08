@@ -1,28 +1,53 @@
+#Historias de usuario y planificación del proyecto.
+
+## Historias de usuario
+
+[[HU1](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/6)] Como trabajador del almacen quiero conocer si hay una máquina disponible.
+
+[[HU2](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/7)] Como trabajador del almacen quiero informar del uso de una máquina.
+
+[[HU3](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/8)] Como trabajador del almacen quiero conocer las máquinas averiadas.
+
+[[HU4](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/9)] Como trabajador de mantenimiento quiero informar del estado de la reparación de una máquina.
+
+[[HU5](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/10)] Como trabajador de mantenimiento quiero informar de la reparación de una máquina.
+
+[[HU6](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/11)] Como trabajador de logística quiero conocer el inventario disponible.
+
+[[HU7](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/12)] Como trabajador de logística quiero informar del envío de productos.
+
+[[HU8](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/19)] Como trabajador del almacen quiero informar de una avería.
+
+[[HU9](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/20)] Como trabajador de dirección quiero poder asignar o eliminar tareas a los departamentos.
+
+[[HU10](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/21)] Como trabajador quiero conocer las tareas asignadas a mi departamento.
+
+[[HU11](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/24)] Como trabajador de dirección quiero asignar recursos a una tarea.
+
+[[HU12](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/25)] Como trabajador del almacen quiero poder solicitar la colaboración de otros trabajadores.
+
+[[HU13](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/26)] Como trabajador quiero poder responder a la petición de colaboración de otro trabajador.
+
+[[HU14](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/27https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/27)] Como trabajador de logística quiero poder añadir una nueva máquina.
+
 ## Planificación del proyecto
 
-Este proyecto se va a desarrollar a lo largo de distintos hitos, los hitos en los que se va a dividir el proyecto son los siguientes.
+Este proyecto se va a desarrollar a lo largo de 3 hitos, estos hitos son los siguientes.
 
-#### Hito 1: Consulta de datos.
-En este primer hito se desarrollará la funcionalidad asociada a la consulta de datos meteorológicos, este va a consistir en la funcionalidad más básica del proyecto que se está desarrollando que consiste en enviar y consultar los datos meteorológicos por parte de un administrador y la consulta de los datos por parte del cliente.
+#### Hito 1: Sistema de trabajo colaborativo.
 
-Historias de usuario: HU1, HU2 y HU3.
-Tiempo planificado: 1 semana.
+Se va a desarrollar un sistema que permita que los trabajadores de almacén colaboren en la realización de las tareas. De modo que permita al personal de dirección crear tareas y a los trabajadores solicitar y responder a las peticiones de otros trabajadores. Este hito es el primer hito del desarrollo del proyecto y por tanto es independiente.
 
-#### Hito 2: Automatización del proceso
-En este segundo hito se va a disponer de un proceso de obtención y actualización de los datos automatizado. Por tanto ahora se actualizarán los datos de forma automática sin necesidad de intervención del administrador.
+Historias de usuario: HU7, HU8, HU12 y HU13.
 
-Historias de usuario: HU4.
-Tiempo planificado: 1 semana.
+#### Hito 2: Sistema de gestión del inventario.
 
-#### hito 3: Sistema de advertencia y recomendación
-En este hito se va a implementar una funcionalidad que permita al cliente obtener que lugares van a tener un tiempo cuyos parámetros se salgan de lo normal y puedan estar en alerta por viento, lluvia, nieve o temperatura.
+Se va a añadir la gestión de la logística del almacen. Para ello se va a desarrollar un sistema que permita que los trabajadores del almacen añadan los lotes de producéntos que entran y salen del almacén. Este hito depende del hito 1.
 
-Historias de usuario: HU5 y HU6.
-Tiempo planificado: 1 semana.
+Historias de usuario: HU5, HU6, HU9, HU10, HU11 y HU14.
 
-#### hito 4: Implementación de la interfaz de usuario
-En este hito se va a implementar la interfaz de usuario en el lado del cliente que va a incluir un mapa interactivo para la consulta de los datos meteorológicos.
+#### Hito 3: Sistema de gestión de la maquinaria.
 
-Historias de usuario: HU7.
-Tiempo planificado: 2 semanas.
+Se va a desarrollar el sistema que permita conocer e informar del uso y estado de la maquinaria, de tal forma que los trabajadores del almacen puedan saber con antelación si una máquina está disponible y a los trabajadores de mantenimiento que máquinas están averiadas y necesitan reparación. Este hito corresponde al primero y por tanto no depende de ningún otro. Este hito depende de los hitos 2 y 1.
 
+Historias de usuario: HU1, HU2, HU3, HU4.
