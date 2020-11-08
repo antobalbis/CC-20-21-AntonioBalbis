@@ -1,14 +1,20 @@
-# Easy Office
+# Easy Warehouse
 
 ## Descripción
 
-Este proyecto consiste en el desarrollo de un sistema de ayuda en la gestión de una oficina de trabajo.
+Este proyecto consiste en el desarrollo de un sistema de ayuda a la gestión de un almacen.
 
-En una oficina se necesitan máquinas que pueden estropearse, materiales que en pueden escasear y otra serie de problemas y nos podemos encontrar con intermediaciones que alargan y entorpecen el proceso de informar. El sistema planteado consiste en ofrecer una herramienta para poder crear tickets que informen de alguno de estos problemas de forma que puedan ser consultados por los responsables de estos asuntos.
+En un almacen tenemos varias personas trabajando, cada una de estas personas tiene una serie de tareas,distintas áreas de trabajo y necesitan una serie de recursos, normalmente compartidos, para poder realizar su trabajo, la colaboración de distintas áreas de trabajo o se necesitan varias personas para poder llevar a cabo una tarea.
+
+Se propone el desarrollo de un sistema para la gestión de estos aspectos que permita a los trabajadores del almacen solventar estos asuntos con mayor facilidad.
+
+En principio vamos a tener los departamentos de logística, mantenimiento y envíos.
 
 ## Descripción de la arquitectura
 
+Se va a usar una arquitectura basada en microservicios, ya que vamos a tener las distintas funciones de la aplicación separadas y van a ser independientes unas de otras, por ejemplo, tendremos el informe sobre una máquina averiada como un servicio diferente al de informar del uso de una máquina.
 
+Se ha decidido el uso de esta arquitectura ya que no todos los departamentos van a necesitar acceder a los mismos servicios ni a la misma información, ni todos los almacenes tienen los mismos requisitos y de esta forma se puede ofrecer únicamente lo que se necesite.
 
 ## Historias de usuario
 
