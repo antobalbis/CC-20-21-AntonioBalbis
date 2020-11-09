@@ -1,4 +1,4 @@
-#Historias de usuario y planificación del proyecto.
+# Historias de usuario y planificación del proyecto.
 
 ## Historias de usuario
 
