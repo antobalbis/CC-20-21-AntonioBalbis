@@ -20,13 +20,15 @@
 
 [[HU9](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/21)] Como trabajador del almacén quiero conocer las tareas asignadas a mi departamento.
 
-[[HU10](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/24)] Como encargado quiero asignar recursos a una tarea.
+[[H10](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/23)] Como trabajador de logística quiero poder añadir un nuevo producto.
 
-[[HU11](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/25)] Como trabajador del almacén quiero poder solicitar la colaboración de otros trabajadores.
+[[HU11](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/24)] Como encargado quiero asignar recursos a una tarea.
 
-[[HU12](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/26)] Como trabajador quiero poder responder a la petición de colaboración de otro trabajador.
+[[HU12](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/25)] Como trabajador del almacén quiero poder solicitar la colaboración de otros trabajadores.
 
-[[HU13](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/27)] Como trabajador de logística quiero poder añadir una nueva máquina.
+[[HU13](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/26)] Como trabajador quiero poder responder a la petición de colaboración de otro trabajador.
+
+[[HU14](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/27)] Como trabajador de logística quiero poder añadir una nueva máquina.
 
 ## Planificación del proyecto
 
@@ -52,4 +54,4 @@ Historias de usuario: HU8, HU9 y HU10.
 
 En este hito se va a añadir la funcionalidad que tiene relación con la gestión del inventario, este hito va a estar centrado en los trabajadores y encargados de la logística y les va a permitir llevar el registro de los bienes que entran y salen del almacen.
 
-Historias de usuario: HU5 y HU6.
+Historias de usuario: HU5, HU6 y HU10.
