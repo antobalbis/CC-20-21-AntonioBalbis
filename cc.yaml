@@ -1,4 +1,5 @@
-entidad: src/Localidad.scala
-entidad: src/Controlador.scala
-entidad: src/Actualizador.scala
-entidad: src/Cliente.scala
+entidad: src/Departamento.scala
+entidad: src/Trabajador.scala
+entidad: src/Maquina.scala
+entidad: src/Solicitud.scala
+entidad: src/EstadoMaquina.scala
