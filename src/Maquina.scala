@@ -1,6 +1,6 @@
 import EstadoMaquina._
 
-class Maquina(ID: String, nombre:String){
+class Maquina(id: String, name:String){
 	val ID: String = ID
 	val nombre: String = nombre
 	var isBeingUsed: Boolean = false
