@@ -16,7 +16,7 @@
 
 [[HU7](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/19)] Como trabajador del almacén quiero informar de una avería.
 
-[[HU8](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/20)] Como encargado quiero poder asignar o eliminar tareas a los departamentos.
+[[HU8](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/20)] Como encargado quiero poder asignar tareas a los departamentos.
 
 [[HU9](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/21)] Como trabajador del almacén quiero conocer las tareas asignadas a mi departamento.
 
