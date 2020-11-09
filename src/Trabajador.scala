@@ -10,4 +10,7 @@ class Trabajador (name: String, depart: Departamento){
 	def estaDisponible(id_maquina: String) : Boolean = false
 	def getMaquinasDisponibles(nombre: String) : Int = 0
 	def getMaquinasAveriadas(){}
+	def solicitarColaboracion(num_compañeros: Int, descripcion: String){}
+	def getSolicitudes(){}
+	def confirmarColaboracion(id_solicitud: String){}
 }
