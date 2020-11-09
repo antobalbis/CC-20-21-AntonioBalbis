@@ -28,7 +28,7 @@
 
 [[HU13](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/26)] Como trabajador quiero poder responder a la petición de colaboración de otro trabajador.
 
-[[HU14](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/27https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/27)] Como trabajador de logística quiero poder añadir una nueva máquina.
+[[HU14](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/27)] Como trabajador de logística quiero poder añadir una nueva máquina.
 
 ## Planificación del proyecto
 
