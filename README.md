@@ -2,11 +2,11 @@
 
 ## Descripción
 
-Este proyecto consiste en el desarrollo de un sistema de ayuda a la gestión de un almacen.
+Este proyecto consiste en el desarrollo de un sistema de gestión del trabajo en un almacén, el objetivo es mejorar la coordinación y facilitar la comunicación entre los trabajadores del almacen.
 
-En un almacen tenemos varias personas trabajando, cada una de estas personas tiene una serie de tareas,distintas áreas de trabajo y necesitan una serie de recursos, normalmente compartidos, para poder realizar su trabajo, la colaboración de distintas áreas de trabajo o se necesitan varias personas para poder llevar a cabo una tarea.
+En un almacén en el que hay varias personas trabajando aparecen situaciones en las que es necesario la coordinación entre los distintos trabajadores, para evitar o reducir las situaciones en las que un trabajador se queda esperando, o bien la ayuda de otro trabajador, el uso de algún recurso del almacen o que se le asigne alguna tarea. Puede aparecer, por ejemplo, la necesidad de hacer uso de una máquina que está en uso por otro trabajador, o tenga que realizarse una tarea para la que se necesita más de un trabajador.
 
-Se propone el desarrollo de un sistema para la gestión de estos aspectos que permita a los trabajadores del almacen solventar estos asuntos con mayor facilidad.
+Se propone el desarrollo de un sistema que permita a los trabajos coordinarse en la realización de sus tareas de forma que favorezca tanto el trabajo individual como el trabajo en equipo.
 
 En principio vamos a tener los departamentos de logística, mantenimiento y dirección.
 
@@ -16,33 +16,12 @@ Se va a usar una arquitectura basada en microservicios, ya que vamos a tener las
 
 Se ha decidido el uso de esta arquitectura ya que no todos los departamentos van a necesitar acceder a los mismos servicios ni a la misma información, ni todos los almacenes tienen los mismos requisitos y de esta forma se puede ofrecer únicamente lo que se necesite.
 
-## Historias de usuario
+## Historias de usuario y planificación
 
-[[HU1](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/6)] Como trabajador del almacen quiero conocer si hay una máquina disponible.
-
-[[HU2](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/7)] Como trabajador del almacen quiero informar del uso de una máquina.
-
-[[HU3](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/8)] Como trabajador del almacen quiero conocer las máquinas averiadas.
-
-[[HU4](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/9)] Como trabajador de mantenimiento quiero informar del estado de la reparación de una máquina.
-
-[[HU5](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/10)] Como trabajador de mantenimiento quiero informar de la reparación de una máquina.
-
-[[HU6](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/11)] Como trabajador de logística quiero conocer el inventario disponible.
-
-[[HU7](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/12)] Como trabajador de logística quiero informar del envío de productos.
-
-[[HU8](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/19)] Como trabajador del almacen quiero informar de una avería.
-
-[[HU9](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/20)] Como trabajador de dirección quiero poder asignar o eliminar tareas a los departamentos.
-
-[[HU10](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/21)] Como trabajador quiero conocer las tareas asignadas a mi departamento.
-
-## Planificación del proyecto
-La planificación del proyecto se encuentra en este [enlace](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/docs/planificacion.md)
+Las historias de usuario y la planificación del proyecto se encuentran en el siguiente [enlace](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/docs/planificacion.md).
 
 ## Clases creadas
-Se han creado las clases [Cliente](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/src/Cliente.scala), [Automatizador](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/src/Actualizador.scala), [Controlador](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/src/Controlador.scala) y [Localidad](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/src/Localidad.scala) y se han implementado los setters y getters de Localidad y se ha comprobado que compila.
+
 
 ![Imagen 1](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/docs/imagenes/compilacion.png)
 
