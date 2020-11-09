@@ -46,12 +46,14 @@ Historias de usuario: HU1, HU2, HU3, HU4, HU7, HU12, HU13 y HU14.
 
 En este hito se va a añadir la gestión de tareas que va a permitir a los encargados del almacen y de los departamentos crear y asignar tareas a los trabajadores.
 
-Para ello es necesario tener desarrollado el hito 1.
+Para ello es necesario tener desarrollado el hito 1, ya que vamos a necesitar la funcionalidad creada para la asignación de máquinas y el sistema de colaboración.
 
 Historias de usuario: HU8, HU9 y HU11.
 
 #### Hito 3: Sistema de gestión de almacenamiento.
 
 En este hito se va a añadir la funcionalidad que tiene relación con la gestión del inventario, este hito va a estar centrado en los trabajadores y encargados de la logística y les va a permitir llevar el registro de los bienes que entran y salen del almacen.
+
+Este hito va a depender del hito 1 ya que vamos a necesitar tener implementadas las máquinas y el sistema de colaboración.
 
 Historias de usuario: HU5, HU6 y HU10.
