@@ -17,4 +17,7 @@ class Maquina(ID: String, nombre:String){
 	def stopUsing(){
 		isBeingUsed = false
 	}
+	
+	def obtenerEstado():String = " "
+	def cambiarEstado(status: EstadoMaquina){}
 }
