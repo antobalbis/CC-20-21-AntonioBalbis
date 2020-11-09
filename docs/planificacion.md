@@ -12,7 +12,7 @@
 
 [[HU5](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/11)] Como trabajador de logística quiero conocer el inventario disponible.
 
-[[HU6](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/12)] Como trabajador de logística quiero informar del envío de productos.
+[[HU6](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/12)] Como trabajador de logística quiero recoger el envío y recepción de productos.
 
 [[HU7](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/19)] Como trabajador del almacén quiero informar de una avería.
 
