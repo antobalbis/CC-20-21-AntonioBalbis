@@ -26,7 +26,7 @@ Se han creado las clases [Maquina](https://github.com/antobalbis/CC-20-21-antoni
 
 A continuación se muestra una imagen con el resultado de la compilación de las clases anteriores.
 
-![Imagen 1](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/docs/imagenes/compilacion.png)
+![Imagen 1](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/docs/imagenes/compilacion2.png)
 
 ## Enlaces
 - Enlace a ejercicios de [autoevaluación](https://github.com/antobalbis/autoevaluacion).
