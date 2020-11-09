@@ -40,7 +40,7 @@ En este primer hito se va a tener desarrollado la funcionalidad que va a permiti
 
 Para ello vamos a tener la funcionalidad que permita gestionar el uso de la maquinaria del almacén y la funcionalidad que permite la petición de ayuda por parte de un trabajador.
 
-Historias de usuario: HU1, HU2, HU3, HU4, HU7, HU11, HU12 y HU13.
+Historias de usuario: HU1, HU2, HU3, HU4, HU7, HU12, HU13 y HU14.
 
 #### Hito 2: Sistema de planificación de tareas.
 
@@ -48,7 +48,7 @@ En este hito se va a añadir la gestión de tareas que va a permitir a los encar
 
 Para ello es necesario tener desarrollado el hito 1.
 
-Historias de usuario: HU8, HU9 y HU10.
+Historias de usuario: HU8, HU9 y HU11.
 
 #### Hito 3: Sistema de gestión de almacenamiento.
 
