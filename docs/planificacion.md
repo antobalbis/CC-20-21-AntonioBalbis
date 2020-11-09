@@ -34,18 +34,22 @@ Este proyecto se va a desarrollar a lo largo de 3 hitos, estos hitos son los sig
 
 #### Hito 1: Sistema de trabajo colaborativo.
 
-Se va a desarrollar un sistema que permita que los trabajadores de almacén colaboren en la realización de las tareas. De modo que permita al personal de dirección crear tareas y a los trabajadores solicitar y responder a las peticiones de otros trabajadores. Este hito es el primer hito del desarrollo del proyecto y por tanto es independiente.
+En este primer hito se va a tener desarrollado la funcionalidad que va a permitir a los trabajadores del almacén coordinarse y colaborar entre ellos para la realización de su trabajo.
 
-Historias de usuario: HU1, HU2, HU3, HU4, HU7, HU11 y HU12.
+Para ello vamos a tener la funcionalidad que permita gestionar el uso de la maquinaria del almacén y la funcionalidad que permite la petición de ayuda por parte de un trabajador.
 
-#### Hito 2: Sistema de gestión del inventario.
+Historias de usuario: HU1, HU2, HU3, HU4, HU7, HU11, HU12 y HU13.
 
-Se va a añadir la gestión de la logística del almacen. Para ello se va a desarrollar un sistema que permita que los trabajadores del almacen añadan los lotes de producéntos que entran y salen del almacén. Este hito depende del hito 1.
+#### Hito 2: Sistema de planificación de tareas.
 
-Historias de usuario: HU5, HU6, HU8, HU9, HU10 y HU13.
+En este hito se va a añadir la gestión de tareas que va a permitir a los encargados del almacen y de los departamentos crear y asignar tareas a los trabajadores.
 
-#### Hito 3: Sistema de gestión de mantenimiento.
+Para ello es necesario tener desarrollado el hito 1.
 
-Se va a desarrollar el sistema que permita conocer e informar del uso y estado de la maquinaria, de tal forma que los trabajadores del almacen puedan saber con antelación si una máquina está disponible y a los trabajadores de mantenimiento que máquinas están averiadas y necesitan reparación. Este hito corresponde al primero y por tanto no depende de ningún otro. Este hito depende de los hitos 2 y 1.
+Historias de usuario: HU8, HU9 y HU10.
 
-Historias de usuario: HU3, HU4.
+#### Hito 3: Sistema de gestión de almacenamiento.
+
+En este hito se va a añadir la funcionalidad que tiene relación con la gestión del inventario, este hito va a estar centrado en los trabajadores y encargados de la logística y les va a permitir llevar el registro de los bienes que entran y salen del almacen.
+
+Historias de usuario: HU5 y HU6.
