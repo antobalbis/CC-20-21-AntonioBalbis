@@ -1,4 +1,4 @@
 object EstadoMaquina extends Enumeration{
-	type estado = Value
+	type EstadoMaquina = Value
 	val FUNCIONANDO, PENDIENTE, REPARACION = Value
 }

@@ -1,4 +1,4 @@
 object Departamento{
-	type departamento = Value
+	type Departamento = Value
 	val LOGISTICA, MANTENIMIENTO, DIRECCION = Value
 }
