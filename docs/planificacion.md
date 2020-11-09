@@ -20,7 +20,7 @@
 
 [[HU9](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/21)] Como trabajador del almacén quiero conocer las tareas asignadas a mi departamento.
 
-[[H10](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/23)] Como trabajador de logística quiero poder añadir un nuevo producto.
+[[HU10](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/23)] Como trabajador de logística quiero poder añadir un nuevo producto.
 
 [[HU11](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/24)] Como encargado quiero asignar recursos a una tarea.
 
