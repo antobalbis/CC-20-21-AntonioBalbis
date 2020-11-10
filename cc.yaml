@@ -1,8 +1,9 @@
 lenguaje: scala
 test: src/test.scala
 fichero_tareas: build.sbt
-entidad: src/Departamento.scala
-entidad: src/Trabajador.scala
-entidad: src/Maquina.scala
-entidad: src/Solicitud.scala
-entidad: src/EstadoMaquina.scala
+entidad:
+ - src/Departamento.scala
+ - src/Trabajador.scala
+ - src/Maquina.scala
+ - src/Solicitud.scala
+ - src/EstadoMaquina.scala
