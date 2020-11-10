@@ -1,3 +1,6 @@
+lenguaje: scala
+test: src/test.scala
+fichero_tareas: build.sbt
 entidad: src/Departamento.scala
 entidad: src/Trabajador.scala
 entidad: src/Maquina.scala
