@@ -36,24 +36,18 @@ Este proyecto se va a desarrollar a lo largo de 3 hitos, estos hitos son los sig
 
 #### Hito 1: Sistema de trabajo colaborativo.
 
-En este primer hito se va a tener desarrollado la funcionalidad que va a permitir a los trabajadores del almacén coordinarse y colaborar entre ellos para la realización de su trabajo.
-
-Para ello vamos a tener la funcionalidad que permita gestionar el uso de la maquinaria del almacén y la funcionalidad que permite la petición de ayuda por parte de un trabajador.
+El objetivo de este hito es tener un sistema que va a permitir a los trabajadores del almacén coordinarse en la realización del trabajo, de forma que puedan pedir colaboración o solicitar el uso de recursos.
 
 Historias de usuario: HU1, HU2, HU3, HU4, HU7, HU12, HU13 y HU14.
 
 #### Hito 2: Sistema de planificación de tareas.
 
-En este hito se va a añadir la gestión de tareas que va a permitir a los encargados del almacen y de los departamentos crear y asignar tareas a los trabajadores.
-
-Para ello es necesario tener desarrollado el hito 1, ya que vamos a necesitar la funcionalidad creada para la asignación de máquinas y el sistema de colaboración.
+El objetivo de este hito es tener funcionando un sistema que va a permitir a los encargados del almacén asignar tareas para que sean realizadas por los trabajadores.
 
 Historias de usuario: HU8, HU9 y HU11.
 
 #### Hito 3: Sistema de gestión de almacenamiento.
 
-En este hito se va a añadir la funcionalidad que tiene relación con la gestión del inventario, este hito va a estar centrado en los trabajadores y encargados de la logística y les va a permitir llevar el registro de los bienes que entran y salen del almacen.
-
-Este hito va a depender del hito 1 ya que vamos a necesitar tener implementadas las máquinas y el sistema de colaboración.
+El objetivo de este hito es permitir a los trabajadores y encargados de la logística del almacén controlar la gestión del inventario.
 
 Historias de usuario: HU5, HU6 y HU10.
