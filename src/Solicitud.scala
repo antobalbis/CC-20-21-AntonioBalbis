@@ -4,8 +4,5 @@ class Solicitud(id: String, nombre: String, desc: String, npersonas: Int){
 	val nPersonas: Int = nPersonas
 	var descripción: String = desc
 	var restantes: Int = nPersonas
-	
-	def getID():String = ID
-	def getNombreSolicitante():String = nombre_solicitante
-	def recibirSolicitud(){}
+
 }
