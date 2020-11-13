@@ -34,7 +34,7 @@ Este proyecto se va a desarrollar a lo largo de 3 hitos, estos hitos son los sig
 
 #### Hito 1: Sistema de trabajo colaborativo.
 
-El objetivo de este hito es tener un sistema que va a permitir a los trabajadores del almacén coordinarse en la realización del trabajo, de forma que puedan pedir colaboración o solicitar el uso de recursos.
+Al finalizar este hito se va a tener un sistema que va a permitir a los trabajadores del almacén coordinarse en la realización del trabajo, de forma que puedan pedir colaboración o solicitar el uso de recursos.
 
 Historias de usuario: 
 
@@ -51,7 +51,7 @@ Historias de usuario:
 
 #### Hito 2: Sistema de planificación de tareas.
 
-El objetivo de este hito es tener funcionando un sistema que va a permitir a los encargados del almacén asignar tareas para que sean realizadas por los trabajadores.
+Al finalizar este hito vamos a tener el sistema desarrollado en el hito anterior con la posibilidad de crear tareas por parte de los encargados para que sean realizadas por los trabajadores del almacén.
 
 Historias de usuario: 
 
@@ -67,7 +67,7 @@ Historias de usuario:
 
 #### Hito 3: Sistema de gestión de almacenamiento.
 
-El objetivo de este hito es permitir a los trabajadores y encargados de la logística del almacén controlar la gestión del inventario.
+Al finalizar este hito vasmos a tener sobre el hito anterior la capacidad de gestionar el inventario del almacén para que pueda ser realizada por los trabajadores y encargados de la logística de este.
 
 Historias de usuario:
 
@@ -76,3 +76,4 @@ Historias de usuario:
 - [[HU12](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/12)] Como trabajador de logística quiero recoger el envío y recepción de productos.
   - Depende de HU10.
 - [[HU13](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/27)] Como trabajador de logística quiero poder añadir una nueva máquina.
+
