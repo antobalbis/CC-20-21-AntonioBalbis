@@ -6,4 +6,5 @@ class Trabajador (name: String, depart: Departamento){
 
 	def crearSolicitud(descripcion: String){}
 	def addMaquina(nombre: String){}
+	def eliminarMaquina(id: String){}
 }
