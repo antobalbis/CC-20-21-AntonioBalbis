@@ -12,10 +12,13 @@ Historias de usuario:
 
 - [[HU13]()] Como encargado quiero añadir una máquina.
 - [[HU14]()] Como encargado quiero poder eliminar una máquina.
+  - Depende de HU13.
 - [[HU1](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/6)] Como trabajador del almacén quiero conocer si hay una máquina disponible.
-
+- Depende de HU13.
 - [[HU2](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/7)] Como trabajador del almacén quiero informar del uso de una máquina.
   - Depende de HU1.
+- [[HU15]()] Como trabajador quiero informar del fin del uso de una máquina.
+  - Depende de HU2.
 - [[HU3](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/9)] Como trabajador de mantenimiento quiero informar del estado de la reparación de una máquina.
 - [[HU4](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/19)] Como trabajador del almacén quiero informar de una avería.
 - [[HU5](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/25)] Como trabajador del almacén quiero poder solicitar la colaboración de otros trabajadores.
