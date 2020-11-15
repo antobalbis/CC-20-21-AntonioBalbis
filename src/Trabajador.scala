@@ -11,4 +11,5 @@ class Trabajador (name: String, depart: Departamento){
 	def estaDisponible(id: String): Boolean = false
 	def usarMaquina(id: String){}
 	def cambiarEstadoMaquina(id: String, estado: Estado){}
+	def inscripcionSolicitud(id_solicitud: String){}
 }
