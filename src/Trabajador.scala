@@ -8,5 +8,5 @@ class Trabajador (name: String, depart: Departamento){
 	def addMaquina(nombre: String){}
 	def eliminarMaquina(id: String){}
 	def estaDisponible(id: String): Boolean = false
-	
+	def usarMaquina(id: String){}
 }
