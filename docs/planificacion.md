@@ -10,17 +10,17 @@ Al finalizar este hito se va a tener un sistema que va a permitir a los trabajad
 
 Historias de usuario: 
 
-- [[HU13]()] Como encargado quiero añadir una máquina.
-- [[HU14]()] Como encargado quiero poder eliminar una máquina.
+- [[HU13](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/27)] Como encargado quiero añadir una máquina.
+- [[HU14](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/35)] Como encargado quiero poder eliminar una máquina.
   - Depende de HU13.
 - [[HU1](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/6)] Como trabajador del almacén quiero conocer si hay una máquina disponible.
 - Depende de HU13.
 - [[HU2](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/7)] Como trabajador del almacén quiero informar del uso de una máquina.
   - Depende de HU1.
-- [[HU15]()] Como trabajador quiero informar del fin del uso de una máquina.
+- [[HU15](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/36)] Como trabajador quiero informar del fin del uso de una máquina.
   - Depende de HU2.
 - [[HU3](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/9)] Como trabajador de mantenimiento quiero informar del estado de la reparación de una máquina.
-- [[HU4](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/19)] Como trabajador del almacén quiero informar de una avería.
+- [[HU4](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/37)] Como trabajador del almacén quiero informar de una avería.
 - [[HU5](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/25)] Como trabajador del almacén quiero poder solicitar la colaboración de otros trabajadores.
 - [[HU6](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/26)] Como trabajador quiero poder responder a la petición de colaboración de otro trabajador.
   - Depende de HU5.
