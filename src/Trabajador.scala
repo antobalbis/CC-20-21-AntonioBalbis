@@ -4,6 +4,6 @@ class Trabajador (name: String, depart: Departamento){
 	val nombre: String = name
 	val departamento = depart
 
-	def crearSolicitud(String descripcion){}
-	
+	def crearSolicitud(descripcion: String){}
+	def addMaquina(nombre: String){}
 }
