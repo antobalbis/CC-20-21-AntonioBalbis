@@ -1,5 +1,3 @@
-import Maquina._
-
 class ControladorMaquinas(){
 	val listaMaquinas : List[Maquina] = List()
 	

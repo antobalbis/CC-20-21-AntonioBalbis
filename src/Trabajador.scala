@@ -1,5 +1,5 @@
 import Departamento._
-import Estado._
+import EstadoMaquina._
 
 class Trabajador (name: String, depart: Departamento){
 	val nombre: String = name
@@ -10,6 +10,6 @@ class Trabajador (name: String, depart: Departamento){
 	def eliminarMaquina(id: String){}
 	def estaDisponible(id: String): Boolean = false
 	def usarMaquina(id: String){}
-	def cambiarEstadoMaquina(id: String, estado: Estado){}
+	def cambiarEstadoMaquina(id: String, estado: EstadoMaquina){}
 	def inscripcionSolicitud(id_solicitud: String){}
 }
