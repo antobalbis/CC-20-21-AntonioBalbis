@@ -10,11 +10,11 @@ Al finalizar este hito se va a tener un sistema que va a permitir a los trabajad
 
 Historias de usuario: 
 
-- [[HU13](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/27)] Como encargado quiero añadir una máquina.
-- [[HU14](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/35)] Como encargado quiero poder eliminar una máquina.
+- [[HU13](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/27)] Como trabajador de logística quiero poder añadir una máquina.
+- [[HU14](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/35)] Como trabajador de logística quiero poder eliminar una máquina.
   - Depende de HU13.
 - [[HU1](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/6)] Como trabajador del almacén quiero conocer si hay una máquina disponible.
-- Depende de HU13.
+  - Depende de HU13.
 - [[HU2](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/7)] Como trabajador del almacén quiero informar del uso de una máquina.
   - Depende de HU1.
 - [[HU15](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/36)] Como trabajador quiero informar del fin del uso de una máquina.
