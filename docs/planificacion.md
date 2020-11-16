@@ -14,7 +14,6 @@ Historias de usuario:
 - [[HU14](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/35)] Como trabajador de logística quiero poder eliminar una máquina.
   - Depende de HU13.
 - [[HU1](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/6)] Como trabajador del almacén quiero conocer si hay una máquina disponible.
-  - Depende de HU13.
 - [[HU2](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/7)] Como trabajador del almacén quiero informar del uso de una máquina.
   - Depende de HU1.
 - [[HU15](https://github.com/antobalbis/CC-20-21-antoniobalbis/issues/36)] Como trabajador quiero informar del fin del uso de una máquina.
