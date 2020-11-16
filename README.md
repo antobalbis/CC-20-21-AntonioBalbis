@@ -28,6 +28,8 @@ A continuación se muestra una imagen con el resultado de la compilación de las
 
 ![Imagen 1](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/docs/imagenes/compilacion2.png)
 
+La estructura del proyecto se va a modificar en los hitos siguientes.
+
 ## Enlaces
 - Enlace a ejercicios de [autoevaluación](https://github.com/antobalbis/autoevaluacion).
 - Enlace a [Configuración](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/docs/configuracion.md) de GitHub.
