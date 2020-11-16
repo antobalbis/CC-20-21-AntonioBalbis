@@ -29,7 +29,7 @@ Historias de usuario:
 
 #### Hito 2: Sistema de planificación de tareas.
 
-Al finalizar este hito vamos a tener el sistema desarrollado en el hito anterior con la posibilidad de crear tareas por parte de los encargados para que sean realizadas por los trabajadores del almacén.
+Al finalizar este hito vamos a tener agregado al hito anterior la posibilidad de crear tareas por parte de los encargados para que sean realizadas por los trabajadores del almacén.
 
 Historias de usuario: 
 
@@ -44,7 +44,7 @@ Historias de usuario:
 
 #### Hito 3: Sistema de gestión de almacenamiento.
 
-Al finalizar este hito vasmos a tener sobre el hito anterior la capacidad de gestionar el inventario del almacén para que pueda ser realizada por los trabajadores y encargados de la logística de este.
+Al finalizar este hito vasmos a tener agregado al hito anterior la capacidad de gestionar el inventario del almacén para que pueda ser realizada por los trabajadores y encargados de la logística de este.
 
 Historias de usuario:
 
