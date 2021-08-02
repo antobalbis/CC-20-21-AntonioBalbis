@@ -10,11 +10,9 @@ Se propone el desarrollo de un sistema que permita a los trabajos coordinarse en
 
 En principio vamos a tener los departamentos de logística, mantenimiento y dirección.
 
-## Descripción de la arquitectura
+## Arquitectura del proyecto
 
-Se va a usar una arquitectura basada en microservicios, ya que vamos a tener las distintas funciones de la aplicación separadas y van a ser independientes unas de otras, por ejemplo, tendremos la gestión del trabajo como un servicio independiente a la gestión del inventario.
-
-Se ha decidido el uso de esta arquitectura ya que no todos los departamentos van a necesitar acceder a los mismos servicios ni a la misma información, ni todos los almacenes tienen los mismos requisitos y de esta forma se puede ofrecer únicamente lo que se necesite.
+La arquitectura del proyecto se encuentra en el siguiente [enlace](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/docs/arquitectura.md).
 
 ## Historias de usuario y planificación
 
@@ -29,6 +27,15 @@ A continuación se muestra una imagen con el resultado de la compilación de las
 ![Imagen 1](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/docs/imagenes/compilacion2.png)
 
 La estructura del proyecto se va a modificar en las entregas siguientes.
+
+# Gestor de Tareas
+
+Algunos de los gestores de tareas que encontramos para Scala son Scala Build Tool (SBT), Maven, Gradle o Mill. El gestor de tareas que se va a usar en el proyecto es SBT.
+
+La elección de SBT viene por el soporte nativo de Scala y que integra varios marcos de prueba y cuenta con versiones estables, además es usado en la mayoría de proyectos en Scala, por lo que se espera que encontrar soluciones si ocurre algún problema va a ser más fácil y rápido.
+
+# Biblioteca de aserciones
+
 
 ## Enlaces
 - Enlace a ejercicios de [autoevaluación](https://github.com/antobalbis/autoevaluacion).
