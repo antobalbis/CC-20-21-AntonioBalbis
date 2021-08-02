@@ -20,7 +20,7 @@ Las historias de usuario y la planificación del proyecto se encuentran en el si
 
 ## Clases creadas
 
-Se han creado las clases [Maquina](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/src/Maquina.scala), [Trabajador](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/src/Trabajador.scala) , [Solicitud](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/src/Solicitud.scala), [ControladorMaquinas](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/src/ControladorMaquinas.scala) y [ControladorSolicitud](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/src/ControladorSolicitud.scala) y los enumerados [Departamento](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/src/Departamento.scala) y [EstadoMaquina](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/src/EstadoMaquina.scala).
+Se han creado las clases [Maquina](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/src/Maquina.scala), [Trabajador](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/eWarehouse/src/Trabajador.scala) , [Solicitud](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/eWarehouse/src/Solicitud.scala), [ControladorMaquinas](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/eWarehouse/src/ControladorMaquinas.scala) y [ControladorSolicitud](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/eWarehouse/src/ControladorSolicitud.scala) y los enumerados [Departamento](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/eWarehouse/src/Departamento.scala) y [EstadoMaquina](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/eWarehouse/src/EstadoMaquina.scala).
 
 A continuación se muestra una imagen con el resultado de la compilación de las clases anteriores.
 
@@ -30,11 +30,17 @@ La estructura del proyecto se va a modificar en las entregas siguientes.
 
 # Gestor de Tareas
 
-Algunos de los gestores de tareas que encontramos para Scala son Scala Build Tool (SBT), Maven, Gradle o Mill. El gestor de tareas que se va a usar en el proyecto es SBT.
+Algunos de los gestores de tareas que encontramos para Scala son Scala Build Tool (SBT), Maven, Gradle o Mill. El gestor de tareas que se va a usar en el proyecto es Mill.
 
-La elección de SBT viene por el soporte nativo de Scala y que integra varios marcos de prueba y cuenta con versiones estables, además es usado en la mayoría de proyectos en Scala, por lo que se espera que encontrar soluciones si ocurre algún problema va a ser más fácil y rápido.
+La elección de Mill viene porque utiliza la misma sintaxis que Scala, es un gestor de tareas a diferencia de SBT y además resulta más sencillo de utilizar que Maven o Gradle, permitiéndonos definir las herramientas y la versión como variables en Scala.
+
+# Marco de pruebas
+
+El marco de pruebas elegido para este proyecto es ScalaTest. Se ha elegido porque está implementado en Scala y, por tanto, los tests se definen como métodos en Scala y además cuenta con su propia biblioteca de aserciones, Assertions.
 
 # Biblioteca de aserciones
+
+La biblioteca de aserciones que vamos a usar es Assertions, de ScalaTest, ya que este es el marco de pruebas que se va a utiilizar se ha optado por usar su propia librería de aserciones que ofrece lo necesario para realizar los tests unitarios que se van a requerir en este proyecto.
 
 
 ## Enlaces
