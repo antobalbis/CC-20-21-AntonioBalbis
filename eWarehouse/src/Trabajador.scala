@@ -1,3 +1,5 @@
+package eWarehouse
+
 import Departamento._
 import EstadoMaquina._
 

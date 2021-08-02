@@ -1,3 +1,5 @@
+package eWarehouse
+
 import EstadoMaquina._
 
 class Maquina(id: String, name:String){
@@ -5,7 +7,7 @@ class Maquina(id: String, name:String){
 	val nombre: String = nombre
 	var isBeingUsed: Boolean = false
 	var estado = FUNCIONANDO
-	
+
 	def obtenerEstado():String = " "
 	def cambiarEstado(status: EstadoMaquina){}
 }
