@@ -2,12 +2,24 @@ package eWarehouse
 
 import EstadoMaquina._
 
-class Maquina(id: String, name:String){
-	val ID: String = ID
-	val nombre: String = nombre
+class Maquina(id : Integer, name : String){
+	val ID: Integer = id
+	val nombre: String = name
 	var isBeingUsed: Boolean = false
 	var estado = FUNCIONANDO
 
-	def obtenerEstado():String = " "
-	def cambiarEstado(status: EstadoMaquina){}
+	def obtenerEstado():String = estado
+
+	def cambiarEstado(status: EstadoMaquina){
+		estado = status
+	}
+
+	def getIsBeingUsed() : Boolean = getIsBeingUsed
+	def startUsing(){
+		isBeingUsed = false
+	}
+
+	def stopUsing(){
+		isBeingUsed = true
+	}
 }
