@@ -10,6 +10,7 @@ class ControladorMaquinas(){
 
 	def deleteMaquina(maquina : Maquina){
 		if(maquinaExist(maquina.ID)) maquina -: listaMaquinas
+
 	}
 
 	def removeMaquina (id : String){}
