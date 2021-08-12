@@ -10,7 +10,8 @@ class ControladorMaquinas(){
 	}
 
 	def deleteMaquina(id : Int){
-
+		val index : Int = getMaquina(id)
+		listaMaquinas = listaMaquinas.take(index) ++ listaMaquinas.drop(index + 1)
 	}
 
 	def getMaquina(id : Int) : Int = {
