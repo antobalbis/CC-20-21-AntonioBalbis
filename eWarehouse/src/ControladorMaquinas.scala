@@ -1,34 +1,35 @@
 package eWarehouse
 
 class ControladorMaquinas(){
-	val listaMaquinas : List[Maquina] = List()
-	val listaTrabajadores : List[Trabajador] = List()
+	var listaMaquinas : List[Maquina] = List()
+	var listaTrabajadores : List[Trabajador] = List()
 
-	def addMaquina(maquina : Maquina, tipo){
-		if(!maquinaExist(maquina.ID)) maquina +: listaMaquinas
+	def addMaquina(id : Int, nombre : String){
+		val maquina : Maquina = new Maquina(id, nombre)
+		maquina :: listaMaquinas
 	}
 
-	def deleteMaquina(maquina : Maquina){
-		if(maquinaExist(maquina.ID)) maquina -: listaMaquinas
+	def deleteMaquina(id : Int){
 
 	}
 
-	def removeMaquina (id : String){}
-
-	def maquinaExist(id : Int) : Boolean = {
-		var exist : Boolean = false
-		for(maquina <- listaMaquinas){
-			if(maquina.ID == id) exist = true
+	def getMaquina(id : Int) : Int = {
+		var index : Int = -1
+		var i = 0
+		for(i <- 0 to listaMaquinas.length){
+			if(listaMaquinas(i) == id) index = i
 		}
-		exist
+		index
 	}
 
 	def getListaMaquinas() : List[Maquina] = {
 		val result : List[Maquina] = List()
 		for(maquina <- listaMaquinas){
-			if(maquina.estado == "FUN") result +: maquina
+			if(maquina.estado == "FUN" && maquina.isBeingUsed == false)maquina :: result
 		}
 		result
 	}
+
+	def usarMaquina(id : Int) : Boolean = false
 
 }
