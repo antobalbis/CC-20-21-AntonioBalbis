@@ -2,9 +2,14 @@ package eWarehouse
 
 class ControladorMaquinas(){
 	val listaMaquinas : List[Maquina] = List()
+	val listaTrabajadores : List[Trabajador] = List()
 
 	def addMaquina(maquina : Maquina, tipo){
 		if(!maquinaExist(maquina.ID)) maquina +: listaMaquinas
+	}
+
+	def deleteMaquina(maquina : Maquina){
+		if(maquinaExist(maquina.ID)) maquina -: listaMaquinas
 	}
 
 	def removeMaquina (id : String){}
@@ -24,4 +29,5 @@ class ControladorMaquinas(){
 		}
 		result
 	}
+
 }
