@@ -6,7 +6,7 @@ class ControladorMaquinas(){
 
 	def addMaquina(id : Int, nombre : String){
 		val maquina : Maquina = new Maquina(id, nombre)
-		listaMaquinas = maquina :: listaMaquinas
+		if(getMaquina(maquina.ID) == -1) listaMaquinas = maquina :: listaMaquinas
 	}
 
 	def deleteMaquina(id : Int){
@@ -16,9 +16,9 @@ class ControladorMaquinas(){
 
 	def getMaquina(id : Int) : Int = {
 		var index : Int = -1
-		for(i <- 0 to listaMaquinas.length){
-			if(listaMaquinas(i).ID == id) index = i
-		}
+		for (i <- 0 to listaMaquinas.length - 1) {
+				if (listaMaquinas(i).ID == id) index = i
+			}
 		index
 	}
 
