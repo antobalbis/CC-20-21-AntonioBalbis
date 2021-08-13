@@ -3,3 +3,5 @@ project/
 target/
 out/
 mill
+.idea/
+.idea_modules/
