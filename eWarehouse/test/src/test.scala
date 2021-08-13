@@ -12,4 +12,9 @@ class CMtests extends AnyFunSuite{
   test("Lista de máquinas debe tener 4 elementos") {
     assert(cm.listaMaquinas.length == 5)
   }
+
+  test("No se añade una máquina con id repetido"){
+    cm.addMaquina(3, "maquina_fallo")
+    assert(cm.listaMaquinas.length == 5)
+  }
 }
