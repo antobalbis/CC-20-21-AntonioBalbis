@@ -18,7 +18,7 @@ class ControladorMaquinas(){
 		var index : Int = -1
 		var i = 0
 		for(i <- 0 to listaMaquinas.length){
-			if(listaMaquinas(i) == id) index = i
+			if(listaMaquinas(i).ID == id) index = i
 		}
 		index
 	}
