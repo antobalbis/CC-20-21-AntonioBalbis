@@ -1,6 +1,6 @@
 package eWarehouse
 
-class ControladorSolicitudes{
+class ControladorSolicitud{
 	val listaSolicitudes: List[Solicitud] = List()
 
 	def addSolicitud(solicitud: Solicitud){}

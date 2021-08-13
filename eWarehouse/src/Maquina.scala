@@ -6,9 +6,9 @@ class Maquina(id : Integer, name : String){
 	val ID: Integer = id
 	val nombre: String = name
 	var isBeingUsed: Boolean = false
-	var estado = FUNCIONANDO
+	var estado : EstadoMaquina = FUNCIONANDO
 
-	def obtenerEstado():String = estado
+	def obtenerEstado() : EstadoMaquina = estado
 
 	def cambiarEstado(status: EstadoMaquina){
 		estado = status

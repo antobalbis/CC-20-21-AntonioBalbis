@@ -1,7 +1,7 @@
 package eWarehouse
 
-import Departamento._
-import EstadoMaquina._
+import Departamento.Departamento
+import EstadoMaquina.EstadoMaquina
 
 class Trabajador (name: String, depart: Departamento){
 	val nombre: String = name
