@@ -33,19 +33,19 @@ class CMtests extends AnyFunSuite{
   }
 
   test("El estado de la máquina con el id especificado cambia a true"){
-    assert(cm.usarMaquina(2))
+    assert(cm.usarMaquina(2, 0))
     assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 2)).isBeingUsed)
   }
 
   test("Comprobar que si el valor de isBeingUsed es true el resultado es false"){
-    assert(!cm.usarMaquina(2))
+    assert(!cm.usarMaquina(2, 0))
   }
 
   test("Comprobar que si la máquina no existe el resultado es false"){
-    assert(!cm.usarMaquina(-1))
+    assert(!cm.usarMaquina(-1), 0)
   }
 
   test("Compronar que si el estado de la máquina es distinto a FUNCIONANDO el resultado es false"){
-    assert(!cm.usarMaquina(cm.listaMaquinas(3).ID))
+    assert(!cm.usarMaquina(cm.listaMaquinas(3).ID), 0)
   }
 }
