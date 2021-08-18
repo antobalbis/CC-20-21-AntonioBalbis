@@ -42,10 +42,14 @@ class CMtests extends AnyFunSuite{
   }
 
   test("Comprobar que si la máquina no existe el resultado es false"){
-    assert(!cm.usarMaquina(-1), 0)
+    assert(!cm.usarMaquina(-1, 0))
   }
 
-  test("Compronar que si el estado de la máquina es distinto a FUNCIONANDO el resultado es false"){
-    assert(!cm.usarMaquina(cm.listaMaquinas(3).ID), 0)
+  test("Comprobar que si el estado de la máquina es distinto a FUNCIONANDO el resultado es false"){
+    assert(!cm.usarMaquina(cm.listaMaquinas(3).ID, 0))
+  }
+
+  test("Comprobar si el resultado es true que el id del usuario es igual al id del usuario de la máquina."){
+    assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 2)).userID == 0)
   }
 }
