@@ -32,13 +32,12 @@ class ControladorMaquinas(){
 
 	def usarMaquina(id : Int) : Boolean = {
 		var result : Boolean = false
-		val lista : List[Maquina] = getListaMaquinas()
 
-		if(lista.exists(m => m.ID == id)){
-			val index = lista.indexWhere(m => m.ID == id)
-			if(lista(index).estado.equals(EstadoMaquina.FUNCIONANDO) &&
-			!lista(index).isBeingUsed){
-				lista(index).isBeingUsed = false
+		if(listaMaquinas.exists(m => m.ID == id)){
+			val index = listaMaquinas.indexWhere(m => m.ID == id)
+			if(listaMaquinas(index).estado.equals(EstadoMaquina.FUNCIONANDO) &&
+			!listaMaquinas(index).isBeingUsed){
+				listaMaquinas(index).isBeingUsed = true
 				result = true
 			}
 		}
