@@ -30,7 +30,7 @@ class ControladorMaquinas(){
 		result
 	}
 
-	def usarMaquina(id : Int) : Boolean = {
+	def usarMaquina(id : Int, userId : Int) : Boolean = {
 		var result : Boolean = false
 
 		if(listaMaquinas.exists(m => m.ID == id)){
@@ -38,6 +38,7 @@ class ControladorMaquinas(){
 			if(listaMaquinas(index).estado.equals(EstadoMaquina.FUNCIONANDO) &&
 			!listaMaquinas(index).isBeingUsed){
 				listaMaquinas(index).isBeingUsed = true
+				listaMaquinas(index).userID = userId
 				result = true
 			}
 		}
