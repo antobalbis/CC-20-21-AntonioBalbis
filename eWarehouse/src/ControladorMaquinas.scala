@@ -23,9 +23,9 @@ class ControladorMaquinas(){
 	}
 
 	def getListaMaquinas() : List[Maquina] = {
-		val result : List[Maquina] = List()
+		var result : List[Maquina] = List()
 		for(maquina <- listaMaquinas){
-			if(maquina.estado.equals(EstadoMaquina.FUNCIONANDO) && !maquina.isBeingUsed)maquina :: result
+			if(maquina.estado.equals(EstadoMaquina.FUNCIONANDO)) result = maquina :: result
 		}
 		result
 	}
