@@ -9,7 +9,7 @@ class CMtests extends AnyFunSuite{
     cm.addMaquina(i, "maquina-"+i)
   }
 
-  test("Lista de máquinas debe tener 4 elementos") {
+  test("Lista de máquinas debe tener 5 elementos") {
     assert(cm.listaMaquinas.length == 5)
   }
 
@@ -30,5 +30,22 @@ class CMtests extends AnyFunSuite{
       if(maquina.estado.equals(EstadoMaquina.FUNCIONANDO)) result = lista.contains(maquina)
     }*/
     assert(cm.getListaMaquinas().exists(m => m.estado.equals(EstadoMaquina.FUNCIONANDO)))
+  }
+
+  test("El estado de la máquina con el id especificado cambia a true"){
+    assert(cm.usarMaquina(2))
+    assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 2)).isBeingUsed)
+  }
+
+  test("Comprobar que si el valor de isBeingUsed es true el resultado es false"){
+    assert(!cm.usarMaquina(2))
+  }
+
+  test("Comprobar que si la máquina no existe el resultado es false"){
+    assert(!cm.usarMaquina(-1))
+  }
+
+  test("Compronar que si el estado de la máquina es distinto a FUNCIONANDO el resultado es false"){
+    assert(!cm.usarMaquina(cm.listaMaquinas(3).ID))
   }
 }
