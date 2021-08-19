@@ -52,10 +52,10 @@ class CMtests extends AnyFunSuite{
   //TESTS DEJAR MÁQUINA
   test("Comprobar que si el resultado es true el valor de isBeingUsed pasa a false"){
     assert(cm.dejarMaquina(2, 0))
-    assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 2)).isBeingUsed)
+    assert(!cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 2)).isBeingUsed)
   }
 
-  test("Comprobar que si la máquina no existe el resultado es false"){
+  test("Comprobar que si la máquina no existe el resultado de dejarMaquina es false"){
     assert(!cm.dejarMaquina(-1, 0))
   }
 
