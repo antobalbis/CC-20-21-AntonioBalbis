@@ -45,4 +45,17 @@ class ControladorMaquinas(){
 		result
 	}
 
+	def dejarMaquina(id : Int, userID : Int) : Boolean = {
+		var result : Boolean = false
+		if(listaMaquinas.exists(m => m.ID == id)){
+			val index = listaMaquinas.indexWhere(m => m.ID == id)
+			if(listaMaquinas(index).isBeingUsed && listaMaquinas(index).userID == userID){
+				listaMaquinas(index).isBeingUsed = false
+				listaMaquinas(index).userID = -1
+				result = true
+			}
+		}
+		result
+	}
+
 }
