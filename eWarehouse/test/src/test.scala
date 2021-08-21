@@ -47,7 +47,7 @@ class CMtests extends AnyFunSuite{
   //TESTS ELIMINA MAQUINA
   test("EL NUMERO DE MAQUINAS SE REDUCE EN UNO"){
     val n = cm.listaMaquinas.length
-    cm.deleteMaquina(1, 5)
+    cm.deleteMaquina(1, 4)
     assert(cm.listaMaquinas.length == n-1)
   }
 
@@ -67,7 +67,7 @@ class CMtests extends AnyFunSuite{
     assert(cm.listaMaquinas.length == n)
   }
 
-  test("Comprobar que la máquina no se elimina si el usuario no existe"){
+  test("Comprobar que la máquina no se elimina si el usuario no pertenece a logística"){
     val n = cm.listaMaquinas.length
     cm.deleteMaquina(5, 2)
     assert(cm.listaMaquinas.length == n)
