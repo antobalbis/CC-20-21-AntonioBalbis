@@ -5,23 +5,21 @@ class ControladorMaquinas(){
 	var listaTrabajadores : List[Trabajador] = List()
 
 	def addMaquina(userID: Int, id : Int, nombre : String){
-		if(listaTrabajadores.exists(t => t.ID == userID && t.departamento.equals(Departamento.LOGISTICA))){
-			val maquina: Maquina = new Maquina(id, nombre)
-			if (getMaquina(maquina.ID) == -1) listaMaquinas = maquina :: listaMaquinas
+		if(!listaMaquinas.exists(m => m.ID == id)) {
+			if (listaTrabajadores.exists(t => t.ID == userID && t.departamento.equals(Departamento.LOGISTICA))) {
+				val maquina: Maquina = new Maquina(id, nombre)
+				listaMaquinas = maquina :: listaMaquinas
+			}
 		}
 	}
 
 	def deleteMaquina(userID : Int, id : Int){
-		val index : Int = getMaquina(id)
-		listaMaquinas = listaMaquinas.take(index) ++ listaMaquinas.drop(index + 1)
-	}
-
-	def getMaquina(id : Int) : Int = {
-		var index : Int = -1
-		for (i <- 0 to listaMaquinas.length - 1) {
-				if (listaMaquinas(i).ID == id) index = i
+		if(listaMaquinas.exists(m => m.ID == id)) {
+			if (listaTrabajadores.exists(t => t.ID == userID && t.departamento.equals(Departamento.LOGISTICA))) {
+				val index: Int = listaMaquinas.indexWhere(m => m.ID == id)
+				listaMaquinas = listaMaquinas.take(index) ++ listaMaquinas.drop(index + 1)
 			}
-		index
+		}
 	}
 
 	def getListaMaquinas(userID: Int) : List[Maquina] = {
