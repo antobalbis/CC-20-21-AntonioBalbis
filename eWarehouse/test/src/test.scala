@@ -12,7 +12,7 @@ class CMtests extends AnyFunSuite{
   cm.listaTrabajadores = lt
 
   for(i <- 0 to 4){
-    cm.addMaquina(0, i, "maquina-"+i)
+    cm.addMaquina(1, i, "maquina-"+i)
   }
 
   //TEST ADD MAQUINAS
