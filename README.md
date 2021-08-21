@@ -42,6 +42,34 @@ El marco de pruebas elegido para este proyecto es ScalaTest. Se ha elegido porqu
 
 La biblioteca de aserciones que vamos a usar es Assertions, de ScalaTest, ya que este es el marco de pruebas que se va a utiilizar se ha optado por usar su propia librería de aserciones que ofrece lo necesario para realizar los tests unitarios que se van a requerir en este proyecto.
 
+#Configuración del gestor de tareas
+
+[Archivo de configuración del gestor de tareas](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/build.sc).
+
+Para la configuración del gestor de tareas se ha creado un objeto, el nombre del objeto viene dado por el directorio en el que se encuentra el código. La estructura de directorios tiene que ser la siguiente:
+
+|-- build.sc (archivo de configuración de mill)
+|-- eWarehouse 
+  |-- src
+  | |-- < código en scala >
+  |-- test
+     |--src
+        |-- < tests >
+
+Luego se define la versión de scala y dentro del objeto eWarehouse se define el objeto Tests y le indicamos las dependencias de los test y el Framework que se va a usar. En este caso, como se ha decidido usar scalatest, se añaden las dependencias de scalatest y la versión, en este caso la versión 3.1.1 y luego se indica el framework en la variable testFrameworks.
+
+
+```
+import mill._, scalalib._
+
+object eWarehouse extends ScalaModule{
+  def scalaVersion = "2.13.2"
+  object test extends Tests{
+    def ivyDeps = Agg(ivy"org.scalatest::scalatest:3.1.1")
+    def testFrameworks = Seq("org.scalatest.tools.Framework")
+  }
+}
+```
 
 ## Enlaces
 - Enlace a ejercicios de [autoevaluación](https://github.com/antobalbis/autoevaluacion).
