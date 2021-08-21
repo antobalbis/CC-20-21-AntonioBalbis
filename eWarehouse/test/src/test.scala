@@ -44,7 +44,37 @@ class CMtests extends AnyFunSuite{
     assert(cm.getListaMaquinas(-1).length == 0)
   }
 
-  //TESTS USO MÄQUINA
+  //TESTS ELIMINA MAQUINA
+  test("EL NUMERO DE MAQUINAS SE REDUCE EN UNO"){
+    val n = cm.listaMaquinas.length
+    cm.deleteMaquina(1, 5)
+    assert(cm.listaMaquinas.length == n-1)
+  }
+
+  test("La máquina que desaparece es la máquina con el ID correspondiente"){
+    assert(!cm.listaMaquinas.exists(m => m.ID == 5))
+  }
+
+  test("El número de máquinas no decrece si el ID no existe una máquina con ese ID"){
+    val n = cm.listaMaquinas.length
+    cm.deleteMaquina(1, 5)
+    assert(cm.listaMaquinas.length == n)
+  }
+
+  test("Comprobar que la máquina no se elimina si el usuario no existe"){
+    val n = cm.listaMaquinas.length
+    cm.deleteMaquina(0, 2)
+    assert(cm.listaMaquinas.length == n)
+  }
+
+  test("Comprobar que la máquina no se elimina si el usuario no existe"){
+    val n = cm.listaMaquinas.length
+    cm.deleteMaquina(5, 2)
+    assert(cm.listaMaquinas.length == n)
+  }
+
+
+  //TESTS USO MAQUINA
   test("El estado de la máquina con el id especificado cambia a true"){
     assert(cm.usarMaquina(2, 3))
     assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 2)).isBeingUsed)
