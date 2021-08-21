@@ -30,6 +30,7 @@ class CMtests extends AnyFunSuite{
     assert(!cm.listaMaquinas.exists(m => m.ID == 5))
   }
 
+  //TEST LISTA MAQUINAS
   test("No se muestra ninguna máquina con estado distinto a FUNCIONANDO"){
     cm.listaMaquinas(3).estado = EstadoMaquina.PENDIENTE
     assert(!cm.getListaMaquinas(0).contains(cm.listaMaquinas(3)))
@@ -37,6 +38,10 @@ class CMtests extends AnyFunSuite{
 
   test("Comprobar que se muestran todas las máquinas con estado FUNCIONANDO"){
     assert(cm.getListaMaquinas(0).exists(m => m.estado.equals(EstadoMaquina.FUNCIONANDO)))
+  }
+
+  test("Comprobar que si el usuario no existe el resultado es una lista vacía"){
+    assert(cm.getListaMaquinas(-1).length == 0)
   }
 
   //TESTS USO MÄQUINA
