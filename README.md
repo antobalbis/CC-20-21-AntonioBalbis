@@ -36,7 +36,8 @@ La elección de Mill viene porque utiliza la misma sintaxis que Scala, es un ges
 
 # Marco de pruebas
 
-El marco de pruebas elegido para este proyecto es ScalaTest. Se ha elegido porque está implementado en Scala y, por tanto, los tests se definen como métodos en Scala y además cuenta con su propia biblioteca de aserciones, Assertions.
+Tenemos varios marcos de pruebas para scala, entre ellos destacan uTest, ScalaTest y Specs2. Para el proyecto que se está desarrollando valdría cualquiera de ellos, pero se ha optado por ScalaTest porque está implementado en Scala y los tests se definen como métodos en Scala de una forma que me ha resultado más intuitiva que los otros marcos de pruebas.
+
 
 # Biblioteca de aserciones
 
