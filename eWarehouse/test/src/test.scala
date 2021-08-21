@@ -97,6 +97,10 @@ class CMtests extends AnyFunSuite{
     assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 2)).userID == 3)
   }
 
+  test("Comprobar que si el usuario no existe o no es del departamento de logística el resultado es false"){
+    assert(!cm.usarMaquina(0, 5))
+  }
+
   //TESTS DEJAR MÁQUINA
   test("Comprobar que si el resultado es true el valor de isBeingUsed pasa a false"){
     assert(cm.dejarMaquina(2, 3))
