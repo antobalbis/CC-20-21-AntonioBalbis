@@ -5,8 +5,10 @@ class ControladorMaquinas(){
 	var listaTrabajadores : List[Trabajador] = List()
 
 	def addMaquina(userID: Int, id : Int, nombre : String){
-		val maquina : Maquina = new Maquina(id, nombre)
-		if(getMaquina(maquina.ID) == -1) listaMaquinas = maquina :: listaMaquinas
+		if(listaTrabajadores.exists(t => t.ID == userID && t.departamento.equals(Departamento.LOGISTICA))){
+			val maquina: Maquina = new Maquina(id, nombre)
+			if (getMaquina(maquina.ID) == -1) listaMaquinas = maquina :: listaMaquinas
+		}
 	}
 
 	def deleteMaquina(userID : Int, id : Int){
@@ -24,6 +26,7 @@ class ControladorMaquinas(){
 
 	def getListaMaquinas(userID: Int) : List[Maquina] = {
 		var result : List[Maquina] = List()
+		if(listaTrabajadores.exists(t => t.ID == userID))
 		for(maquina <- listaMaquinas){
 			if(maquina.estado.equals(EstadoMaquina.FUNCIONANDO)) result = maquina :: result
 		}
