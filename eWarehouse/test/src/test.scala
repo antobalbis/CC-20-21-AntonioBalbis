@@ -89,6 +89,7 @@ class CMtests extends AnyFunSuite{
   }
 
   test("Comprobar que si el estado de la máquina es distinto a FUNCIONANDO el resultado es false"){
+    cm.listaMaquinas(3).estado = EstadoMaquina.PENDIENTE
     assert(!cm.usarMaquina(cm.listaMaquinas(3).ID, 3))
   }
 
