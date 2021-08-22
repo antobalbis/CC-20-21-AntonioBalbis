@@ -38,6 +38,8 @@ La elección de Mill viene porque utiliza la misma sintaxis que Scala, es un ges
 
 Tenemos varios marcos de pruebas para scala, entre ellos destacan uTest, ScalaTest y Specs2. Para el proyecto que se está desarrollando valdría cualquiera de ellos, pero se ha optado por ScalaTest porque está implementado en Scala y los tests se definen como métodos en Scala de una forma que me ha resultado más intuitiva que los otros marcos de pruebas.
 
+ScalaTest tiene distintos estilos de tests, en este caso me he decantado por FunSuite.
+
 
 # Biblioteca de aserciones
 
