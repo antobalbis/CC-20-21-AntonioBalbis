@@ -30,9 +30,9 @@ La estructura del proyecto se va a modificar en las entregas siguientes.
 
 # Gestor de Tareas
 
-Algunos de los gestores de tareas que encontramos para Scala son Scala Build Tool (SBT), Maven, Gradle o Mill. El gestor de tareas que se va a usar en el proyecto es Mill.
+Algunos de los gestores de tareas que encontramos para Scala sonMaven, Gradle o Mill. El gestor de tareas que se ha elegido para este proyecto es Mill.
 
-La elección de Mill viene porque utiliza la misma sintaxis que Scala, es un gestor de tareas a diferencia de SBT y además resulta más sencillo de utilizar que Maven o Gradle, permitiéndonos definir las herramientas y la versión como variables en Scala.
+La elección de Mill viene porque utiliza la misma sintaxis que Scala, es un gestor de tareas a diferencia de SBT y además resulta más sencillo de utilizar que Maven o Gradle, permitiéndonos definir las herramientas y la versión como variables en Scala y nos permite definir las dependencias agregándolas en una única línea a la variable ivyDeps, esto resulta más sencillo y más rápido de identificar que usando Maven o Gradle.
 
 # Marco de pruebas
 
@@ -50,7 +50,7 @@ La biblioteca de aserciones que vamos a usar es Assertions, de ScalaTest, ya que
 Para la configuración del gestor de tareas se ha creado un objeto, el nombre del objeto viene dado por el directorio en el que se encuentra el código. La estructura de directorios tiene que ser la siguiente:
 
 |-- build.sc (archivo de configuración de mill)
-|-- eWarehouse 
+|-- eWarehouse
   |-- src
   | |-- < código en scala >
   |-- test
