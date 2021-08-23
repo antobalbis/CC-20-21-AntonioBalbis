@@ -78,6 +78,10 @@ object eWarehouse extends ScalaModule{
 Los tests se encuentran en el siguiente enlace: [test.scala](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/eWarehouse/test/src/test.scala).
 La clase que evalúan los tests es [ControladorMaquinas](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/eWarehouse/src/ControladorMaquinas.scala)
 
+A continuación se muestre el resultado de los tests.
+
+![Imagen tests](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/docs/imagenes/paso_tests_p2.png)
+
 ## Enlaces
 - Enlace a ejercicios de [autoevaluación](https://github.com/antobalbis/autoevaluacion).
 - Enlace a [Configuración](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/docs/configuracion.md) de GitHub.
