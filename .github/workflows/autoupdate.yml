@@ -2,6 +2,8 @@ name: automated-update
 on: [push]
 jobs:
   update-docker-image:
-      - name: login
-        run: |
-          echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u antobalbis --password-stdin
+    runs-on: ubuntu-latest
+    steps:
+    - name: login
+      run: |
+        echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u antobalbis --password-stdin

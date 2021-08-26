@@ -5,7 +5,7 @@ on:
       - ".github/workflows/gentoken.yml"
 
 jobs:
-  update-docker-image:
+  gen-token:
     runs-on: ubuntu-latest
     steps:
       - name: auth
