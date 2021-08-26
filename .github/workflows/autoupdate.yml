@@ -14,4 +14,4 @@ jobs:
     steps:
       - name: authentication
         run: |
-          cat token.txt | docker login ghcr.io -u antobalbis --password-stdin
+          cat ~/token.txt | docker login ghcr.io -u antobalbis --password-stdin
