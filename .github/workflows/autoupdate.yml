@@ -1,9 +1,16 @@
 name: automated-update
 on: [push]
 jobs:
-  update-docker-image:
+  login:
     runs-on: ubuntu-latest
     steps:
     - name: login
       run: |
         echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u antobalbis --password-stdin
+
+  push-docker-image:
+    runs-on: ubuntu-latest
+    steps:
+    - name: push-image
+      run: |
+        docker push ghcr.io/antobalbis/ewarehouse:latest
