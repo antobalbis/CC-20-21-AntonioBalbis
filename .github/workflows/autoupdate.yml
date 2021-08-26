@@ -13,4 +13,5 @@ jobs:
     steps:
     - name: push-image
       run: |
+        docker build -t ghcr.io/antobalbis/ewarehouse:latest
         docker push ghcr.io/antobalbis/ewarehouse:latest
