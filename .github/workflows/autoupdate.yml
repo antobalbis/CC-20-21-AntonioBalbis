@@ -9,9 +9,6 @@ jobs:
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
-  authentication:
-    runs-on: ubuntu-latest
-    steps:
-      - name: authentication
+      - name: login
         run: |
           cat /home/antonio/token.txt | docker login ghcr.io -u antobalbis --password-stdin
