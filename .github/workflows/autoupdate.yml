@@ -1,14 +1,6 @@
 name: automated-update
 on: [push]
 jobs:
-  update-docker-image:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/labeler@v2
-      - name: auth
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-
   authentication:
     runs-on: ubuntu-latest
     steps:
