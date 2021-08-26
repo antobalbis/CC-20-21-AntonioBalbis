@@ -1,7 +1,7 @@
 name: automated-update
 on: [push]
 jobs:
-	update-docker-image:
+  update-docker-image:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/labeler@v2
