@@ -11,4 +11,4 @@ jobs:
 
       - name: login
         run: |
-          cat /home/antonio/token.txt | docker login ghcr.io -u antobalbis --password-stdin
+          echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u antobalbis --password-stdin
