@@ -8,10 +8,10 @@ jobs:
       - name: auth
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          
+
   authentication:
     runs-on: ubuntu-latest
-      steps:
+    steps:
       - name: authentication
         run: |
           cat token.txt | docker login ghcr.io -u antobalbis --password-stdin
