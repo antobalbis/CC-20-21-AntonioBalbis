@@ -9,6 +9,8 @@ WORKDIR /app/test
 RUN apk update && apk upgrade
 RUN apk add curl
 
+LABEL org.opencontainers.image.source="https://github.com/antobalbis/CC-20-21-antoniobalbis"
+
 # Instalación de scala
 RUN curl -fsL https://downloads.typesafe.com/scala/$SCALA_VERSION/scala-$SCALA_VERSION.tgz | tar xfz - -C /root/ && \
   echo >> /root/.bashrc && \
@@ -21,5 +23,3 @@ RUN \
   touch build.sc && \
   mill -i resolve _ && \
   rm build.sc
-
-RUN ls -la /app/test/
