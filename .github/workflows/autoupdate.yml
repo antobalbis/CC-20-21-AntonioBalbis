@@ -6,8 +6,6 @@ jobs:
     steps:
       - uses: actions/labeler@v2
       - name: auth
-        run: |
-          cat token.txt | docker login ghcr.io -u antobalbis --password-stdin
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
         run: |
