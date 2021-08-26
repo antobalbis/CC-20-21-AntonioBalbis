@@ -8,5 +8,7 @@ jobs:
       - name: auth
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: update-image
         run:
           cat token.txt | docker login ghcr.io -u antobalbis --password-stdin
