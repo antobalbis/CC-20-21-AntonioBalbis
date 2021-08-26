@@ -13,5 +13,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: authentication
-        run: |
+      - run: |
           cat token.txt | docker login ghcr.io -u antobalbis --password-stdin
