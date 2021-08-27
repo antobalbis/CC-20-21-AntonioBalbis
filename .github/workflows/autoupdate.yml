@@ -1,20 +1,28 @@
 name: automated-update
 on: [push]
-jobs:
-  login:
-    runs-on: ubuntu-latest
-    steps:
-    - name: login
-      run: |
-        echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u antobalbis --password-stdin
-
   push-docker-image:
     runs-on: ubuntu-latest
     steps:
+    - name: comprobar-repositorio
+      uses: actions/checkout@v2
+
+    - name: log in en container registry
+      id: meta
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secret.GITHUB_TOKEN }}
+
+    - name: extraer meta datos
+      uses: docker/metadata-action@v1
+      with:
+        images: ghcr.io/${{ github.repository }}
+
     - name: push-image
       uses: docker/build-push-action@v1
       with:
-        registry: ghcr.io
-        username: "antobalbis"
-        password: ${{ secrets.GITHUB_TOKEN }}
-        repository: antobalbis/ewarehouse
+        context: .
+        push: true
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
