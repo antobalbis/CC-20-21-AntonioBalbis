@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: comprobar repositorio
-        uses: action/checkout@v2
+        uses: actions/checkout@v2
 
       - name: iniciar sesión en docker github
         uses: docker/login-action@v1
