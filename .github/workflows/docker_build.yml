@@ -16,7 +16,7 @@ jobs:
 
       - name: docker buildx
         id: buildx
-        uses: docker/setup-buildx-action@v1
+        uses: docker/setup-buildx-action@v2
 
       - name: build imagen y push a docker github
         uses: docker/build-push-action@v2
