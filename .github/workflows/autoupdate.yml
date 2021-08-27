@@ -17,4 +17,4 @@ jobs:
         registry: ghcr.io
         username: "antobalbis"
         password: ${{ secrets.GITHUB_TOKEN }}
-        repository: antobalbis/CC-20-21-antoniobalbis
+        repository: antobalbis/ewarehouse
