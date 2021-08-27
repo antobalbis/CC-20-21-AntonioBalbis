@@ -3,7 +3,7 @@ on: [push]
 
 jobs:
   push-to-docker-hub:
-    runs-on: ubuntu-later
+    runs-on: ubuntu-latest
     steps:
       - name: comprobar repositorio
         uses: action/checkout@v2
