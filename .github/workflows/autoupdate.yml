@@ -16,15 +16,7 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: extraer meta datos
-      uses: docker/metadata-action@v1
-      with:
-        images: ghcr.io/${{ github.repository }}:latest
-
     - name: push-image
-      uses: docker/build-push-action@v1
-      with:
-        context: .
-        push: true
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
+      run: |
+        docker build . --tag ghcr.io/antobalbis/easywarehouse \
+        docker push ghcr.io/antobalbis/easywarehouse
