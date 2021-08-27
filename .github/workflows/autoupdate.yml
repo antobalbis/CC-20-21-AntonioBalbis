@@ -17,6 +17,9 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: push-image
-      run: |
-        docker build -t ghcr.io/antobalbis/easywarehouse . \
-        docker push ghcr.io/antobalbis/easywarehouse
+      uses: docker/build-push-action@v1
+      with:
+        context: .
+        push: true
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
