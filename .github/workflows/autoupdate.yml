@@ -1,5 +1,7 @@
 name: automated-update
 on: [push]
+
+jobs:
   push-docker-image:
     runs-on: ubuntu-latest
     steps:
