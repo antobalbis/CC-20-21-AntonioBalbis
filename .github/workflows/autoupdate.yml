@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: push-image
-      run: |
-        docker build -t ghcr.io/antobalbis/ewarehouse:latest .
-        docker push ghcr.io/antobalbis/ewarehouse:latest
+      uses: docker/build-push-action@v1
+      with:
+        registry: ghcr.io
+        username: "antobalbis"
+        password: ${{ secrets.GITHUB_TOKEN }}
+        repository: antobalbis/CC-20-21-antoniobalbis
