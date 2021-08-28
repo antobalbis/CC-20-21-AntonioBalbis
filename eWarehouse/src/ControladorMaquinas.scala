@@ -60,12 +60,22 @@ class ControladorMaquinas(){
 	}
 
 	def cambiarEstadoMaquina(userID : Int, id : Int, estadoMaquina: EstadoMaquina.Value): Unit ={
-		val user = listaTrabajadores.indexWhere(t => t.ID == userID)
-		val index = listaMaquinas.indexWhere(m => m.ID == id)
-		if(listaTrabajadores(user).departamento.equals(Departamento.MANTENIMIENTO)){
-			listaMaquinas(index).estado = estadoMaquina;
+		if(listaTrabajadores.exists(t => t.ID == userID)) {
+			val user = listaTrabajadores.indexWhere(t => t.ID == userID)
+			val index = listaMaquinas.indexWhere(m => m.ID == id)
+			if (listaTrabajadores(user).departamento.equals(Departamento.MANTENIMIENTO)) {
+				listaMaquinas(index).estado = estadoMaquina;
+			}
 		}
 	}
 
-	def averiaMaquina(userID : Int, id : Int, estadoMaquina: EstadoMaquina.Value){}
+	def averiaMaquina(userID : Int, id : Int): Unit ={
+		if(listaTrabajadores.exists(t => t.ID == userID)) {
+			val user = listaTrabajadores.indexWhere(t => t.ID == userID)
+			val index = listaMaquinas.indexWhere(m => m.ID == id)
+			if (listaMaquinas(index).estado.equals(EstadoMaquina.FUNCIONANDO) &&) {
+				listaMaquinas(index).estado = EstadoMaquina.PENDIENTE
+			}
+		}
+	}
 }
