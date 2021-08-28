@@ -29,8 +29,8 @@ class CMtests extends AnyFunSuite{
   }
 
   test("Comprobar que no se añade una máquina si el usuario no existe o no es del departamento de logística."){
-    cm.addMaquina(userID = 7, id = 6, "maquina 5")
-    assert(!cm.listaMaquinas.exists(m => m.ID == 6))
+    cm.addMaquina(userID = 7, id = 10, "maquina 5")
+    assert(!cm.listaMaquinas.exists(m => m.ID == 10))
   }
 
   //TEST LISTA MAQUINAS
@@ -92,9 +92,10 @@ class CMtests extends AnyFunSuite{
     assert(!cm.usarMaquina(-1, userID))
   }
 
+  cm.addMaquina(1, 20, "maquina-"+20)
+  cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 20)).estado = EstadoMaquina.PENDIENTE
   test("Comprobar que si el estado de la máquina es distinto a FUNCIONANDO el resultado es false"){
-    val index = cm.listaMaquinas.indexWhere(m => m.estado != EstadoMaquina.FUNCIONANDO)
-    assert(!cm.usarMaquina(cm.listaMaquinas(index).ID, userID))
+    assert(!cm.usarMaquina(20, userID))
   }
 
   test("Comprobar si el resultado es true que el id del usuario es igual al id del usuario de la máquina."){
@@ -124,31 +125,35 @@ class CMtests extends AnyFunSuite{
   }
 
   //Cambia estado máquina
+  cm.addMaquina(1, 6, "maquina-6")
+
   test("Comprobar que el estado de la máquina con el id indicado cambia al seleccionado"){
-    cm.cambiarEstadoMaquina(userID, 5, EstadoMaquina.PENDIENTE)
-    assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 5)).estado.equals(EstadoMaquina.PENDIENTE))
+    cm.cambiarEstadoMaquina(2, 6, EstadoMaquina.PENDIENTE)
+    assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 6)).estado.equals(EstadoMaquina.PENDIENTE))
+    cm.cambiarEstadoMaquina(2, 6, EstadoMaquina.FUNCIONANDO)
   }
 
   test("Comprobar que si el trabajador no es de mantenimiento el estado no cambia."){
-    val id = cm.listaTrabajadores.indexWhere(t => !t.departamento.equals(Departamento.LOGISTICA))
-    cm.cambiarEstadoMaquina(userID, 0, EstadoMaquina.PENDIENTE)
-    assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 0)).estado.equals(EstadoMaquina.REPARACION))
+    cm.cambiarEstadoMaquina(0, 6, EstadoMaquina.PENDIENTE)
+    assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 6)).estado.equals(EstadoMaquina.FUNCIONANDO))
   }
 
   //Máquina deja de estar en funcionamiento
+  cm.addMaquina(1, 15, "maquina-"+15)
   test("Comprobar que el estado de la máquina con el id indicado cambia a pendiente."){
-    cm.averiaMaquina(0, 1)
-    assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 0)).estado.equals(EstadoMaquina.PENDIENTE))
+    cm.averiaMaquina(0, 15)
+    assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 15)).estado.equals(EstadoMaquina.PENDIENTE))
   }
 
   test("Comprobar que si el estado de la máquina no es en funcionamiento no cambia."){
-    cm.averiaMaquina(0, 0)
-    assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 0)).estado.equals(EstadoMaquina.REPARACION))
+    cm.cambiarEstadoMaquina(2, 15, EstadoMaquina.REPARACION)
+    cm.averiaMaquina(0, 15)
+    assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 15)).estado.equals(EstadoMaquina.REPARACION))
   }
 
   test("Comprobar que no cambia el estado si el id del trabajador no existe."){
-    val index = cm.listaMaquinas.indexWhere(t => t.estado == EstadoMaquina.FUNCIONANDO)
-    cm.averiaMaquina(-1, cm.listaMaquinas(index).ID)
-    assert(cm.listaMaquinas(index).estado.equals(EstadoMaquina.FUNCIONANDO))
+    cm.cambiarEstadoMaquina(2, 15, EstadoMaquina.FUNCIONANDO)
+    cm.averiaMaquina(-1, 15)
+    assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 15)).estado.equals(EstadoMaquina.FUNCIONANDO))
   }
 }

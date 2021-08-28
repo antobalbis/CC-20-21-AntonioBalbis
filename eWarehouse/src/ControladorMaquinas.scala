@@ -71,7 +71,6 @@ class ControladorMaquinas(){
 
 	def averiaMaquina(userID : Int, id : Int): Unit ={
 		if(listaTrabajadores.exists(t => t.ID == userID)) {
-			val user = listaTrabajadores.indexWhere(t => t.ID == userID)
 			val index = listaMaquinas.indexWhere(m => m.ID == id)
 			if (listaMaquinas(index).estado.equals(EstadoMaquina.FUNCIONANDO)) {
 				listaMaquinas(index).estado = EstadoMaquina.PENDIENTE
