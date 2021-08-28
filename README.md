@@ -24,7 +24,7 @@ La imagen que ha sido elegida es Alpine, ya que tiene un tamaño de 5,6MB mientr
 Enlace al [Dockerfile](https://github.com/antobalbis/easywarehouse/blob/main/Dockerfile)
 
 ## Hitos previos
-- [Arquitectura]((https://github.com/antobalbis/easywarehouse/blob/main/docs/arquitectura.md).
+- [Arquitectura](https://github.com/antobalbis/easywarehouse/blob/main/docs/arquitectura.md).
 - [Planificación](https://github.com/antobalbis/easywarehouse/blob/main/docs/planificacion.md).
 - [Tests](https://github.com/antobalbis/easywarehouse/blob/main/docs/pruebas.md).
 
