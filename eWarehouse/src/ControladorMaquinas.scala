@@ -59,4 +59,7 @@ class ControladorMaquinas(){
 		result
 	}
 
+	def cambiarEstadoMaquina(userID : Int, id : Int, estadoMaquina: EstadoMaquina.Value){}
+
+	def averiaMaquina(userID : Int, id : Int, estadoMaquina: EstadoMaquina.Value){}
 }

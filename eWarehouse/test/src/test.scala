@@ -122,4 +122,15 @@ class CMtests extends AnyFunSuite{
   test("Comprobar que si no coincide el userID con el userID de la máquina el resultado es false"){
     assert(!cm.dejarMaquina(id, 1))
   }
+
+  test("Comprobar que el estado de la máquina con el id indicado cambia al seleccionado"){
+    cm.cambiarEstadoMaquina(userID, 5, EstadoMaquina.PENDIENTE)
+    assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 5)).estado.equals(EstadoMaquina.PENDIENTE))
+  }
+
+  test("Comprobar que si el trabajador no es de mantenimiento el estado no cambia."){
+    val id = cm.listaTrabajadores.indexWhere(t => !t.departamento.equals(Departamento.LOGISTICA))
+    cm.cambiarEstadoMaquina(userID, 0, EstadoMaquina.PENDIENTE)
+    assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 0)).estado.equals(EstadoMaquina.PENDIENTE))
+  }
 }
