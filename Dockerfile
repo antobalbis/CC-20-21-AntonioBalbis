@@ -2,7 +2,7 @@
 FROM azul/zulu-openjdk-alpine:11-jre
 
 #Autor
-LABEL maintainer = "antobalbis <antoniobalh@gmail.com>
+LABEL maintainer = "antobalbis <antoniobalh@gmail.com>"
 
 # Elegimos la versión de scala y mill
 ENV SCALA_VERSION 2.13.2
