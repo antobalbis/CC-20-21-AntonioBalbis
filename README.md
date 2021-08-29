@@ -47,13 +47,20 @@ Para poder actualizar de forma automática la imagen en Docker Hub desde github 
 
 Ahora, cada vez que se haga un push en github tenemos que crear un flujo de trabajo en .github/workflows/ para que se actualice la imagen de Docker Hub. Este flujo de trabajo se va a ejecutar cada vez que se haga un push y el flujo de trabajo es el siguiente:
 
-- comprobar repositorio -> iniciar sesión en Docker Hub (usando los secretos anteriores) -> definir un objeto buildx -> construir y publicar la imagen en Docker Hub.
+- comprobar repositorio -> iniciar sesión en Docker Hub (usando los secretos anteriores) -> definir buildx -> construir y publicar la imagen en Docker Hub.
+
+Para el inicio de sesión se usará login-action y se pasarán como usuario y contraseña los secretos de github creados anteriormente.
+
+La creación de buildx es necesaria para poder construir la imagen en Docker Hub. Para publicar la imagen en Docker Hub, además para publicar la imagen en Docker Hub tendremos que usar build-push-action e indicar el contexto, "." en este caso, y como nombre de la imagen <nombre_de_usuario/<nombre_del_repositorio>:<versión>, en este caso antobalbis/easywarehouse:latest.
 
 Ahora cada vez que se hace un push en github se ejecuta una actions con el resultado como se muestra en la siguiente imagen.
 
 ![Imagen secrets](https://github.com/antobalbis/easywarehouse/blob/main/docs/imagenes/flujo_trabajo.png)
 
 Para descargar la imagen del [repositorio](https://hub.docker.com/repository/docker/antobalbis/easywarehouse) vale con hacer *docker pull antobalbis/warehouse*.
+
+El archivo del flujo de trabajo se encuentra [aquí](https://github.com/antobalbis/easywarehouse/blob/main/.github/workflows/autoupdate.yml).
+
 
 ## Configuración de Github Container Registry
 
@@ -67,11 +74,26 @@ El último paso será realizar el push de la imagen, para ello, se crea un paso 
 
 El archivo del flujo de trabajo se encuentra [aquí](https://github.com/antobalbis/easywarehouse/blob/main/.github/workflows/autoupdate.yml).
 
+En la siguiente imagen se muestra el resultado de la ejecución del flujo de trabajo.
+
+![flujo_trabajo](https://github.com/antobalbis/easywarehouse/blob/main/docs/imagenes/exito_workflow.png)
+
+## Avance del proyecto
+
+- Se ha avanzado con el desarrollo de las historias de usuario [[HU3]](https://github.com/antobalbis/easywarehouse/issues/9) y [[HU4]](https://github.com/antobalbis/easywarehouse/issues/37).
+- Avanze en [ControladorMaquinas](https://github.com/antobalbis/easywarehouse/blob/main/eWarehouse/src/ControladorMaquinas.scala).
+- Código de [tests](https://github.com/antobalbis/easywarehouse/blob/main/eWarehouse/test/src/test.scala).
+
+## Resultado de tests en contenedor.
+
+![resultado de test en contenedor](https://github.com/antobalbis/easywarehouse/blob/main/docs/imagenes/container_tests.png)
 
 ## Hitos previos
 - [Arquitectura](https://github.com/antobalbis/easywarehouse/blob/main/docs/arquitectura.md).
 - [Planificación](https://github.com/antobalbis/easywarehouse/blob/main/docs/planificacion.md).
 - [Tests](https://github.com/antobalbis/easywarehouse/blob/main/docs/pruebas.md).
+
+
 
 ## Código del proyecto
 
