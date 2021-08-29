@@ -14,7 +14,7 @@ En principio vamos a tener los departamentos de logística, mantenimiento y dire
 
 Para la elección de la imagen base de nuestro contenedor Docker se han considerado distintas distribuciones de linux, que se muestran en la siguiente captura.
 
-![docker images](https://github.com/antobalbis/easywarehouse/tree/main/docs/imagenes/captura_images.png)
+![captura imagenes](https://github.com/antobalbis/easywarehouse/tree/main/docs/imagenes/captura_images.png)
 
 Viendo los distintos tamaños de las imágenes, lo más adecuado será usar Alpine, ya que tiene un tamaño de 5,6MB mientras que el resto de distribuciones tienen un tamaño mucho mayor, siendo ubuntu la más ligera con 72,8MB. En un principio se pensó en usar la propia imagen que tienen los desarrolladores de mill en su [página](https://com-lihaoyi.github.io/mill/mill/Intro_to_Mill.html), pero esto se descartó ya que usan una imagen de OpenJDK que tiene Debian como imagen base, y se consideró que no era la mejor opción.
 
