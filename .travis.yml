@@ -1,7 +1,7 @@
 language: scala
 version:
   - 2.13.2
-#install:
-#  - curl -L https://github.com/com-lihaoyi/mill/releases/download/0.9.9/0.9.9 > mill && chmod +x mill
+install:
+  - curl -L https://github.com/com-lihaoyi/mill/releases/download/0.9.9/0.9.9 > mill && chmod +x mill
 script:
   - ./mill eWarehouse.compile
