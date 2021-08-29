@@ -18,7 +18,7 @@ Para la elección de la imagen base de nuestro contenedor Docker se han consider
 
 Viendo los distintos tamaños de las imágenes, lo más adecuado será usar Alpine, ya que tiene un tamaño de 5,6MB mientras que el resto de distribuciones tienen un tamaño mucho mayor, siendo ubuntu la más ligera con 72,8MB. En un principio se pensó en usar la propia imagen que tienen los desarrolladores de mill en su [página](https://com-lihaoyi.github.io/mill/mill/Intro_to_Mill.html), pero esto se descartó ya que usan una imagen de OpenJDK que tiene Debian como imagen base, y se consideró que no era la mejor opción.
 
-Al final se optó por usar la imagen azul/zulu-openjdk-alpine:8-jre que ya cuenta con jre 8 instalado en lugar de JDK completo, ya que usando scala no nos interesa el JDK entero. Se ha elegido la versión 8 de Java ya que en la documentación de [Scala](https://docs.scala-lang.org/overviews/jdk-compatibility/overview.html) se recomienda usar la versión 8 o 11 y se ha elegido la 8 al ser una imagen LTS y ser más pequeña que la versión 11.
+Al final se optó por usar la imagen azul/zulu-openjdk-alpine:11-jre que ya cuenta con jre 11 instalado en lugar de JDK completo, ya que usando scala no nos interesa el JDK entero. Se ha elegido la versión 11 de Java ya que en la documentación de [Scala](https://docs.scala-lang.org/overviews/jdk-compatibility/overview.html) se recomienda usar la versión 8 o 11 y se ha elegido la 11 al ser la imagen LTS más reciente hasta el momento.
 
 
 ## Dockerfile
@@ -68,7 +68,7 @@ Github Container Registry supone la evolución de Github Docker Registry. Se ha 
 
 Se ha tomado la decisión de crear un nuevo flujo de trabajo que nos va a permitir actualizar la imagen cada vez que hagamos un push de manera similar a como se hizo con Docker Hub, esto nos va a permitir, además, que podamos subir la imagen sin necesidad de crear un nuevo token de acceso, esta opción es la que se recomienda en la [documentación de Github](https://docs.github.com/es/packages/working-with-a-github-packages-registry/working-with-the-container-registry).
 
-Para esto vamos a crear un nuevo trabajo al workflow usado para Docker hub. El primer pasó será comprobar el repositorio haciendo uso de actions/checkout, luego, para iniciar sesión en Github Container Registry, hacemos uso de login-action de docker, para ello tenemos que indicar que el registro es ghcr.io, para que no intente iniciar sesión en Docker Hub, luego se indican el nombre de usuario y la contraseña, que en este caso será el user de github y GITHUB_TOKEN.
+Para esto vamos a añadir un nuevo trabajo al workflow usado para Docker hub. El primer pasó será comprobar el repositorio haciendo uso de actions/checkout, luego, para iniciar sesión en Github Container Registry, hacemos uso de login-action de docker, para ello tenemos que indicar que el registro es ghcr.io, para que no intente iniciar sesión en Docker Hub, luego se indican el nombre de usuario y la contraseña, que en este caso será el user de github y GITHUB_TOKEN.
 
 El último paso será realizar el push de la imagen, para ello, se crea un paso con una acción build-push-action, importante usar una versión superior a la uno. Para esta tarea se tendrá que indicar el context"." en este caso y con la etiqueta tags el nombre de la imagen como sigue: ghcr.io/<nombre_de_usuario>/<nombre_del_repositorio>:<versión>.
 
