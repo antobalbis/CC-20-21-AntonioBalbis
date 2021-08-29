@@ -90,7 +90,7 @@ En la siguiente imagen se muestra el resultado de la ejecución del flujo de tra
 
 ![resultado de test en contenedor](https://github.com/antobalbis/easywarehouse/blob/main/docs/imagenes/container_tests.png)
 
-## Hitos previos
+## trabajo previo
 - [Arquitectura](https://github.com/antobalbis/easywarehouse/blob/main/docs/arquitectura.md).
 - [Planificación](https://github.com/antobalbis/easywarehouse/blob/main/docs/planificacion.md).
 - [Tests](https://github.com/antobalbis/easywarehouse/blob/main/docs/pruebas.md).
