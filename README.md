@@ -83,6 +83,8 @@ En la siguiente imagen se muestra el resultado de la ejecución del flujo de tra
 - Se ha avanzado con el desarrollo de las historias de usuario [[HU3]](https://github.com/antobalbis/easywarehouse/issues/9) y [[HU4]](https://github.com/antobalbis/easywarehouse/issues/37).
 - Avanze en [ControladorMaquinas](https://github.com/antobalbis/easywarehouse/blob/main/eWarehouse/src/ControladorMaquinas.scala).
 - Código de [tests](https://github.com/antobalbis/easywarehouse/blob/main/eWarehouse/test/src/test.scala).
+- [Dockerfile](https://github.com/antobalbis/easywarehouse/blob/main/Dockerfile).
+- [Flujo de trabajos](https://github.com/antobalbis/easywarehouse/blob/main/.github/workflows/autoupdate.yml).
 
 ## Resultado de tests en contenedor.
 
