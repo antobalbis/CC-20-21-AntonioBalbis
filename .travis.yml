@@ -1,5 +1,5 @@
 language: scala
-versions
+versions:
   - 2.13.6
   - 2.12.8
   - 2.12.1
