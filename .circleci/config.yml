@@ -7,24 +7,41 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/openjdk:11-jdk
+      - image: antobalbis/easywarehouse
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/postgres:9.4
 
-    working_directory: ~/repo
+    working_directory: /app/test
 
     environment:
       # Customize the JVM maximum heap limit
       JVM_OPTS: -Xmx3200m
       TERM: dumb
 
+    parameters:
+      scala_version:
+        type: string
+        default: 2.13.0
     steps:
       - checkout
 
       - run: curl -L https://github.com/com-lihaoyi/mill/releases/download/0.9.9/0.9.9 > mill && chmod +x mill
 
       # run tests!
-      - run: ./mill eWarehouse.test
+      - run: ./mill eWarehouse[<<parameters.scala_version>>].test
+
+
+workflow:
+  jobs:
+    - scala_jobs:
+        name: scala_2.12
+        version: 2.12.8
+    - scala_jobs:
+        name: scala_3
+        version: 3.0.1
+    - scala_jobs:
+        name: scala_2.13
+        verion: 2.13.6
