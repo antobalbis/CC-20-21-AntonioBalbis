@@ -14,12 +14,11 @@ WORKDIR /app/test
 #curl -fsL https://downloads.typesafe.com/scala/$SCALA_VERSION/scala-$SCALA_VERSION.tgz | tar xfz - -C /usr/scala/ && \
 #  echo >> /usr/scala/.bashrc && \
 
-
 # Instalación de scala
 RUN apk add curl && \
   mkdir /usr/scala && \
   echo "export PATH=~/scala-$SCALA_VERSION/bin:$PATH" >> /usr/scala/.bashrc && \
-  curl -fLo coursier https://git.io/coursier-cli && chmod +x coursier && ./coursier install scala3-compiler
+  curl -fLo coursier https://git.io/coursier-cli && chmod +x coursier && ./coursier install scala3-compiler && \
   curl -L https://github.com/com-lihaoyi/mill/releases/download/$MILL_VERSION/$MILL_VERSION > /usr/local/bin/mill && \
   chmod +x /usr/local/bin/mill
 
