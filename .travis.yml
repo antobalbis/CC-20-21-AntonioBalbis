@@ -10,4 +10,4 @@ install:
   - curl -L https://github.com/com-lihaoyi/mill/releases/download/0.9.9/0.9.9 > mill && chmod +x mill
 
 script:
-  - ./mill eWarehouse[++$TRAVIS_SCALA_VERSION].test
+  - ./mill eWarehouse[$TRAVIS_SCALA_VERSION].test
