@@ -12,6 +12,6 @@ jobs:
     steps:
       - checkout
 
-      - rnu: docker build -t antobalbis/easywarehouse
+      - run: docker build -t antobalbis/easywarehouse
       # run tests!
       - run: docker run -t antobalbis/easywarehouse
