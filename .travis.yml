@@ -1,5 +1,6 @@
 language: scala
-versions:
+versions
+  - 3.0.1
   - 2.12.8
   - 2.12.1
 
@@ -7,6 +8,9 @@ jdk:
   openjdk11
 
 install:
+  - curl -L https://downloads.typesafe.com/scala/$SCALA_VERSION/scala-$SCALA_VERSION.tgz | tar xfz - -C /usr/scala/ && \
+    echo >> /usr/scala/.bashrc && \
+    echo "export PATH=~/scala-$SCALA_VERSION/bin:$PATH" >> /usr/scala/.bashrc
   - curl -L https://github.com/com-lihaoyi/mill/releases/download/0.9.9/0.9.9 > mill && chmod +x mill
 
 script:
