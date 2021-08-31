@@ -4,7 +4,7 @@
 #
 version: 2.1
 jobs:
-  run_tests:
+  build:
     docker:
       - image: cimg/openjdk:11.0
 
