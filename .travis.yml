@@ -1,9 +1,9 @@
 language: scala
 version:
-  - 3.0
-  - 2.13
-  - 2.12
+  - 3.0.2
+  - 2.13.6
+  - 2.12.1
 install:
   - curl -L https://github.com/com-lihaoyi/mill/releases/download/0.9.9/0.9.9 > mill && chmod +x mill
 script:
-  - ./mill eWarehouse.test
+  - ./mill eWarehouse[$TRAVIS_SCALA_VERSION].test
