@@ -38,3 +38,4 @@ workflows:
       run_tests:
         name: scala-2.12
         scala_version: 2.12.1
+        
