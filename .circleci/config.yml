@@ -7,15 +7,13 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: antobalbis/easywarehouse
+      - image: circleci/openjdk:11-jdk
 
     steps:
       - checkout
 
-      - run: curl -L https://github.com/com-lihaoyi/mill/releases/download/0.9.9/0.9.9 > mill && chmod +x mill
-
       # run tests!
-      - run: ./mill eWarehouse[<<parameters.scala_version>>].test
+      - run: docker run
 
 
 workflow:
