@@ -5,7 +5,7 @@ FROM azul/zulu-openjdk-alpine:11-jre
 LABEL maintainer = "antobalbis <antoniobalh@gmail.com>"
 
 # Elegimos la versión de scala y mill
-ENV SCALA_VERSION 3.0.1
+ENV SCALA_VERSION 2.13.6
 ENV MILL_VERSION 0.9.9
 
 #establecemos directorio de trabajo
