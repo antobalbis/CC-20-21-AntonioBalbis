@@ -16,7 +16,6 @@ WORKDIR /app/test
 
 # Instalación de scala
 RUN apk add curl && \
-  mkdir /usr/scala && \
   curl -fLo coursier https://git.io/coursier-cli && chmod +x coursier && ./coursier install scala3-compiler && \
   curl -L https://github.com/com-lihaoyi/mill/releases/download/$MILL_VERSION/$MILL_VERSION > /usr/local/bin/mill && \
   chmod +x /usr/local/bin/mill
