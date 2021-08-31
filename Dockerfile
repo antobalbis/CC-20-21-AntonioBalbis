@@ -25,4 +25,4 @@ COPY eWarehouse/ ./eWarehouse/
 COPY build.sc ./
 
 #ejecución de test con mill
-CMD mill eWarehouse.test
+CMD mill eWarehouse[$SCALA_VERSION].test
