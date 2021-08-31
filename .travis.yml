@@ -10,7 +10,7 @@ jdk:
 install:
   - curl -L https://github.com/com-lihaoyi/mill/releases/download/0.9.9/0.9.9 > mill && chmod +x mill
   - curl -fLo coursier https://git.io/coursier-cli && chmod +x coursier && ./coursier && \
-    ./coursier install scala3-compiler
+    coursier install scala3-compiler
 
 script:
   - ./mill eWarehouse[$TRAVIS_SCALA_VERSION].test
