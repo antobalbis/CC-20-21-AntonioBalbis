@@ -12,7 +12,7 @@ install:
   - curl -fLo coursier https://git.io/coursier-cli
   - chmod +x coursier
   - ./coursier
-  - coursier install scala3-compiler
+  - cs install scala3-compiler
 
 script:
   - ./mill eWarehouse[$TRAVIS_SCALA_VERSION].test
