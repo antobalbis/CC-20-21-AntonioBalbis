@@ -14,16 +14,3 @@ jobs:
 
       # run tests!
       - run: docker run
-
-
-workflow:
-  jobs:
-    - scala_jobs:
-        name: scala_2.12
-        version: 2.12.8
-    - scala_jobs:
-        name: scala_3
-        version: 3.0.1
-    - scala_jobs:
-        name: scala_2.13
-        verion: 2.13.6
