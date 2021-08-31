@@ -5,13 +5,11 @@
 version: 2
 jobs:
   build:
-    docker:
-      # specify the version you desire here
-      - image: antobalbis/easywarehouse
-
     steps:
       - checkout
 
-      - run: docker build -t antobalbis/easywarehouse
+      - run: docker pull antobalbis/easywarehouse
+
+
       # run tests!
       - run: docker run -t antobalbis/easywarehouse
