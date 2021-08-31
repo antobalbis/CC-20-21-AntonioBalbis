@@ -154,6 +154,6 @@ class CMtests extends AnyFunSuite{
   test("Comprobar que no cambia el estado si el id del trabajador no existe."){
     cm.cambiarEstadoMaquina(2, 15, EstadoMaquina.FUNCIONANDO)
     cm.averiaMaquina(-1, 15)
-    assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 15)).estado.equals(EstadoMaquina.FUNCIONANDO))
+    assert(!cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 15)).estado.equals(EstadoMaquina.FUNCIONANDO))
   }
 }
