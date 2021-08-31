@@ -1,7 +1,8 @@
 language: scala
 version:
-  - 2.13.2
-  - 2.12.0
+  - 3.0
+  - 2.13
+  - 2.12
 install:
   - curl -L https://github.com/com-lihaoyi/mill/releases/download/0.9.9/0.9.9 > mill && chmod +x mill
 script:
