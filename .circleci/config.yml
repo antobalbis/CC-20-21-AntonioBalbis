@@ -6,15 +6,35 @@ version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
       - image: cimg/openjdk:11.0
+
+  run_tests:
+    parameters:
+      #version por defecto de scala
+      scala_version:
+        default: 3.0.1
+        type: string
 
     steps:
       - checkout
-
+      #Descargamos e isntalamos scala 3
       - run: curl -fLo coursier https://git.io/coursier-cli && chmod +x coursier && ./coursier install scala3-compiler
 
+      #Descargamos mill
       - run: curl -L https://github.com/com-lihaoyi/mill/releases/download/0.9.9/0.9.9 > mill && chmod +x mill
 
       # run tests!
-      - run: ./mill eWarehouse[3.0.1].test
+      - run: ./mill eWarehouse[<<parameters.scala_version>>].test
+
+workflows:
+  build:
+    jobs:
+      run_test:
+        name: scala-3
+        scala_version: 3.0.1
+      run_test:
+        name: scala-2.13
+        scala_version: 2.13.6
+      run_test:
+        name: scala-2.12
+        scala_version: 2.12.1
