@@ -29,12 +29,12 @@ jobs:
 workflows:
   build:
     jobs:
-      run_test:
+      run_tests:
         name: scala-3
         scala_version: 3.0.1
-      run_test:
+      run_tests:
         name: scala-2.13
         scala_version: 2.13.6
-      run_test:
+      run_tests:
         name: scala-2.12
         scala_version: 2.12.1
