@@ -1,4 +1,4 @@
-name: automated-update
+name: autoupdate
 on: [push]
 
 jobs:
