@@ -9,26 +9,8 @@ jobs:
       # specify the version you desire here
       - image: antobalbis/easywarehouse
 
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
-
-    working_directory: /app/test
-
-    environment:
-      # Customize the JVM maximum heap limit
-      JVM_OPTS: -Xmx3200m
-      TERM: dumb
-
-    parameters:
-      scala_version:
-        type: string
-        default: 2.13.0
     steps:
       - checkout
-
-      - run: curl -L https://github.com/com-lihaoyi/mill/releases/download/0.9.9/0.9.9 > mill && chmod +x mill
 
       # run tests!
       - run: ./mill eWarehouse[<<parameters.scala_version>>].test
