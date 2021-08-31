@@ -2,7 +2,12 @@ language: scala
 version:
   - 2.12.8
   - 2.12.1
+
+jdk:
+  openjdk11
+
 install:
   - curl -L https://github.com/com-lihaoyi/mill/releases/download/0.9.9/0.9.9 > mill && chmod +x mill
+
 script:
   - ./mill eWarehouse[$TRAVIS_SCALA_VERSION].test
