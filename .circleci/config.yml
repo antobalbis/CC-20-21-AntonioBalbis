@@ -4,13 +4,13 @@
 #
 version: 2.1
 jobs:
-  build:
+  run_tests:
     docker:
       - image: cimg/openjdk:11.0
 
-  run_tests:
+
     parameters:
-      #version por defecto de scala
+      #version de scala
       scala_version:
         default: 3.0.1
         type: string
@@ -25,16 +25,3 @@ jobs:
 
       # run tests!
       - run: ./mill eWarehouse[<<parameters.scala_version>>].test
-
-workflows:
-  build:
-    jobs:
-      run_tests:
-        name: scala-3
-        scala_version: 3.0.1
-      run_tests:
-        name: scala-2.13
-        scala_version: 2.13.6
-      run_tests:
-        name: scala-2.12
-        scala_version: 2.12.1
