@@ -5,11 +5,16 @@
 version: 2
 jobs:
   build:
+    docker:
+      # specify the version you desire here
+      - image: cimg/openjdk:11
+
     steps:
       - checkout
 
-      - run: docker pull antobalbis/easywarehouse
+      - run: curl -fLo coursier https://git.io/coursier-cli && chmod +x coursier && ./coursier install scala3-compiler && \
 
+      - run: curl -L https://github.com/com-lihaoyi/mill/releases/download/0.9.9/0.9.9 > mill && chmod +x mill
 
       # run tests!
       - run: docker run -t antobalbis/easywarehouse
