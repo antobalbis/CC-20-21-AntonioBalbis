@@ -1,6 +1,8 @@
-import mill._, scalalib._
+import mill._
+import mill.define.Target
+import scalalib._
 
-object eWarehouse extends Cross[eWarehouseModule]("3.0.1", "2.13.6", "2.12.1")
+object eWarehouse extends Cross[eWarehouseModule]("3.0.1", "2.12.8", "2.12.1")
 class eWarehouseModule(val crossScalaVersion: String) extends CrossScalaModule{
 
   object test extends Tests{
