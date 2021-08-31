@@ -1,4 +1,4 @@
-[![Build Status](https://app.travis-ci.com/antobalbis/easywarehouse.svg?branch=main)](https://app.travis-ci.com/antobalbis/easywarehouse) [![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=svg)](https://circleci.com/gh/circleci/circleci-docs)
+[![Build Status](https://app.travis-ci.com/antobalbis/easywarehouse.svg?branch=main)](https://app.travis-ci.com/antobalbis/easywarehouse) [![CircleCI](https://circleci.com/gh/antobalbis/easywarehouse/tree/main.svg?style=svg)](https://circleci.com/gh/antobalbis/easywarehouse/tree/main)
 # Easy Warehouse
 
 ## Descripción
