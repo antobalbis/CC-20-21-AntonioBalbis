@@ -16,11 +16,18 @@ class ControladorSolicitud{
 		listaSolicitudes.exists(s => s.ID == id)
 	}
 
+	def getSolicitudByID(id : Int) : Solicitud = {
+		listaSolicitudes(listaSolicitudes.indexWhere(s => s.ID == id))
+	}
+
 	def addSolicitud(userID : Int, id: Int, desc : String, nTrabajadores : Int) = {
 		if (checkDepartment(userID, Departamento.LOGISTICA) && !existSolicitud(id)) {
-			val nombre : String = listaTrabajadores(listaTrabajadores.indexWhere(t => t.ID == userID)).nombre
-			listaSolicitudes = new Solicitud(id, nombre, desc,nTrabajadores) :: listaSolicitudes
+			listaSolicitudes = new Solicitud(id, userID, desc,nTrabajadores) :: listaSolicitudes
 		}
+	}
+
+	def apuntarseSolicitud(userID : Int, id : Int): Unit ={
+
 	}
 
 	def removeSolicitud(id: String) = {}
