@@ -55,14 +55,13 @@ Igual que en los casos anteriores, si la ejecución de los test no es positiva s
 
 ## Resultado de Integración Continua.
 
-![resultados tests ci](https://github.com/antobalbis/easywarehouse/tree/main/docs/imagenes/paso_tests_ci.png)
+![resultados tests ci](https://github.com/antobalbis/easywarehouse/blob/main/docs/imagenes/paso_test_ci.png)
 
 ## Avance del proyecto
 
 Se ha avanzado en el desarrollo de las historias de usuario [[HU5]](https://github.com/antobalbis/easywarehouse/issues/25) y [[HU6]](https://github.com/antobalbis/easywarehouse/issues/26).
 Se ha cambiado el código de [ControladorMaquinas](https://github.com/antobalbis/CC-20-21-antoniobalbis/blob/main/eWarehouse/src/ControladorMaquinas.scala) añadiendo métodos auxiliares.
-Se han añadidos los tests para las tareas relacionadas con las HU anteriores en [testControladorSolicitud]().
-Se han añadido los métodos de las historias mencionadas a [ControladorSolicitud](https://github.com/antobalbis/easywarehouse/blob/main/eWarehouse/src/ControladorSolicitud.scala).
+Se han añadidos los tests para las tareas relacionadas con las HU anteriores en [testControladorSolicitud](https://github.com/antobalbis/easywarehouse/blob/main/eWarehouse/test/src/testControladorSolicitud.scala).
 
 ## trabajo previo
 - [Arquitectura](https://github.com/antobalbis/easywarehouse/blob/main/docs/arquitectura.md).
