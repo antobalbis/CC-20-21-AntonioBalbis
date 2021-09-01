@@ -4,9 +4,30 @@ class ControladorMaquinas(){
 	var listaMaquinas : List[Maquina] = List()
 	var listaTrabajadores : List[Trabajador] = List()
 
+
+	def existTrabajador(userID : Int) : Boolean = {
+		listaTrabajadores.exists(t => t.ID ==userID)
+	}
+
+	def checkDepartment(userID : Int, esperado : Departamento.Value) : Boolean = {
+		listaTrabajadores.exists(t => t.ID == userID && t.departamento.equals(esperado))
+	}
+
+	def existMaquina(mID : Int) : Boolean = {
+		listaMaquinas.exists(m => m.ID == mID)
+	}
+
+	def checkMaquinaEstado(mID : Int, estado : EstadoMaquina.Value) : Boolean = {
+		listaMaquinas.exists(m => m.ID == mID && m.estado.equals(estado))
+	}
+
+	def checkMaquinaInUse(mID : Int): Unit ={
+		listaMaquinas(listaMaquinas.indexWhere(m => m.ID == mID)).isBeingUsed
+	}
+
 	def addMaquina(userID: Int, id : Int, nombre : String) = {
-		if(!listaMaquinas.exists(m => m.ID == id)) {
-			if (listaTrabajadores.exists(t => t.ID == userID && t.departamento.equals(Departamento.LOGISTICA))) {
+		if(!existMaquina(id)) {
+			if (existTrabajador(userID)) {
 				val maquina: Maquina = new Maquina(id, nombre)
 				listaMaquinas = maquina :: listaMaquinas
 			}
@@ -14,8 +35,8 @@ class ControladorMaquinas(){
 	}
 
 	def deleteMaquina(userID : Int, id : Int) = {
-		if(listaMaquinas.exists(m => m.ID == id)) {
-			if (listaTrabajadores.exists(t => t.ID == userID && t.departamento.equals(Departamento.LOGISTICA))) {
+		if(existMaquina(id)) {
+			if (checkDepartment(userID, Departamento.LOGISTICA)) {
 				val index: Int = listaMaquinas.indexWhere(m => m.ID == id)
 				listaMaquinas = listaMaquinas.take(index) ++ listaMaquinas.drop(index + 1)
 			}
@@ -24,9 +45,10 @@ class ControladorMaquinas(){
 
 	def getListaMaquinas(userID: Int) : List[Maquina] = {
 		var result : List[Maquina] = List()
-		if(listaTrabajadores.exists(t => t.ID == userID))
-		for(maquina <- listaMaquinas){
-			if(maquina.estado.equals(EstadoMaquina.FUNCIONANDO)) result = maquina :: result
+		if(existTrabajador(userID)) {
+			for (maquina <- listaMaquinas) {
+				if (maquina.estado.equals(EstadoMaquina.FUNCIONANDO)) result = maquina :: result
+			}
 		}
 		result
 	}
@@ -34,7 +56,7 @@ class ControladorMaquinas(){
 	def usarMaquina(id : Int, userId : Int) : Boolean = {
 		var result : Boolean = false
 
-		if(listaMaquinas.exists(m => m.ID == id) && listaTrabajadores.exists(t => t.ID == userId)){
+		if(existMaquina(id) && existTrabajador(userId)){
 			val index = listaMaquinas.indexWhere(m => m.ID == id)
 			if(listaMaquinas(index).estado.equals(EstadoMaquina.FUNCIONANDO) &&
 			!listaMaquinas(index).isBeingUsed){
@@ -48,7 +70,7 @@ class ControladorMaquinas(){
 
 	def dejarMaquina(id : Int, userID : Int) : Boolean = {
 		var result : Boolean = false
-		if(listaMaquinas.exists(m => m.ID == id)){
+		if(existMaquina(id)){
 			val index = listaMaquinas.indexWhere(m => m.ID == id)
 			if(listaMaquinas(index).isBeingUsed && listaMaquinas(index).userID == userID){
 				listaMaquinas(index).isBeingUsed = false
@@ -60,21 +82,18 @@ class ControladorMaquinas(){
 	}
 
 	def cambiarEstadoMaquina(userID : Int, id : Int, estadoMaquina: EstadoMaquina.Value): Unit ={
-		if(listaTrabajadores.exists(t => t.ID == userID)) {
-			val user = listaTrabajadores.indexWhere(t => t.ID == userID)
+		if(checkDepartment(userID, Departamento.MANTENIMIENTO) && existMaquina(id)) {
 			val index = listaMaquinas.indexWhere(m => m.ID == id)
-			if (listaTrabajadores(user).departamento.equals(Departamento.MANTENIMIENTO)) {
-				listaMaquinas(index).estado = estadoMaquina;
-			}
+			listaMaquinas(index).estado = estadoMaquina;
 		}
 	}
 
 	def averiaMaquina(userID : Int, id : Int): Unit ={
-		if(listaTrabajadores.exists(t => t.ID == userID)) {
+		if(existTrabajador(userID) && checkMaquinaEstado(id, EstadoMaquina.FUNCIONANDO)) {
 			val index = listaMaquinas.indexWhere(m => m.ID == id)
-			if (listaMaquinas(index).estado.equals(EstadoMaquina.FUNCIONANDO)) {
-				listaMaquinas(index).estado = EstadoMaquina.PENDIENTE
-			}
+			listaMaquinas(index).estado = EstadoMaquina.PENDIENTE
 		}
 	}
+
+	
 }
