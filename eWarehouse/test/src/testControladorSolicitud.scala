@@ -33,4 +33,37 @@ class CSTest extends AnyFunSuite{
     cs.addSolicitud(1, 2, "solicitud falsa", 3)
     assert(!cs.listaSolicitudes.exists(s => s.ID == 10))
   }
+
+
+  lt = new Trabajador(3, "ac", Departamento.LOGISTICA) :: lt
+  lt = new Trabajador(4, "ac", Departamento.LOGISTICA) :: lt
+  lt = new Trabajador(5, "ac", Departamento.LOGISTICA) :: lt
+
+
+  test("Comprobar que el trabajador se añade a la lista de trabajadores de la solicitud y el número de personas disminuye en 1."){
+    val nPersonas = cs.getSolicitudByID(0).nPersonas
+    cs.apuntarseSolicitud(1, 0)
+    assert(cs.getSolicitudByID(0).trabajadores.exists(t => t.ID == 1))
+    assert(nPersonas == cs.getSolicitudByID(0).nPersonas - 1)
+  }
+
+  test("Comprobar que si el trabajador no existe no se añade a la lista y el número de personas se mantiene."){
+    cs.apuntarseSolicitud(-1, 0)
+  }
+
+  test("Comprobar que si el trabajador ya está en la lista el número de personas restantes se mantiene."){
+    val nPersonas = cs.getSolicitudByID(0).nPersonas
+    cs.apuntarseSolicitud(1, 0)
+    assert(nPersonas == cs.getSolicitudByID(0).nPersonas)
+  }
+
+  test("Comprobar que si se ha alcanzado el número de trabajadores no se añada a otro trabajador."){
+    cs.apuntarseSolicitud(3, 0)
+    cs.apuntarseSolicitud(4, 0)
+    //max apuntados
+    val nPersonas = cs.getSolicitudByID(0).nPersonas
+    cs.apuntarseSolicitud(5, 0)
+    assert(nPersonas == cs.getSolicitudByID(0).nPersonas)
+    assert(!cs.getSolicitudByID(0).trabajadores.exists(t => t.ID == 5))
+  }
 }
