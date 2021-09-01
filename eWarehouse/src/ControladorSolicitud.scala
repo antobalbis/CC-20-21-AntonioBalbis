@@ -22,12 +22,18 @@ class ControladorSolicitud{
 
 	def addSolicitud(userID : Int, id: Int, desc : String, nTrabajadores : Int) = {
 		if (checkDepartment(userID, Departamento.LOGISTICA) && !existSolicitud(id)) {
-			listaSolicitudes = new Solicitud(id, userID, desc,nTrabajadores) :: listaSolicitudes
+			listaSolicitudes = new Solicitud(id, userID, desc, nTrabajadores) :: listaSolicitudes
 		}
 	}
 
 	def apuntarseSolicitud(userID : Int, id : Int): Unit ={
-
+		if(checkDepartment(userID, Departamento.LOGISTICA) && existSolicitud(id)){
+			if(!(getSolicitudByID(id).userID == userID) && !getSolicitudByID(id).trabajadores.exists(t => t == userID)
+				&& getSolicitudByID(id).restantes != 0){
+				getSolicitudByID(id).trabajadores = userID :: getSolicitudByID(id).trabajadores
+				getSolicitudByID(id).restantes = getSolicitudByID(id).restantes-1
+			}
+		}
 	}
 
 	def removeSolicitud(id: String) = {}
