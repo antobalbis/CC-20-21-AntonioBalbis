@@ -2,7 +2,8 @@ package eWarehouse
 
 import org.scalatest.funsuite.AnyFunSuite
 
-class CMtests extends AnyFunSuite{
+//son los mismos tests que los de testControladorMaquinas.scala, se ha creado por errores en tests al cambiar el nombre del archivo.
+class CMtests2 extends AnyFunSuite{
   var cm : ControladorMaquinas = new ControladorMaquinas()
   var lt : List[Trabajador] = List()
   lt = new Trabajador(0, "aa", Departamento.DIRECCION) :: lt
