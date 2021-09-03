@@ -48,18 +48,20 @@ class ControladorMaquinas() extends cask.MainRoutes{
 		"OK"
 	}
 
-	def deleteMaquina(userID : Int, id : Int) = {
-		if(existMaquina(id)) {
-			if (checkDepartment(userID, Departamento.LOGISTICA)) {
-				val index: Int = listaMaquinas.indexWhere(m => m.ID == id)
+	@cask.postJson("/rmMaquina")
+	def deleteMaquina(userID : Seq[Int], id : Seq[Int]) = {
+		if(existMaquina(id(0))) {
+			if (checkDepartment(userID(0), Departamento.LOGISTICA)) {
+				val index: Int = listaMaquinas.indexWhere(m => m.ID == id(0))
 				listaMaquinas = listaMaquinas.take(index) ++ listaMaquinas.drop(index + 1)
 			}
 		}
 	}
 
-	def getListaMaquinas(userID: Int) : List[Maquina] = {
+	@cask.postJson("/getListaMaquinas")
+	def getListaMaquinas(userID: Seq[Int]) : List[Maquina] = {
 		var result : List[Maquina] = List()
-		if(existTrabajador(userID)) {
+		if(existTrabajador(userID(0))) {
 			for (maquina <- listaMaquinas) {
 				if (maquina.estado.equals(EstadoMaquina.FUNCIONANDO)) result = maquina :: result
 			}
@@ -67,26 +69,28 @@ class ControladorMaquinas() extends cask.MainRoutes{
 		result
 	}
 
-	def usarMaquina(id : Int, userId : Int) : Boolean = {
+	@cask.postJson("/usarMaquina")
+	def usarMaquina(id : Seq[Int], userId : Seq[Int]) : Boolean = {
 		var result : Boolean = false
 
-		if(existMaquina(id) && existTrabajador(userId)){
-			val index = listaMaquinas.indexWhere(m => m.ID == id)
+		if(existMaquina(id) && existTrabajador(userId(0))){
+			val index = listaMaquinas.indexWhere(m => m.ID == id(0))
 			if(listaMaquinas(index).estado.equals(EstadoMaquina.FUNCIONANDO) &&
 			!listaMaquinas(index).isBeingUsed){
 				listaMaquinas(index).isBeingUsed = true
-				listaMaquinas(index).userID = userId
+				listaMaquinas(index).userID = userId(0)
 				result = true
 			}
 		}
 		result
 	}
 
-	def dejarMaquina(id : Int, userID : Int) : Boolean = {
+	@cask.postJson("/dejarMaquina")
+	def dejarMaquina(id : Seq[Int], userID : Seq[Int]) : Boolean = {
 		var result : Boolean = false
-		if(existMaquina(id)){
-			val index = listaMaquinas.indexWhere(m => m.ID == id)
-			if(listaMaquinas(index).isBeingUsed && listaMaquinas(index).userID == userID){
+		if(existMaquina(id(0))){
+			val index = listaMaquinas.indexWhere(m => m.ID == id(0))
+			if(listaMaquinas(index).isBeingUsed && listaMaquinas(index).userID == userID(0)){
 				listaMaquinas(index).isBeingUsed = false
 				listaMaquinas(index).userID = -1
 				result = true
@@ -95,15 +99,18 @@ class ControladorMaquinas() extends cask.MainRoutes{
 		result
 	}
 
-	def cambiarEstadoMaquina(userID : Int, id : Int, estadoMaquina: EstadoMaquina.Value): Unit ={
-		if(checkDepartment(userID, Departamento.MANTENIMIENTO) && existMaquina(id)) {
-			val index = listaMaquinas.indexWhere(m => m.ID == id)
-			listaMaquinas(index).estado = estadoMaquina;
+	@cask.postJson("/cambiarEstado")
+	def cambiarEstadoMaquina(userID : Seq[Int], id : Seq[Int], estadoMaquina_ : String): Unit ={
+		val estadoMaquina = EstadoMaquina.values.find(_.toString == estadoMaquina_).get
+		if(checkDepartment(userID(0), Departamento.MANTENIMIENTO) && existMaquina(id(0))) {
+			val index = listaMaquinas.indexWhere(m => m.ID == id(0))
+			listaMaquinas(index).estado = estadoMaquina
 		}
 	}
 
-	def averiaMaquina(userID : Int, id : Int): Unit ={
-		if(existTrabajador(userID) && checkMaquinaEstado(id, EstadoMaquina.FUNCIONANDO)) {
+	 @cask.postJson("/cambiarEstado")
+	def averiaMaquina(userID : Seq[Int], id : Seq[Int]): Unit ={
+		if(existTrabajador(userID(0)) && checkMaquinaEstado(id(0), EstadoMaquina.FUNCIONANDO)) {
 			val index = listaMaquinas.indexWhere(m => m.ID == id)
 			listaMaquinas(index).estado = EstadoMaquina.PENDIENTE
 		}
