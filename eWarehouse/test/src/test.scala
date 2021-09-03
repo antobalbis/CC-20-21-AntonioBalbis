@@ -4,7 +4,7 @@ import org.scalatest.funsuite.AnyFunSuite
 
 //son los mismos tests que los de testControladorMaquinas.scala, se ha creado por errores en tests al cambiar el nombre del archivo.
 class CMtests2 extends AnyFunSuite{
-  var cm : ControladorMaquinas = new ControladorMaquinas()
+/*  var cm : ControladorMaquinas = new ControladorMaquinas()
   var lt : List[Trabajador] = List()
   lt = new Trabajador(0, "aa", Departamento.DIRECCION) :: lt
   lt = new Trabajador(1, "ab", Departamento.LOGISTICA) :: lt
@@ -156,5 +156,5 @@ class CMtests2 extends AnyFunSuite{
     cm.cambiarEstadoMaquina(2, 15, EstadoMaquina.FUNCIONANDO)
     cm.averiaMaquina(-1, 15)
     assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 15)).estado.equals(EstadoMaquina.FUNCIONANDO))
-  }
+  }*/
 }
