@@ -1,6 +1,6 @@
 package eWarehouse
 
-class ControladorMaquinas(){
+class ControladorMaquinas() extends cask.MainRoutes{
 	var listaMaquinas : List[Maquina] = List()
 	var listaTrabajadores : List[Trabajador] = List()
 
@@ -11,6 +11,11 @@ class ControladorMaquinas(){
 
 	def checkDepartment(userID : Int, esperado : Departamento.Value) : Boolean = {
 		listaTrabajadores.exists(t => t.ID == userID && t.departamento.equals(esperado))
+	}
+
+	@cask.postJson("/getMaquina")
+	def existMaquina(mID : Seq[Int]) : Boolean = {
+		listaMaquinas.exists(m => m.ID == mID(0))
 	}
 
 	def existMaquina(mID : Int) : Boolean = {
@@ -25,13 +30,22 @@ class ControladorMaquinas(){
 		listaMaquinas(listaMaquinas.indexWhere(m => m.ID == mID)).isBeingUsed
 	}
 
-	def addMaquina(userID: Int, id : Int, nombre : String) = {
+	@cask.get("/getNMaquinas")
+	def getNMaquinas(): String ={
+		listaMaquinas.length.toString
+	}
+
+	@cask.postJson("/addMaquina")
+	def addMaquina(userID_ : Seq[Int], id_ : Seq[Int], nombre : String) = {
+		val userID = userID_(0)
+		val id = id_(0)
 		if(!existMaquina(id)) {
 			if (existTrabajador(userID)) {
 				val maquina: Maquina = new Maquina(id, nombre)
 				listaMaquinas = maquina :: listaMaquinas
 			}
 		}
+		"OK"
 	}
 
 	def deleteMaquina(userID : Int, id : Int) = {
@@ -95,5 +109,5 @@ class ControladorMaquinas(){
 		}
 	}
 
-	
+	initialize()
 }
