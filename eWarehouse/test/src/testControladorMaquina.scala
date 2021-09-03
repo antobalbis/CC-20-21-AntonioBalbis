@@ -1,8 +1,10 @@
 package eWarehouse
+import io.undertow.Undertow
 
 import org.scalatest.funsuite.AnyFunSuite
 
 class CMtests extends AnyFunSuite{
+
   var cm : ControladorMaquinas = new ControladorMaquinas()
   var lt : List[Trabajador] = List()
   lt = new Trabajador(0, "aa", Departamento.DIRECCION) :: lt
@@ -11,30 +13,43 @@ class CMtests extends AnyFunSuite{
 
   cm.listaTrabajadores = lt
 
+  val server = Undertow.builder
+    .addHttpListener(8081, "localhost")
+    .setHandler(cm.defaultHandler)
+    .build
+  server.start()
+
+  val host = "http://localhost:8081"
+
   for(i <- 0 to 4){
-    cm.addMaquina(1, i, "maquina-"+i)
+    val result = requests.post(s"$host/addMaquina",
+    data = """{"userID_": [1], "id_":[""" + i + """], "nombre": "maquina"}""")
+    printf(result.text())
   }
 
   //TEST ADD MAQUINAS
   test("Lista de máquinas debe tener 5 elementos") {
-    val n = cm.listaMaquinas.length
-    cm.addMaquina(1, 5, "maquina-5")
-    assert(cm.listaMaquinas.length == n+1)
+    val n = requests.get(s"$host/getNMaquinas").text()
+    assert(n == "5")
   }
 
   test("No se añade una máquina con id repetido"){
-    val n = cm.listaMaquinas.length
-    cm.addMaquina(1, 3, "maquina_fallo")
-    assert(cm.listaMaquinas.length == n)
+    val result = requests.post(s"$host/addMaquina",
+      data = """{"userID_": [1], "id_":[2], "nombre": "maquina"}""")
+    val n = requests.get(s"$host/getNMaquinas").text()
+    assert(n == "5")
   }
 
   test("Comprobar que no se añade una máquina si el usuario no existe o no es del departamento de logística."){
-    cm.addMaquina(userID = 7, id = 10, "maquina 5")
-    assert(!cm.listaMaquinas.exists(m => m.ID == 10))
+    val result = requests.post(s"$host/addMaquina",
+      data = """{"userID_": [7], "id_":[8], "nombre": "maquina"}""")
+
+    val n = requests.post(s"$host/getMaquina", data = """{"mID": [8]}""").text().toBoolean
+    assert(!n)
   }
 
   //TEST LISTA MAQUINAS
-  test("No se muestra ninguna máquina con estado distinto a FUNCIONANDO"){
+  /*test("No se muestra ninguna máquina con estado distinto a FUNCIONANDO"){
     cm.listaMaquinas(3).estado = EstadoMaquina.PENDIENTE
     assert(!cm.getListaMaquinas(0).contains(cm.listaMaquinas(3)))
   }
@@ -155,5 +170,6 @@ class CMtests extends AnyFunSuite{
     cm.cambiarEstadoMaquina(2, 15, EstadoMaquina.FUNCIONANDO)
     cm.averiaMaquina(-1, 15)
     assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 15)).estado.equals(EstadoMaquina.FUNCIONANDO))
-  }
+  }*/
+
 }
