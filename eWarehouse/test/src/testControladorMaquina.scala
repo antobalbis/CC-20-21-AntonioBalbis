@@ -46,7 +46,7 @@ class CMtests extends AnyFunSuite{
     val result = requests.post(s"$host/addMaquina",
       data = """{"userID_": [7], "id_":[8], "nombre": "maquina"}""")
 
-    val n = requests.post(s"$host/getMaquina", data = """{"mID": [8]}""").text().toBoolean
+    val n = requests.get(s"$host/getMaquina/8").text().toBoolean
     assert(!n)
   }
 
@@ -74,36 +74,38 @@ class CMtests extends AnyFunSuite{
   }
 
   //TESTS ELIMINA MAQUINA
-  /*test("EL NUMERO DE MAQUINAS SE REDUCE EN UNO"){
-    val n = cm.listaMaquinas.length
-    cm.deleteMaquina(1, 4)
-    assert(cm.listaMaquinas.length == n-1)
+  test("EL NUMERO DE MAQUINAS SE REDUCE EN UNO"){
+    val n = requests.get(s"$host/getNMaquinas").text().toInt
+    val result = requests.post(s"$host/rmMaquina", data = """{"userID" : [1], "id" : [4]}""")
+    val n2 = requests.get(s"$host/getNMaquinas").text().toInt
+    assert(n2 + 1 == n)
   }
 
   test("La máquina que desaparece es la máquina con el ID correspondiente"){
-    assert(!cm.listaMaquinas.exists(m => m.ID == 4))
+    val result = requests.get(s"$host/getMaquina/4").text().toBoolean
+    assert(!result)
   }
 
-  test("El número de máquinas no decrece si el ID no existe una máquina con ese ID"){
-    val n = cm.listaMaquinas.length
-    cm.deleteMaquina(1, 12)
-    assert(cm.listaMaquinas.length == n)
+  test("El número de máquinas no decrece si el ID no existe"){
+    val n = requests.get(s"$host/getNMaquinas/").text().toInt
+    val result = requests.post(s"$host/rmMaquina", data = """{"userID" : [1], "id" : [4]}""")
+    val n2 = requests.get(s"$host/getNMaquinas").text().toInt
+    assert(n == n2)
   }
 
   test("Comprobar que la máquina no se elimina si el usuario no existe"){
-    val n = cm.listaMaquinas.length
-    cm.deleteMaquina(4, 2)
-    assert(cm.listaMaquinas.length == n)
+    val result = requests.post(s"$host/rmMaquina", data = """{"userID" : [12], "id" : [2]}""")
+    val existe = requests.get(s"$host/getMaquina/2").text().toBoolean
+    assert(existe)
   }
 
   test("Comprobar que la máquina no se elimina si el usuario no pertenece a logística"){
-    val n = cm.listaMaquinas.length
-    cm.deleteMaquina(0, 2)
-    assert(cm.listaMaquinas.length == n)
-  }
+    val result = requests.post(s"$host/rmMaquina", data = """{"userID" : [2], "id" : [2]}""")
+    val existe = requests.get(s"$host/getMaquina/2").text().toBoolean
+    assert(existe)  }
 
   //TESTS USO MAQUINA
-  val id : Int = 5
+  /*val id : Int = 5
   val userID : Int = 2
   test("El estado de la máquina con el id especificado cambia a true"){
     assert(cm.usarMaquina(id, userID))
