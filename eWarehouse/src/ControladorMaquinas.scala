@@ -15,7 +15,7 @@ class ControladorMaquinas() extends cask.MainRoutes{
 		listaTrabajadores.exists(t => t.ID == userID && t.departamento.equals(esperado))
 	}
 
-	@cask.postJson("/getMaquina")
+	@cask.get("/getMaquina/:mID")
 	def existMaquina(mID : Seq[Int]) : Boolean = {
 		listaMaquinas.exists(m => m.ID == mID(0))
 	}
