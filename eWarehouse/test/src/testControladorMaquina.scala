@@ -12,6 +12,7 @@ class CMtests extends AnyFunSuite{
   lt = new Trabajador(0, "aa", Departamento.DIRECCION) :: lt
   lt = new Trabajador(1, "ab", Departamento.LOGISTICA) :: lt
   lt = new Trabajador(2, "ac", Departamento.MANTENIMIENTO) :: lt
+  lt = new Trabajador(3, "ax", Departamento.LOGISTICA) :: lt
 
   cm.listaTrabajadores = lt
 
@@ -46,7 +47,7 @@ class CMtests extends AnyFunSuite{
     val result = requests.post(s"$host/addMaquina",
       data = """{"userID_": [7], "id_":[8], "nombre": "maquina"}""")
 
-    val n = requests.get(s"$host/getMaquina/8").text().toBoolean
+    val n = requests.get(s"$host/existMaquina/8").text().toBoolean
     assert(!n)
   }
 
@@ -82,7 +83,7 @@ class CMtests extends AnyFunSuite{
   }
 
   test("La máquina que desaparece es la máquina con el ID correspondiente"){
-    val result = requests.get(s"$host/getMaquina/4").text().toBoolean
+    val result = requests.get(s"$host/existMaquina/4").text().toBoolean
     assert(!result)
   }
 
@@ -95,47 +96,52 @@ class CMtests extends AnyFunSuite{
 
   test("Comprobar que la máquina no se elimina si el usuario no existe"){
     val result = requests.post(s"$host/rmMaquina", data = """{"userID" : [12], "id" : [2]}""")
-    val existe = requests.get(s"$host/getMaquina/2").text().toBoolean
+    val existe = requests.get(s"$host/existMaquina/2").text().toBoolean
     assert(existe)
   }
 
   test("Comprobar que la máquina no se elimina si el usuario no pertenece a logística"){
     val result = requests.post(s"$host/rmMaquina", data = """{"userID" : [2], "id" : [2]}""")
-    val existe = requests.get(s"$host/getMaquina/2").text().toBoolean
-    assert(existe)  }
+    val existe = requests.get(s"$host/existMaquina/2").text().toBoolean
+    assert(existe)
+  }
 
   //TESTS USO MAQUINA
-  /*val id : Int = 5
-  val userID : Int = 2
   test("El estado de la máquina con el id especificado cambia a true"){
-    assert(cm.usarMaquina(id, userID))
-    assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 5)).isBeingUsed)
+    requests.post(s"$host/usarMaquina", data = """{"id" : [0], "userId": [1]}""")
+    val result = ujson.read(requests.get(s"$host/getMaquina/0"))
+    assert(result.apply("uso").toString().toBoolean)
   }
 
   test("Comprobar que si el valor de isBeingUsed es true el resultado es false"){
-    assert(!cm.usarMaquina(id, userID))
+    requests.post(s"$host/usarMaquina", data = """{"id" : [0], "userId": [3]}""")
+    val result = ujson.read(requests.get(s"$host/getMaquina/0"))
+    assert(!result.apply("userID").str.equals("3"))
   }
 
-  test("Comprobar que si la máquina no existe el resultado es false"){
-    assert(!cm.usarMaquina(-1, userID))
-  }
-
-  cm.addMaquina(1, 20, "maquina-"+20)
-  cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 20)).estado = EstadoMaquina.PENDIENTE
   test("Comprobar que si el estado de la máquina es distinto a FUNCIONANDO el resultado es false"){
-    assert(!cm.usarMaquina(20, userID))
+    requests.post(s"$host/usarMaquina", data = """{"id" : [3], "userId": [3]}""")
+    val result = ujson.read(requests.get(s"$host/getMaquina/3"))
+    assert(!result.apply("uso").toString().toBoolean)
   }
 
   test("Comprobar si el resultado es true que el id del usuario es igual al id del usuario de la máquina."){
-    assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == id)).userID == userID)
+    val result = ujson.read(requests.get(s"$host/getMaquina/0"))
+    assert(result.apply("userID").str.toInt == 1)
   }
 
   test("Comprobar que si el usuario no existe o no es del departamento de logística el resultado es false"){
-    assert(!cm.usarMaquina(0, 5))
+    requests.post(s"$host/usarMaquina", data = """{"id" : [1], "userId": [12]}""")
+    val result = ujson.read(requests.get(s"$host/getMaquina/1"))
+    assert(!result.apply("uso").toString().toBoolean)
+
+    requests.post(s"$host/usarMaquina", data = """{"id" : [1], "userId": [2]}""")
+    val result2 = ujson.read(requests.get(s"$host/getMaquina/1"))
+    assert(!result.apply("uso").toString().toBoolean)
   }
 
   //TESTS DEJAR MÁQUINA
-  test("Comprobar que si el resultado es true el valor de isBeingUsed pasa a false"){
+  /*test("Comprobar que si el resultado es true el valor de isBeingUsed pasa a false"){
     assert(cm.dejarMaquina(id, userID))
     assert(!cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == id)).isBeingUsed)
   }
