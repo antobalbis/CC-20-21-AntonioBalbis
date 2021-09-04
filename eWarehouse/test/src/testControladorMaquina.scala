@@ -1,5 +1,7 @@
 package eWarehouse
+
 import io.undertow.Undertow
+import upickle.default._
 
 import org.scalatest.funsuite.AnyFunSuite
 
@@ -49,21 +51,30 @@ class CMtests extends AnyFunSuite{
   }
 
   //TEST LISTA MAQUINAS
-  /*test("No se muestra ninguna máquina con estado distinto a FUNCIONANDO"){
-    cm.listaMaquinas(3).estado = EstadoMaquina.PENDIENTE
-    assert(!cm.getListaMaquinas(0).contains(cm.listaMaquinas(3)))
+  test("No se muestra ninguna máquina con estado distinto a FUNCIONANDO"){
+    val cambio = requests.post(s"$host/cambiarEstado",
+      data = """{"userID" : [2], "id" : [3], "estadoMaquina_" : "REPARACION"}""")
+
+    val result = ujson.read(requests.get(s"$host/getListaMaquinas/1"))
+    var contiene : Boolean = true
+    for(i <- 0 to result.arr.size - 1){
+      if(contiene) contiene = result(i)("estado").str.equals("FUNCIONANDO")
+    }
+    assert(contiene)
   }
 
   test("Comprobar que se muestran todas las máquinas con estado FUNCIONANDO"){
-    assert(cm.getListaMaquinas(0).exists(m => m.estado.equals(EstadoMaquina.FUNCIONANDO)))
+    val result = ujson.read(requests.get(s"$host/getListaMaquinas/1"))
+    assert(result.arr.size == 4)
   }
 
   test("Comprobar que si el usuario no existe el resultado es una lista vacía"){
-    assert(cm.getListaMaquinas(-1).length == 0)
+    val result = ujson.read(requests.get(s"$host/getListaMaquinas/12"))
+    assert(result.arr.size == 0)
   }
 
   //TESTS ELIMINA MAQUINA
-  test("EL NUMERO DE MAQUINAS SE REDUCE EN UNO"){
+  /*test("EL NUMERO DE MAQUINAS SE REDUCE EN UNO"){
     val n = cm.listaMaquinas.length
     cm.deleteMaquina(1, 4)
     assert(cm.listaMaquinas.length == n-1)
