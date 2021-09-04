@@ -6,7 +6,9 @@ class eWarehouseModule(val crossScalaVersion: String) extends CrossScalaModule{
   var cask_version = "0.2.9"
   if(crossScalaVersion.equals("3.0.1")) cask_version = "0.7.11"
   if(crossScalaVersion.equals("2.13.6")) cask_version = "0.7.8"
-  def ivyDeps = Agg(ivy"com.lihaoyi::cask:$cask_version")
+
+
+  def ivyDeps = Agg(ivy"com.lihaoyi::cask:$cask_version", ivy"com.lihaoyi::upickle:1.4.0")
 
   object test extends Tests{
     def ivyDeps = Agg(
