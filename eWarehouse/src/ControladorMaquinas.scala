@@ -1,5 +1,7 @@
 package eWarehouse
 
+import upickle.default._
+
 class ControladorMaquinas() extends cask.MainRoutes{
 	var listaMaquinas : List[Maquina] = List()
 	var listaTrabajadores : List[Trabajador] = List()
@@ -58,15 +60,18 @@ class ControladorMaquinas() extends cask.MainRoutes{
 		}
 	}
 
-	@cask.postJson("/getListaMaquinas/:userID")
-	def getListaMaquinas(userID: Int) : String = {
-		var result : List[Maquina] = List()
+	@cask.get("/getListaMaquinas/:userID")
+	def getListaMaquinas(userID: Int) : ujson.Arr = {
+		var result = ujson.Arr()
 		if(existTrabajador(userID)) {
 			for (maquina <- listaMaquinas) {
-				if (maquina.estado.equals(EstadoMaquina.FUNCIONANDO)) result = maquina :: result
+				if (maquina.estado.equals(EstadoMaquina.FUNCIONANDO)){
+					val line = ujson.Obj("ID" -> maquina.ID.toString, "nombre" ->maquina.nombre, "uso" -> maquina.isBeingUsed, "estado" -> maquina.estado.toString)
+					result.arr += line
+				}
 			}
 		}
-		result.toString
+		result
 	}
 
 	@cask.postJson("/usarMaquina")
@@ -108,7 +113,7 @@ class ControladorMaquinas() extends cask.MainRoutes{
 		}
 	}
 
-	 @cask.postJson("/cambiarEstado")
+	 @cask.postJson("/averiar")
 	def averiaMaquina(userID : Seq[Int], id : Seq[Int]): Unit ={
 		if(existTrabajador(userID(0)) && checkMaquinaEstado(id(0), EstadoMaquina.FUNCIONANDO)) {
 			val index = listaMaquinas.indexWhere(m => m.ID == id(0))
