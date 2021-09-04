@@ -24,7 +24,7 @@ class CMtests extends AnyFunSuite{
 
   val host = "http://localhost:8081"
 
-  for(i <- 0 to 4){
+  for(i <- 0 to 6){
     val result = requests.post(s"$host/addMaquina",
     data = """{"userID_": [1], "id_":[""" + i + """], "nombre": "maquina"}""")
     printf(result.text())
@@ -33,14 +33,14 @@ class CMtests extends AnyFunSuite{
   //TEST ADD MAQUINAS
   test("Lista de máquinas debe tener 5 elementos") {
     val n = requests.get(s"$host/getNMaquinas").text()
-    assert(n == "5")
+    assert(n == "7")
   }
 
   test("No se añade una máquina con id repetido"){
     val result = requests.post(s"$host/addMaquina",
       data = """{"userID_": [1], "id_":[2], "nombre": "maquina"}""")
     val n = requests.get(s"$host/getNMaquinas").text()
-    assert(n == "5")
+    assert(n == "7")
   }
 
   test("Comprobar que no se añade una máquina si el usuario no existe o no es del departamento de logística."){
@@ -66,7 +66,7 @@ class CMtests extends AnyFunSuite{
 
   test("Comprobar que se muestran todas las máquinas con estado FUNCIONANDO"){
     val result = ujson.read(requests.get(s"$host/getListaMaquinas/1"))
-    assert(result.arr.size == 4)
+    assert(result.arr.size == 6)
   }
 
   test("Comprobar que si el usuario no existe el resultado es una lista vacía"){
@@ -157,21 +157,24 @@ class CMtests extends AnyFunSuite{
   }
 
   //Cambia estado máquina
-  /*cm.addMaquina(1, 6, "maquina-6")
-
   test("Comprobar que el estado de la máquina con el id indicado cambia al seleccionado"){
-    cm.cambiarEstadoMaquina(2, 6, EstadoMaquina.PENDIENTE)
-    assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 6)).estado.equals(EstadoMaquina.PENDIENTE))
-    cm.cambiarEstadoMaquina(2, 6, EstadoMaquina.FUNCIONANDO)
+    requests.post(s"$host/cambiarEstado", data = """{"userID" : [2], "id" : [6], "estadoMaquina_" : "REPARACION"}""")
+    val result = ujson.read(requests.get(s"$host/getMaquina/6"))
+
+    assert(result.apply("estado").str.equals(EstadoMaquina.REPARACION.toString))
+    requests.post(s"$host/cambiarEstado", data = """{"userID" : [2], "id" : [6], "estadoMaquina_" : "FUNCIONANDO"}""")
   }
 
   test("Comprobar que si el trabajador no es de mantenimiento el estado no cambia."){
-    cm.cambiarEstadoMaquina(0, 6, EstadoMaquina.PENDIENTE)
-    assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 6)).estado.equals(EstadoMaquina.FUNCIONANDO))
+    requests.post(s"$host/cambiarEstado",
+      data = """{"userID" : [1], "id" : [6], "estadoMaquina_" : "REPARACION"}""")
+    val result = ujson.read(requests.get(s"$host/getMaquina/6"))
+
+    assert(!result.apply("estado").str.equals(EstadoMaquina.REPARACION.toString))
   }
 
   //Máquina deja de estar en funcionamiento
-  cm.addMaquina(1, 15, "maquina-"+15)
+  /*cm.addMaquina(1, 15, "maquina-"+15)
   test("Comprobar que el estado de la máquina con el id indicado cambia a pendiente."){
     cm.averiaMaquina(0, 15)
     assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 15)).estado.equals(EstadoMaquina.PENDIENTE))
