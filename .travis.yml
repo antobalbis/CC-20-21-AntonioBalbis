@@ -14,7 +14,7 @@ install:
       ./coursier install scala3-compiler;
     fi
   - if [[$TRAVIS_SCALA_VERSION == "2.13.6"]]; then
-      sdk install scala 2.13.6
+      sdk install scala 2.13.6;
     fi
 
 script:
