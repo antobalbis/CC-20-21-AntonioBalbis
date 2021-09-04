@@ -15,7 +15,7 @@ class ControladorMaquinas() extends cask.MainRoutes{
 		listaTrabajadores.exists(t => t.ID == userID && t.departamento.equals(esperado))
 	}
 
-	@cask.get("/getMaquina/:mID")
+	@cask.get("/existMaquina/:mID")
 	def existMaquina(mID : Seq[Int]) : Boolean = {
 		listaMaquinas.exists(m => m.ID == mID(0))
 	}
@@ -35,6 +35,12 @@ class ControladorMaquinas() extends cask.MainRoutes{
 	@cask.get("/getNMaquinas")
 	def getNMaquinas(): String ={
 		listaMaquinas.length.toString
+	}
+
+	@cask.get("/getMaquina/:id")
+	def getMaquina(id : Seq[Int]) : ujson.Obj = {
+		val maquina = listaMaquinas(listaMaquinas.indexWhere(m => m.ID == id(0)))
+		ujson.Obj("userID" -> maquina.userID.toString, "ID" -> maquina.ID.toString, "nombre" ->maquina.nombre, "uso" -> maquina.isBeingUsed, "estado" -> maquina.estado.toString)
 	}
 
 	@cask.postJson("/addMaquina")
@@ -78,7 +84,7 @@ class ControladorMaquinas() extends cask.MainRoutes{
 	def usarMaquina(id : Seq[Int], userId : Seq[Int]) : Boolean = {
 		var result : Boolean = false
 
-		if(existMaquina(id) && existTrabajador(userId(0))){
+		if(existMaquina(id) && checkDepartment(userId(0), Departamento.LOGISTICA)){
 			val index = listaMaquinas.indexWhere(m => m.ID == id(0))
 			if(listaMaquinas(index).estado.equals(EstadoMaquina.FUNCIONANDO) &&
 			!listaMaquinas(index).isBeingUsed){
