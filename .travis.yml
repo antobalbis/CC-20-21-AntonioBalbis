@@ -1,7 +1,7 @@
 language: scala
 scala:
   - 3.0.1
-  - 2.12.1
+  - 2.13.6
 
 jdk:
   openjdk11
@@ -12,6 +12,9 @@ install:
       curl -fLo coursier https://git.io/coursier-cli &&
       chmod +x coursier &&
       ./coursier install scala3-compiler;
+    fi
+  - if [[$TRAVIS_SCALA_VERSION == "2.13.6"]]; then
+      sdk install scala 2.13.6
     fi
 
 script:
