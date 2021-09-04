@@ -58,15 +58,15 @@ class ControladorMaquinas() extends cask.MainRoutes{
 		}
 	}
 
-	@cask.postJson("/getListaMaquinas")
-	def getListaMaquinas(userID: Seq[Int]) : List[Maquina] = {
+	@cask.postJson("/getListaMaquinas/:userID")
+	def getListaMaquinas(userID: Int) : String = {
 		var result : List[Maquina] = List()
-		if(existTrabajador(userID(0))) {
+		if(existTrabajador(userID)) {
 			for (maquina <- listaMaquinas) {
 				if (maquina.estado.equals(EstadoMaquina.FUNCIONANDO)) result = maquina :: result
 			}
 		}
-		result
+		result.toString
 	}
 
 	@cask.postJson("/usarMaquina")
@@ -111,7 +111,7 @@ class ControladorMaquinas() extends cask.MainRoutes{
 	 @cask.postJson("/cambiarEstado")
 	def averiaMaquina(userID : Seq[Int], id : Seq[Int]): Unit ={
 		if(existTrabajador(userID(0)) && checkMaquinaEstado(id(0), EstadoMaquina.FUNCIONANDO)) {
-			val index = listaMaquinas.indexWhere(m => m.ID == id)
+			val index = listaMaquinas.indexWhere(m => m.ID == id(0))
 			listaMaquinas(index).estado = EstadoMaquina.PENDIENTE
 		}
 	}
