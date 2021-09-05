@@ -59,7 +59,7 @@ class CSTest extends AnyFunSuite{
     val result = ujson.read(requests.get(s"$host/getSolicitud/0"))
     val restantes = result.apply("restantes").str.toInt
 
-    requests.post(s"$host/apuntarse", data = """{"userID": [3], "id" : [0]}""")
+    requests.put(s"$host/apuntarse", data = """{"userID": 3, "id" : 0}""")
 
     val result2 = ujson.read(requests.get(s"$host/getSolicitud/0"))
     val restantes2 = result2.apply("restantes").str.toInt
@@ -76,7 +76,7 @@ class CSTest extends AnyFunSuite{
   test("Comprobar que si el trabajador no existe no se añade a la lista y el número de personas se mantiene."){
     val result = ujson.read(requests.get(s"$host/getSolicitud/0"))
     val restantes = result.apply("restantes").str.toInt
-    requests.post(s"$host/apuntarse", data = """{"userID": [13], "id" : [0]}""")
+    requests.put(s"$host/apuntarse", data = """{"userID": 13, "id" : 0}""")
     val result2 = ujson.read(requests.get(s"$host/getSolicitud/0"))
     val restantes2 = result2.apply("restantes").str.toInt
     assert(restantes == restantes2)
@@ -86,7 +86,7 @@ class CSTest extends AnyFunSuite{
     val result = ujson.read(requests.get(s"$host/getSolicitud/0"))
     val restantes = result.apply("restantes").str.toInt
 
-    requests.post(s"$host/apuntarse", data = """{"userID": [3], "id" : [0]}""")
+    requests.put(s"$host/apuntarse", data = """{"userID": 3, "id" : 0}""")
 
     val result2 = ujson.read(requests.get(s"$host/getSolicitud/0"))
     val restantes2 = result2.apply("restantes").str.toInt
@@ -94,14 +94,14 @@ class CSTest extends AnyFunSuite{
   }
 
   test("Comprobar que si se ha alcanzado el número de trabajadores no se añada a otro trabajador."){
-    requests.post(s"$host/apuntarse", data = """{"userID": [4], "id" : [0]}""")
-    requests.post(s"$host/apuntarse", data = """{"userID": [5], "id" : [0]}""")
+    requests.put(s"$host/apuntarse", data = """{"userID": 4, "id" : 0}""")
+    requests.put(s"$host/apuntarse", data = """{"userID": 5, "id" : 0}""")
     //max apuntados
 
     val result = ujson.read(requests.get(s"$host/getSolicitud/0"))
     val restantes = result.apply("restantes").str.toInt
 
-    requests.post(s"$host/apuntarse", data = """{"userID": [6], "id" : [0]}""")
+    requests.put(s"$host/apuntarse", data = """{"userID": 6, "id" : 0}""")
 
     val result2 = ujson.read(requests.get(s"$host/getSolicitud/0"))
     val restantes2 = result2.apply("restantes").str.toInt
@@ -112,7 +112,7 @@ class CSTest extends AnyFunSuite{
     val result = ujson.read(requests.get(s"$host/getSolicitud/1"))
     val restantes = result.apply("restantes").str.toInt
 
-    requests.post(s"$host/apuntarse", data = """{"userID": [2], "id" : [1]}""")
+    requests.put(s"$host/apuntarse", data = """{"userID": 2, "id" : 1}""")
 
     val result2 = ujson.read(requests.get(s"$host/getSolicitud/1"))
     val restantes2 = result2.apply("restantes").str.toInt
@@ -123,7 +123,7 @@ class CSTest extends AnyFunSuite{
     val result = ujson.read(requests.get(s"$host/getSolicitud/1"))
     val restantes = result.apply("restantes").str.toInt
 
-    requests.post(s"$host/apuntarse", data = """{"userID": [1], "id" : [1]}""")
+    requests.put(s"$host/apuntarse", data = """{"userID": 1, "id" : 1}""")
 
     val result2 = ujson.read(requests.get(s"$host/getSolicitud/1"))
     val restantes2 = result2.apply("restantes").str.toInt

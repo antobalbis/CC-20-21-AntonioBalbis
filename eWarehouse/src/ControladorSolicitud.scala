@@ -50,15 +50,19 @@ class ControladorSolicitud extends cask.MainRoutes{
 		}
 	}
 
-	@cask.postJson("/apuntarse")
-	def apuntarseSolicitud(userID : Seq[Int], id : Seq[Int]): Unit ={
-		if(checkDepartment(userID(0), Departamento.LOGISTICA) && existSolicitud(id(0))){
-			var solicitud = getSolicitud(id(0))
+	@cask.put("/apuntarse")
+	def apuntarseSolicitud(request: cask.Request): Unit ={
+		val json = ujson.read(request)
+		val id : Int = json.apply("id").toString().toInt
+		val userID : Int = json.apply("userID").toString().toInt
 
-			if(solicitud.userID != userID(0) && solicitud.restantes != 0 &&
-				!solicitud.trabajadores.exists(t => t == userID(0))){
+		if(checkDepartment(userID, Departamento.LOGISTICA) && existSolicitud(id)){
+			var solicitud = getSolicitud(id)
 
-				solicitud.trabajadores = userID(0) :: solicitud.trabajadores
+			if(solicitud.userID != userID && solicitud.restantes != 0 &&
+				!solicitud.trabajadores.exists(t => t == userID)){
+
+				solicitud.trabajadores = userID :: solicitud.trabajadores
 				solicitud.restantes = solicitud.restantes-1
 			}
 		}
