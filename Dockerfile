@@ -18,7 +18,8 @@ WORKDIR /app/test
 RUN apk add curl && \
   curl -fLo coursier https://git.io/coursier-cli && chmod +x coursier && ./coursier install scala3-compiler && \
   curl -L https://github.com/com-lihaoyi/mill/releases/download/$MILL_VERSION/$MILL_VERSION > /usr/local/bin/mill && \
-  chmod +x /usr/local/bin/mill
+  chmod +x /usr/local/bin/mill && \
+  yum install make
 
 #Copiamos código y archivo de configuración de mill
 COPY eWarehouse/ ./eWarehouse/
