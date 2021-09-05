@@ -23,9 +23,8 @@ class CMtests extends AnyFunSuite{
   val host = "http://localhost:8081"
 
   for(i <- 0 to 6){
-    val result = requests.post(s"$host/addMaquina",
-    data = """{"userID_": [1], "id_":[""" + i + """], "nombre": "maquina"}""")
-    printf(result.text())
+    requests.post(s"$host/addMaquina",
+      data = """{"userID_": [1], "id_":[""" + i + """], "nombre": "maquina"}""")
   }
 
   //TEST ADD MAQUINAS
@@ -51,8 +50,8 @@ class CMtests extends AnyFunSuite{
 
   //TEST LISTA MAQUINAS
   test("No se muestra ninguna máquina con estado distinto a FUNCIONANDO"){
-    val cambio = requests.post(s"$host/cambiarEstado",
-      data = """{"userID" : [2], "id" : [3], "estadoMaquina_" : "REPARACION"}""")
+    val cambio = requests.put(s"$host/cambiarEstado",
+      data = """{"userID" : 2, "id" : 3, "estadoMaquina_" : "REPARACION"}""")
 
     val result = ujson.read(requests.get(s"$host/getListaMaquinas/1"))
     var contiene : Boolean = true
@@ -106,19 +105,19 @@ class CMtests extends AnyFunSuite{
 
   //TESTS USO MAQUINA
   test("El estado de la máquina con el id especificado cambia a true"){
-    requests.post(s"$host/usarMaquina", data = """{"id" : [0], "userId": [1]}""")
+    requests.put(s"$host/usarMaquina", data = """{"id" : 0, "userId": 1}""")
     val result = ujson.read(requests.get(s"$host/getMaquina/0"))
     assert(result.apply("uso").toString().toBoolean)
   }
 
   test("Comprobar que si el valor de isBeingUsed es true el resultado es false"){
-    requests.post(s"$host/usarMaquina", data = """{"id" : [0], "userId": [3]}""")
+    requests.put(s"$host/usarMaquina", data = """{"id" : 0, "userId": 3}""")
     val result = ujson.read(requests.get(s"$host/getMaquina/0"))
     assert(!result.apply("userID").str.equals("3"))
   }
 
   test("Comprobar que si el estado de la máquina es distinto a FUNCIONANDO el resultado es false"){
-    requests.post(s"$host/usarMaquina", data = """{"id" : [3], "userId": [3]}""")
+    requests.put(s"$host/usarMaquina", data = """{"id" : 3, "userId": 3}""")
     val result = ujson.read(requests.get(s"$host/getMaquina/3"))
     assert(!result.apply("uso").toString().toBoolean)
   }
@@ -129,18 +128,18 @@ class CMtests extends AnyFunSuite{
   }
 
   test("Comprobar que si el usuario no existe o no es del departamento de logística el resultado es false"){
-    requests.post(s"$host/usarMaquina", data = """{"id" : [1], "userId": [12]}""")
+    requests.put(s"$host/usarMaquina", data = """{"id" : 1, "userId": 12}""")
     val result = ujson.read(requests.get(s"$host/getMaquina/1"))
     assert(!result.apply("uso").toString().toBoolean)
 
-    requests.post(s"$host/usarMaquina", data = """{"id" : [1], "userId": [2]}""")
+    requests.put(s"$host/usarMaquina", data = """{"id" : 1, "userId": 2}""")
     val result2 = ujson.read(requests.get(s"$host/getMaquina/1"))
     assert(!result.apply("uso").toString().toBoolean)
   }
 
   //TESTS DEJAR MÁQUINA
   test("Comprobar que si el resultado es true el valor de isBeingUsed es false y userID a -1"){
-    requests.post(s"$host/dejarMaquina", data = """{"id" : [0], "userID" : [1]}""")
+    requests.put(s"$host/dejarMaquina", data = """{"id" : 0, "userID" : 1}""")
     val result = ujson.read(requests.get(s"$host/getMaquina/0"))
 
     assert(!result.apply("uso").toString().toBoolean)
@@ -148,24 +147,24 @@ class CMtests extends AnyFunSuite{
   }
 
   test("Comprobar que si no coincide el userID con el userID de la máquina sigue en uso"){
-    requests.post(s"$host/usarMaquina", data = """{"id" : [0], "userId": [1]}""")
-    requests.post(s"$host/dejarMaquina", data = """{"id" : [0], "userID" : [3]}""")
+    requests.put(s"$host/usarMaquina", data = """{"id" : 0, "userId": 1}""")
+    requests.put(s"$host/dejarMaquina", data = """{"id" : 0, "userID" : 3}""")
     val result = ujson.read(requests.get(s"$host/getMaquina/0"))
     assert(result.apply("uso").toString().toBoolean)
   }
 
   //Cambia estado máquina
   test("Comprobar que el estado de la máquina con el id indicado cambia al seleccionado"){
-    requests.post(s"$host/cambiarEstado", data = """{"userID" : [2], "id" : [6], "estadoMaquina_" : "REPARACION"}""")
+    requests.put(s"$host/cambiarEstado", data = """{"userID" : 2, "id" : 6, "estadoMaquina_" : "REPARACION"}""")
     val result = ujson.read(requests.get(s"$host/getMaquina/6"))
 
     assert(result.apply("estado").str.equals(EstadoMaquina.REPARACION.toString))
-    requests.post(s"$host/cambiarEstado", data = """{"userID" : [2], "id" : [6], "estadoMaquina_" : "FUNCIONANDO"}""")
+    requests.put(s"$host/cambiarEstado", data = """{"userID" : 2, "id" : 6, "estadoMaquina_" : "FUNCIONANDO"}""")
   }
 
   test("Comprobar que si el trabajador no es de mantenimiento el estado no cambia."){
-    requests.post(s"$host/cambiarEstado",
-      data = """{"userID" : [1], "id" : [6], "estadoMaquina_" : "REPARACION"}""")
+    requests.put(s"$host/cambiarEstado",
+      data = """{"userID" : 1, "id" : 6, "estadoMaquina_" : "REPARACION"}""")
     val result = ujson.read(requests.get(s"$host/getMaquina/6"))
 
     assert(!result.apply("estado").str.equals(EstadoMaquina.REPARACION.toString))
@@ -173,22 +172,22 @@ class CMtests extends AnyFunSuite{
 
   //Máquina deja de estar en funcionamiento
   test("Comprobar que el estado de la máquina con el id indicado cambia a pendiente."){
-    requests.post(s"$host/averiar", data = """{"userID" : [1], "id" : [6]}""")
+    requests.put(s"$host/averiar", data = """{"userID" : 1, "id" : 6}""")
     val result = ujson.read(requests.get(s"$host/getMaquina/6"))
 
     assert(result.apply("estado").str.equals(EstadoMaquina.PENDIENTE.toString))
   }
 
   test("Comprobar que si el estado de la máquina no es en funcionamiento no cambia."){
-    requests.post(s"$host/cambiarEstado", data = """{"userID" : [2], "id" : [6], "estadoMaquina_" : "REPARACION"}""")
-    requests.post(s"$host/averiar", data = """{"userID" : [1], "id" : [6]}""")
+    requests.put(s"$host/cambiarEstado", data = """{"userID" : 2, "id" : 6, "estadoMaquina_" : "REPARACION"}""")
+    requests.put(s"$host/averiar", data = """{"userID" : 1, "id" : 6}""")
 
     val result = ujson.read(requests.get(s"$host/getMaquina/6"))
     assert(result.apply("estado").str.equals(EstadoMaquina.REPARACION.toString))
   }
 
   test("Comprobar que no cambia el estado si el id del trabajador no existe."){
-    requests.post(s"$host/averiar", data = """{"userID" : [-11], "id" : [5]}""")
+    requests.put(s"$host/averiar", data = """{"userID" : -11, "id" : 5}""")
 
     val result = ujson.read(requests.get(s"$host/getMaquina/5"))
     assert(result.apply("estado").str.equals(EstadoMaquina.FUNCIONANDO.toString))

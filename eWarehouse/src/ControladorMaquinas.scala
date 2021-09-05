@@ -1,5 +1,7 @@
 package eWarehouse
 
+import cask.Request
+
 class ControladorMaquinas() extends cask.MainRoutes{
 	var listaMaquinas : List[Maquina] = List()
 	var listaTrabajadores : List[Trabajador] = List()
@@ -78,49 +80,61 @@ class ControladorMaquinas() extends cask.MainRoutes{
 		result
 	}
 
-	@cask.postJson("/usarMaquina")
-	def usarMaquina(id : Seq[Int], userId : Seq[Int]) : Boolean = {
+	@cask.put("/usarMaquina")
+	def usarMaquina(request: cask.Request) : Unit = {
+		val json = ujson.read(request)
+		val id = json.apply("id").toString().toInt
+		val userId = json.apply("userId").toString().toInt
 		var result : Boolean = false
 
-		if(existMaquina(id) && checkDepartment(userId(0), Departamento.LOGISTICA)){
-			val index = listaMaquinas.indexWhere(m => m.ID == id(0))
+		if(existMaquina(id) && checkDepartment(userId, Departamento.LOGISTICA)){
+			val index = listaMaquinas.indexWhere(m => m.ID == id)
 			if(listaMaquinas(index).estado.equals(EstadoMaquina.FUNCIONANDO) &&
 			!listaMaquinas(index).isBeingUsed){
 				listaMaquinas(index).isBeingUsed = true
-				listaMaquinas(index).userID = userId(0)
+				listaMaquinas(index).userID = userId
 				result = true
 			}
 		}
 		result
 	}
 
-	@cask.postJson("/dejarMaquina")
-	def dejarMaquina(id : Seq[Int], userID : Seq[Int]) : Boolean = {
-		var result : Boolean = false
-		if(existMaquina(id(0))){
-			val index = listaMaquinas.indexWhere(m => m.ID == id(0))
-			if(listaMaquinas(index).isBeingUsed && listaMaquinas(index).userID == userID(0)){
+	@cask.put("/dejarMaquina")
+	def dejarMaquina(request : cask.Request) : Unit = {
+		val json = ujson.read(request)
+		val id : Int = json.apply("id").toString().toInt
+		val userID : Int = json.apply("userID").toString().toInt
+
+		if(existMaquina(id)){
+			val index = listaMaquinas.indexWhere(m => m.ID == id)
+			if(listaMaquinas(index).isBeingUsed && listaMaquinas(index).userID == userID){
 				listaMaquinas(index).isBeingUsed = false
 				listaMaquinas(index).userID = -1
-				result = true
 			}
 		}
-		result
 	}
 
-	@cask.postJson("/cambiarEstado")
-	def cambiarEstadoMaquina(userID : Seq[Int], id : Seq[Int], estadoMaquina_ : String): Unit ={
-		val estadoMaquina = EstadoMaquina.values.find(_.toString == estadoMaquina_).get
-		if(checkDepartment(userID(0), Departamento.MANTENIMIENTO) && existMaquina(id(0))) {
-			val index = listaMaquinas.indexWhere(m => m.ID == id(0))
+	@cask.put("/cambiarEstado")
+	def cambiarEstadoMaquina(request: cask.Request): Unit ={
+		val json = ujson.read(request)
+		val id : Int = json.apply("id").toString().toInt
+		val userID : Int = json.apply("userID").toString().toInt
+		val estadoMaquina = EstadoMaquina.values.find(_.toString.equals(json.apply("estadoMaquina_").str)).get
+
+		if(checkDepartment(userID, Departamento.MANTENIMIENTO) && existMaquina(id)) {
+			val index = listaMaquinas.indexWhere(m => m.ID == id)
 			listaMaquinas(index).estado = estadoMaquina
 		}
 	}
 
-	 @cask.postJson("/averiar")
-	def averiaMaquina(userID : Seq[Int], id : Seq[Int]): Unit ={
-		if(existTrabajador(userID(0)) && checkMaquinaEstado(id(0), EstadoMaquina.FUNCIONANDO)) {
-			val index = listaMaquinas.indexWhere(m => m.ID == id(0))
+	@cask.put("/averiar")
+	def averiaMaquina(request: cask.Request): Unit ={
+		val json = ujson.read(request)
+		val id : Int = json.apply("id").toString().toInt
+		val userID : Int = json.apply("userID").toString().toInt
+
+		if(existTrabajador(userID) && checkMaquinaEstado(id, EstadoMaquina.FUNCIONANDO)) {
+			val index = listaMaquinas.indexWhere(m => m.ID == id)
 			listaMaquinas(index).estado = EstadoMaquina.PENDIENTE
 		}
 	}
