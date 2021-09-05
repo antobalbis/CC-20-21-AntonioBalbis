@@ -12,13 +12,9 @@ class ControladorSolicitud extends cask.MainRoutes{
 		listaTrabajadores.exists(t => t.ID == userID && t.departamento.equals(esperado))
 	}
 
+	@cask.get("/exist/:id")
 	def existSolicitud(id : Int) : Boolean = {
 		listaSolicitudes.exists(s => s.ID == id)
-	}
-
-	@cask.get("/exist/:id")
-	def existSolicitud(id : Seq[Int]) : Boolean = {
-		listaSolicitudes.exists(s => s.ID == id(0))
 	}
 
 	def getSolicitud(id : Int) : Solicitud = {
@@ -30,9 +26,19 @@ class ControladorSolicitud extends cask.MainRoutes{
 		listaSolicitudes.size
 	}
 
+	@cask.get("/getLista/:id")
+	def getTrabajadores(id : Int): ujson.Arr ={
+		var lista = ujson.Arr()
+		for(i <- getSolicitud(id).trabajadores) {
+			val line = ujson.Obj("ID" -> i)
+			lista.arr += line
+		}
+		lista
+	}
+
 	@cask.get("/getSolicitud/:id")
-	def getSolicitudByID(id : Seq[Int]) : ujson.Obj = {
-		val solicitud = listaSolicitudes(listaSolicitudes.indexWhere(s => s.ID == id(0)))
+	def getSolicitudByID(id : Int) : ujson.Obj = {
+		val solicitud = listaSolicitudes(listaSolicitudes.indexWhere(s => s.ID == id))
 		ujson.Obj("userID" -> solicitud.userID.toString, "ID" -> solicitud.ID.toString,
 			"descripción" -> solicitud.descripción, "restantes" -> solicitud.restantes.toString)
 	}
@@ -49,8 +55,9 @@ class ControladorSolicitud extends cask.MainRoutes{
 		if(checkDepartment(userID(0), Departamento.LOGISTICA) && existSolicitud(id(0))){
 			var solicitud = getSolicitud(id(0))
 
-			if(!(solicitud.userID == userID(0)) && solicitud.trabajadores.exists(t => t == userID(0))
-				&& solicitud.restantes != 0){
+			if(solicitud.userID != userID(0) && solicitud.restantes != 0 &&
+				!solicitud.trabajadores.exists(t => t == userID(0))){
+
 				solicitud.trabajadores = userID(0) :: solicitud.trabajadores
 				solicitud.restantes = solicitud.restantes-1
 			}
