@@ -1,8 +1,6 @@
 package eWarehouse
 
 import io.undertow.Undertow
-import upickle.default._
-
 import org.scalatest.funsuite.AnyFunSuite
 
 class CMtests extends AnyFunSuite{
@@ -174,22 +172,25 @@ class CMtests extends AnyFunSuite{
   }
 
   //Máquina deja de estar en funcionamiento
-  /*cm.addMaquina(1, 15, "maquina-"+15)
   test("Comprobar que el estado de la máquina con el id indicado cambia a pendiente."){
-    cm.averiaMaquina(0, 15)
-    assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 15)).estado.equals(EstadoMaquina.PENDIENTE))
+    requests.post(s"$host/averiar", data = """{"userID" : [1], "id" : [6]}""")
+    val result = ujson.read(requests.get(s"$host/getMaquina/6"))
+
+    assert(result.apply("estado").str.equals(EstadoMaquina.PENDIENTE.toString))
   }
 
   test("Comprobar que si el estado de la máquina no es en funcionamiento no cambia."){
-    cm.cambiarEstadoMaquina(2, 15, EstadoMaquina.REPARACION)
-    cm.averiaMaquina(0, 15)
-    assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 15)).estado.equals(EstadoMaquina.REPARACION))
+    requests.post(s"$host/cambiarEstado", data = """{"userID" : [2], "id" : [6], "estadoMaquina_" : "REPARACION"}""")
+    requests.post(s"$host/averiar", data = """{"userID" : [1], "id" : [6]}""")
+
+    val result = ujson.read(requests.get(s"$host/getMaquina/6"))
+    assert(result.apply("estado").str.equals(EstadoMaquina.REPARACION.toString))
   }
 
   test("Comprobar que no cambia el estado si el id del trabajador no existe."){
-    cm.cambiarEstadoMaquina(2, 15, EstadoMaquina.FUNCIONANDO)
-    cm.averiaMaquina(-1, 15)
-    assert(cm.listaMaquinas(cm.listaMaquinas.indexWhere(m => m.ID == 15)).estado.equals(EstadoMaquina.FUNCIONANDO))
-  }*/
+    requests.post(s"$host/averiar", data = """{"userID" : [-11], "id" : [5]}""")
 
+    val result = ujson.read(requests.get(s"$host/getMaquina/5"))
+    assert(result.apply("estado").str.equals(EstadoMaquina.FUNCIONANDO.toString))
+  }
 }
