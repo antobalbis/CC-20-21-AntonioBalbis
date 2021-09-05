@@ -55,44 +55,79 @@ class CSTest extends AnyFunSuite{
 
 
   //TEST APUNTARSE A SOLICITUD
-  /*    test("Comprobar que el trabajador se añade a la lista de trabajadores de la solicitud y el número de personas disminuye en 1."){
-        val nPersonas = cs.getSolicitudByID(0).restantes
-        cs.apuntarseSolicitud(3, 0)
-        assert(cs.getSolicitudByID(0).trabajadores.exists(t => t == 3))
-        assert(nPersonas - 1 == cs.getSolicitudByID(0).restantes)
-      }
+  test("Comprobar que el trabajador se añade a la lista de trabajadores de la solicitud y el número de personas disminuye en 1."){
+    val result = ujson.read(requests.get(s"$host/getSolicitud/0"))
+    val restantes = result.apply("restantes").str.toInt
 
-      test("Comprobar que si el trabajador no existe no se añade a la lista y el número de personas se mantiene."){
-        cs.apuntarseSolicitud(-1, 0)
-      }
+    requests.post(s"$host/apuntarse", data = """{"userID": [3], "id" : [0]}""")
 
-      test("Comprobar que si el trabajador ya está en la lista el número de personas restantes se mantiene."){
-        val nPersonas = cs.getSolicitudByID(0).restantes
-        cs.apuntarseSolicitud(3, 0)
-        assert(nPersonas == cs.getSolicitudByID(0).restantes)
-      }
+    val result2 = ujson.read(requests.get(s"$host/getSolicitud/0"))
+    val restantes2 = result2.apply("restantes").str.toInt
+    val userID = result2.apply("userID").str.toInt
 
-      test("Comprobar que si se ha alcanzado el número de trabajadores no se añada a otro trabajador."){
-        cs.apuntarseSolicitud(4, 0)
-        cs.apuntarseSolicitud(5, 0)
-        //max apuntados
-        val nPersonas = cs.getSolicitudByID(0).restantes
-        cs.apuntarseSolicitud(6, 0)
-        assert(nPersonas == cs.getSolicitudByID(0).restantes)
-        assert(!cs.getSolicitudByID(0).trabajadores.exists(t => t == 6))
-      }
+    val lista = ujson.read(requests.get(s"$host/getLista/0"))
+    var trabajador : Boolean = false
+    if(lista(0)("ID").toString().toInt == 3) trabajador = true
 
-      test("Comprobar que si el trabajador no es de logística no se añade a la lista."){
-        val nPersonas = cs.getSolicitudByID(1).restantes
-        cs.apuntarseSolicitud(0, 1)
-        assert(!cs.getSolicitudByID(1).trabajadores.exists(t => t == 0))
-        assert(nPersonas == cs.getSolicitudByID(1).restantes)
-      }
+    assert(restantes == restantes2 + 1)
+    assert(trabajador)
+  }
 
-      test("Comprobar que si el id es el id del solicitante no se añade a la lista."){
-        val nPersonas = cs.getSolicitudByID(1).restantes
-        cs.apuntarseSolicitud(1, 1)
-        assert(nPersonas == cs.getSolicitudByID(1).restantes)
-        assert(!cs.getSolicitudByID(1).trabajadores.exists(t => t == 1))
-      }*/
+  test("Comprobar que si el trabajador no existe no se añade a la lista y el número de personas se mantiene."){
+    val result = ujson.read(requests.get(s"$host/getSolicitud/0"))
+    val restantes = result.apply("restantes").str.toInt
+    requests.post(s"$host/apuntarse", data = """{"userID": [13], "id" : [0]}""")
+    val result2 = ujson.read(requests.get(s"$host/getSolicitud/0"))
+    val restantes2 = result2.apply("restantes").str.toInt
+    assert(restantes == restantes2)
+  }
+
+  test("Comprobar que si el trabajador ya está en la lista el número de personas restantes se mantiene."){
+    val result = ujson.read(requests.get(s"$host/getSolicitud/0"))
+    val restantes = result.apply("restantes").str.toInt
+
+    requests.post(s"$host/apuntarse", data = """{"userID": [3], "id" : [0]}""")
+
+    val result2 = ujson.read(requests.get(s"$host/getSolicitud/0"))
+    val restantes2 = result2.apply("restantes").str.toInt
+    assert(restantes == restantes2)
+  }
+
+  test("Comprobar que si se ha alcanzado el número de trabajadores no se añada a otro trabajador."){
+    requests.post(s"$host/apuntarse", data = """{"userID": [4], "id" : [0]}""")
+    requests.post(s"$host/apuntarse", data = """{"userID": [5], "id" : [0]}""")
+    //max apuntados
+
+    val result = ujson.read(requests.get(s"$host/getSolicitud/0"))
+    val restantes = result.apply("restantes").str.toInt
+
+    requests.post(s"$host/apuntarse", data = """{"userID": [6], "id" : [0]}""")
+
+    val result2 = ujson.read(requests.get(s"$host/getSolicitud/0"))
+    val restantes2 = result2.apply("restantes").str.toInt
+    assert(restantes == restantes2)
+  }
+
+  test("Comprobar que si el trabajador no es de logística no se añade a la lista."){
+    val result = ujson.read(requests.get(s"$host/getSolicitud/1"))
+    val restantes = result.apply("restantes").str.toInt
+
+    requests.post(s"$host/apuntarse", data = """{"userID": [2], "id" : [1]}""")
+
+    val result2 = ujson.read(requests.get(s"$host/getSolicitud/1"))
+    val restantes2 = result2.apply("restantes").str.toInt
+    assert(restantes == restantes2)
+  }
+
+  test("Comprobar que si el id es el id del solicitante no se añade a la lista."){
+    val result = ujson.read(requests.get(s"$host/getSolicitud/1"))
+    val restantes = result.apply("restantes").str.toInt
+
+    requests.post(s"$host/apuntarse", data = """{"userID": [1], "id" : [1]}""")
+
+    val result2 = ujson.read(requests.get(s"$host/getSolicitud/1"))
+    val restantes2 = result2.apply("restantes").str.toInt
+    assert(restantes == restantes2)
+  }
+
 }
