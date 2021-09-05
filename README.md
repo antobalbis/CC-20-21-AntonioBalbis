@@ -68,10 +68,27 @@ requests.post(s"$host/addMaquina",
 
 Para evaluar el resultado se ha comprobado si se ha aplicado o no el efecto esperado. Algunas de las respuestas del servicio han sido también en formato JSON y por tanto para evaluar el resultado de los tests ha sido necesario parsearlo con el mismo objeto que se ha comentado.
 
+## Tareas
+
+Para facilitar la ejecución de las tareas se ha creado un makefile con los comandos build,install y test. Para build e install se ejecutará el comando eWarehouse[3.0.1].compile y para test eWarehouse[3.0.1].test. **El Makefile se ha creado para la ejecución de estas tareas no porque se esté usando Makefile como gestor de tareas**, el gestor de tareas es mill.
+
 ## Resultado de los tests
 
+### Paso de tests en travis
 
+![tests_travis](https://github.com/antobalbis/easywarehouse/blob/main/docs/imagenes/travis_microservicio.png)
 
+### Paso de tests en circleci
+
+![tests_circleci](https://github.com/antobalbis/easywarehouse/blob/main/docs/imagenes/circle_ms.png)
+
+### Paso de tests en contenedor docker
+
+![tests_docker](https://github.com/antobalbis/easywarehouse/blob/main/docs/imagenes/docker_hub_ms.png)
+
+### Resultados de CI
+
+![CI](https://github.com/antobalbis/easywarehouse/blob/main/docs/imagenes/ci_ms.png)
 
 ## trabajo previo
 - [Arquitectura](https://github.com/antobalbis/easywarehouse/blob/main/docs/arquitectura.md).
