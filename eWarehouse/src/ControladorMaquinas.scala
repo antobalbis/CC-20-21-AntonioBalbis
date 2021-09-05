@@ -1,7 +1,5 @@
 package eWarehouse
 
-import upickle.default._
-
 class ControladorMaquinas() extends cask.MainRoutes{
 	var listaMaquinas : List[Maquina] = List()
 	var listaTrabajadores : List[Trabajador] = List()
