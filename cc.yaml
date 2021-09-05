@@ -6,7 +6,7 @@ entidad:
  - eWarehouse/src/Solicitud.scala
  - eWarehouse/src/EstadoMaquina.scala
  - eWarehouse/src/ControladorMaquinas.scala
- - eWarehouse/src/ControladorSolicitudes.scala
+ - eWarehouse/src/ControladorSolicitud.scala
 test:
  - eWarehouse/test/src/testControladorMaquina.scala
  - eWarehouse/test/src/testControladorSolicitud.scala
