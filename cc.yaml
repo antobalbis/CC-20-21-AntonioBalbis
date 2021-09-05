@@ -11,6 +11,4 @@ test:
  - eWarehouse/test/src/testControladorMaquina.scala
  - eWarehouse/test/src/testControladorSolicitud.scala
 fichero_tareas: build.sc
-#Ejemplo orden mill para este proyecto: mill eWarehouse[3.0.1].test
-#con .test ya compila y se hace lo necesario para ejecutar los tests.
-make: mill eWarehouse[<version_scala>].<target>
+make: make
