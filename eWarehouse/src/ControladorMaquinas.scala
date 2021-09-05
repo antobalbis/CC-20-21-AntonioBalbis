@@ -1,7 +1,5 @@
 package eWarehouse
 
-import cask.Request
-
 class ControladorMaquinas() extends cask.MainRoutes{
 	var listaMaquinas : List[Maquina] = List()
 	var listaTrabajadores : List[Trabajador] = List()
@@ -51,9 +49,10 @@ class ControladorMaquinas() extends cask.MainRoutes{
 			if (existTrabajador(userID)) {
 				val maquina: Maquina = new Maquina(id, nombre)
 				listaMaquinas = maquina :: listaMaquinas
-			}
-		}
-		"OK"
+				log.debug("OK: máquina añadida")
+			}else log.debug("ERROR: trabajador no existe")
+		}else log.debug("ERROR: maquina no existe")
+
 	}
 
 	@cask.postJson("/rmMaquina")
@@ -62,8 +61,9 @@ class ControladorMaquinas() extends cask.MainRoutes{
 			if (checkDepartment(userID(0), Departamento.LOGISTICA)) {
 				val index: Int = listaMaquinas.indexWhere(m => m.ID == id(0))
 				listaMaquinas = listaMaquinas.take(index) ++ listaMaquinas.drop(index + 1)
-			}
-		}
+				log.debug("OK: máquina eliminada")
+			}else log.debug("ERROR: Usuario " + userID(0) + " no existe o no es de logistica")
+		}else log.debug("ERROR: Máquina " + id(0) + " no existe")
 	}
 
 	@cask.get("/getListaMaquinas/:userID")
@@ -74,9 +74,10 @@ class ControladorMaquinas() extends cask.MainRoutes{
 				if (maquina.estado.equals(EstadoMaquina.FUNCIONANDO)){
 					val line = ujson.Obj("ID" -> maquina.ID.toString, "nombre" ->maquina.nombre, "uso" -> maquina.isBeingUsed, "estado" -> maquina.estado.toString)
 					result.arr += line
-				}
+					log.debug("OK: lista máquinas devuelta")
+				}else log.debug("ERROR: Estado de máquina distinto a funcionando")
 			}
-		}
+		}else log.debug("ERROR: No existe el trabajador " + userID)
 		result
 	}
 
@@ -94,9 +95,9 @@ class ControladorMaquinas() extends cask.MainRoutes{
 				listaMaquinas(index).isBeingUsed = true
 				listaMaquinas(index).userID = userId
 				result = true
-			}
+				log.debug("OK: máquina entra en uso")
+			}else log.debug("ERROR: El estado de la máquina " + id + "no es funcionando o la máquina está en uso")
 		}
-		result
 	}
 
 	@cask.put("/dejarMaquina")
@@ -110,8 +111,9 @@ class ControladorMaquinas() extends cask.MainRoutes{
 			if(listaMaquinas(index).isBeingUsed && listaMaquinas(index).userID == userID){
 				listaMaquinas(index).isBeingUsed = false
 				listaMaquinas(index).userID = -1
-			}
-		}
+				log.debug("OK: máquina deja de estar en uso")
+			}else log.debug("ERROR: máquina " + id + "en uso o id de usuario incorrecto")
+		}else log.debug("ERROR: máquina " + id + "no existe")
 	}
 
 	@cask.put("/cambiarEstado")
@@ -124,7 +126,8 @@ class ControladorMaquinas() extends cask.MainRoutes{
 		if(checkDepartment(userID, Departamento.MANTENIMIENTO) && existMaquina(id)) {
 			val index = listaMaquinas.indexWhere(m => m.ID == id)
 			listaMaquinas(index).estado = estadoMaquina
-		}
+			log.debug("OK: cambio de estado de máquina " + id + " a " + estadoMaquina.toString())
+		}else log.debug("ERROR:trabajador " + userID + " no existe o no pertenece a mantenimiento")
 	}
 
 	@cask.put("/averiar")
@@ -136,7 +139,8 @@ class ControladorMaquinas() extends cask.MainRoutes{
 		if(existTrabajador(userID) && checkMaquinaEstado(id, EstadoMaquina.FUNCIONANDO)) {
 			val index = listaMaquinas.indexWhere(m => m.ID == id)
 			listaMaquinas(index).estado = EstadoMaquina.PENDIENTE
-		}
+			log.debug("OK: Máquina averiada")
+		}else log.debug("ERROR: Trabajador " + userID + "no existe o máquina " + id + " no funcionando")
 	}
 
 	initialize()

@@ -47,7 +47,8 @@ class ControladorSolicitud extends cask.MainRoutes{
 	def addSolicitud(userID : Seq[Int], id: Seq[Int], desc : String, nTrabajadores : Seq[Int]) = {
 		if (checkDepartment(userID(0), Departamento.LOGISTICA) && !existSolicitud(id(0))) {
 			listaSolicitudes = new Solicitud(id(0), userID(0), desc, nTrabajadores(0)) :: listaSolicitudes
-		}
+			log.debug(("OK: solicitud creada"))
+		}else log.debug("ERROR: La solicitud " + id(0) + " ya existe o trabajador no es de logística")
 	}
 
 	@cask.put("/apuntarse")
@@ -64,8 +65,9 @@ class ControladorSolicitud extends cask.MainRoutes{
 
 				solicitud.trabajadores = userID :: solicitud.trabajadores
 				solicitud.restantes = solicitud.restantes-1
-			}
-		}
+				log.debug("OK: trabajador añadido a tarea")
+			}else log.debug("ERROR: el trabajador " + userID + " es el creador o no quedan plazas")
+		}else log.debug("ERROR: El trabajador " + userID + " no es de logística o la solicitud no existe")
 	}
 
 	def removeSolicitud(id: String) = {}
