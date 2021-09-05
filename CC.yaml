@@ -10,5 +10,5 @@ entidad:
 test:
  - eWarehouse/test/src/testControladorMaquina.scala
  - eWarehouse/test/src/testControladorSolicitud.scala
-fichero_tareas: Makefile
+fichero_tareas: build.sc
 make: make
