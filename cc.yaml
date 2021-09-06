@@ -1,4 +1,6 @@
 lenguaje: scala
+fichero_tareas: build.sc
+make: make
 entidad:
  - eWarehouse/src/Departamento.scala
  - eWarehouse/src/Trabajador.scala
@@ -10,5 +12,3 @@ entidad:
 test:
  - eWarehouse/test/src/testControladorMaquina.scala
  - eWarehouse/test/src/testControladorSolicitud.scala
-fichero_tareas: build.sc
-make: make
